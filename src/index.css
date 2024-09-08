@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+:root {
+  --sora-font: "Sora", sans-serif;
+  --urbanist-font: "Urbanist", sans-serif;
+  --poppinst-font: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--poppinst-font);
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: #f1f2f3;
+}

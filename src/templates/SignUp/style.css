@@ -1,0 +1,33 @@
+.profile-picture {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#user-photo[type="file"] {
+  display: none;
+}
+
+.custom-file-button {
+  background-color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10.5rem;
+  height: 10.5rem;
+  cursor: pointer;
+  padding: 2rem;
+  border-radius: 100%;
+}
+
+.custom-file-button > img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.custom-file-button:hover {
+  background-color: #d1d1d1;
+}
