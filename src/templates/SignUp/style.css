@@ -31,3 +31,7 @@
 .custom-file-button:hover {
   background-color: #d1d1d1;
 }
+
+.data {
+  margin-bottom: 3rem;
+}

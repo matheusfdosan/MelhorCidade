@@ -1,11 +1,4 @@
-header {
-  width: 100%;
-  background-color: #fff;
-  font-family: var(--poppinst-font);
-  font-weight: lighter;
-  font-size: 1rem;
-  padding: 1.2rem;
-}
+
 
 main {
   width: 90%;
@@ -53,31 +46,4 @@ footer {
   margin: auto;
   display: flex;
   gap: 2rem;
-
-  .login-btn {
-    background-color: #0c0c0d;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.8rem;
-    padding: 1.5rem 0;
-    border: 0.2rem solid #0c0c0d;
-    width: 100%;
-    border-radius: 0.5rem;
-    text-align: center;
-    height: fit-content;
-  }
-
-  .signup-btn {
-    border-radius: 0.5rem;
-    border: 0.2rem solid #0c0c0d;
-    background-color: #fff;
-    color: #0c0c0d;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: bold;
-    padding: 1.5rem 0;
-    width: 100%;
-    height: fit-content;
-    text-align: center;
-  }
 }

@@ -1,7 +1,7 @@
 import maps from "../../assets/person-on-maps.png"
 import laptopBoy from "../../assets/person-with-laptop.png"
-import { Link } from "react-router-dom"
 import "./styles.css"
+import Button from "../../components/Button"
 
 export default function Landing() {
   return (
@@ -31,12 +31,8 @@ export default function Landing() {
         </div>
       </main>
       <footer>
-        <Link to="/login" className="login-btn">
-          Login
-        </Link>
-        <Link to="/signup" className="signup-btn">
-          Cadastrar
-        </Link>
+        <Button title={"Login"} type={"button"} style={"darkStyle"} linkTo={"/login"} />
+        <Button title={"Cadastrar"} type={"button"} style={"borderStyle"} linkTo={"/signup"} />
       </footer>
     </>
   )

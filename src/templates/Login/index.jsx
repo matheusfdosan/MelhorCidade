@@ -1,45 +1,37 @@
-import "./style.css"
+import "./styles.css"
 import backIcon from "../../assets/back-icon.svg"
 import engineerIcon from "../../assets/engineer-img.png"
 import { Link } from "react-router-dom"
+import Button from "../../components/Button"
+import Input from "../../components/Input"
+import Header from "../../components/Header"
 
 export default function Login() {
   return (
     <>
-      <header>
-        <Link to="/">
-          <img src={backIcon} alt="back-button" />
-        </Link>
-        <h1>Faça Login para continuar </h1>
-      </header>
+      <Header linkTo="/" title="Faça Login para continuar" />
 
       <main>
-        <div className="Form">
+        <form action="" method="post" className="form">
           <div className="data">
-            <label htmlFor="email">E-mail</label>
-            <input
+            <Input
+              label="E-mail"
               type="email"
-              name="email"
-              id="email"
+              idName="email"
               placeholder="Ex: angelionaldo@gmail.com"
-              required
             />
 
-            <label htmlFor="password">Senha</label>
-            <input
+            <Input
+              label="Senha"
               type="password"
-              name="password"
-              id="password"
+              idName="password"
               placeholder="Ex: 4@@28&22."
-              required
             />
           </div>
           <img src={engineerIcon} alt="engineer-icon" />
 
-          <button className="login_btn" type="submit">
-            <p>Fazer Login</p>
-          </button>
-        </div>
+          <Button title={"Fazer Login"} type={"submit"} style={"darkStyle"} />
+        </form>
       </main>
     </>
   )

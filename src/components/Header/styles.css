@@ -1,0 +1,30 @@
+header {
+  width: 100%;
+  background-color: #fff;
+  font-family: var(--poppinst-font);
+  font-weight: lighter;
+  font-size: 1rem;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header a {
+  background-color: black;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 4rem;
+  display: flex;
+  justify-content: center;
+  border: none;
+  align-items: center;
+  max-width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header h1 {
+  width: 100%;
+  text-align: center;
+}

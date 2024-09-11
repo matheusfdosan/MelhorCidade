@@ -1,20 +1,16 @@
 import "./style.css"
-import backIcon from "../../assets/back-icon.svg"
+import Input from "../../components/Input"
 import plusIcon from "../../assets/plus.svg"
-import { Link } from "react-router-dom"
+import Button from "../../components/Button"
+import Header from "../../components/Header"
 
 export default function SignUp() {
   return (
     <>
-      <header>
-        <Link to="/">
-          <img src={backIcon} alt="back-button" />
-        </Link>
-        <h1>Faça seu cadastro aqui </h1>
-      </header>
+      <Header linkTo="/" title="Faça seu cadastro aqui" />
 
       <main>
-        <div className="Form">
+        <form action="" method="post" className="form">
           <div className="data">
             <div className="profile-picture">
               <h3>Foto de Perfil</h3>
@@ -29,56 +25,51 @@ export default function SignUp() {
               />
             </div>
 
-            <label htmlFor="name">Nome</label>
-            <input
+            <Input
+              label="Nome"
               type="text"
-              name="name"
-              id="name"
-              required
-              placeholder="Angelina Lional"
+              idName="name"
+              placeholder="Digite o seu nome"
             />
 
-            <label htmlFor="email">E-mail</label>
-            <input
+            <Input
+              label="E-mail"
               type="email"
-              name="email"
-              id="email"
-              required
-              placeholder="Ex: angelionaldo@gmail.com"
+              idName="email_signup"
+              placeholder="Digite o seu email"
             />
 
-            <label htmlFor="age">Idade</label>
-            <input
+            <Input
+              label="Idade"
               type="number"
-              name="age"
-              id="age"
-              required
+              idName="age"
               placeholder="Digite a sua idade"
             />
 
-            <label htmlFor="address">Endereço</label>
-            <input
+            <Input
+              label="Endereço"
               type="text"
-              name="address"
-              id="address"
-              required
-              placeholder="Ex: Rua do oste de Luz na sua cara"
+              idName="address"
+              placeholder="Digite o seu endereço"
             />
 
-            <label htmlFor="password">Senha</label>
-            <input
+            <Input
+              label="Senha"
               type="password"
-              name="password"
-              id="password"
-              required
+              idName="password_signup"
               placeholder="Crie uma senha"
+            />
+
+            <Input
+              label="Confirmar Senha"
+              type="password"
+              idName="confirm_password"
+              placeholder="Digite a sua senha novamente"
             />
           </div>
 
-          <button className="signup_btn" type="submit">
-            <p>Cadastrar</p>
-          </button>
-        </div>
+          <Button title={"Cadastro"} type={"submit"} style={"darkStyle"} />
+        </form>
       </main>
     </>
   )
