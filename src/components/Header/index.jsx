@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 export default function Header({linkTo, title}) {
   return (
-    <header>
+    <header id="header_auth">
       <Link to={linkTo}>
         <img src={backIcon} alt="back-button" />
       </Link>

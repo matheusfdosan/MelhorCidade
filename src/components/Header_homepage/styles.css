@@ -1,0 +1,30 @@
+#header_homepage {
+  border-bottom: 0.1rem solid #adadad;
+}
+
+#header_container {
+  width: 95%;
+  margin: auto;
+  padding-top: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header_container h1 {
+  color: #424242;
+  font-size: 1.6rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+#header_container button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 200ms ease;
+}
+
+#header_container button:hover {
+  transform: scale(1.1);
+}

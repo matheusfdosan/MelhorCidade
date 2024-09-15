@@ -1,0 +1,74 @@
+#recent_complaints {
+  width: 90%;
+  margin: auto;
+  padding: 1.5rem 0;
+}
+
+#header_recent_complaints {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#header_recent_complaints h2 {
+  font-size: 2rem;
+  color: #424242;
+  margin-bottom: 2rem;
+}
+
+#header_recent_complaints a {
+  color: #5e89e5;
+  font-size: 1.2rem;
+}
+
+#complaints {
+  display: grid;
+  gap: 1.5rem;
+  width: fit-content;
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  gap: 2rem;
+  overflow-x: scroll;
+  scroll-snap-type: both mandatory;
+  scroll-padding-left: 2rem;
+}
+
+.complaint {
+  width: 23rem;
+  height: 23rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  text-decoration: none;
+  user-select: none;
+  border: 0.3rem solid transparent;
+  transition: border 200ms ease;
+  padding: 0.1rem;
+}
+
+.complaint:hover {
+  border: 0.3rem solid #dbdbdb;
+}
+
+.complaint > img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: .5rem;
+  pointer-events: none;
+  height: 15rem;
+}
+
+.complaint > p {
+  font-size: 1.4rem;
+  padding: 1rem;
+  color: #424242;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  max-height: 5rem;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
