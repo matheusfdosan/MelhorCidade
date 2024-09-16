@@ -68,7 +68,12 @@ export default function SignUp() {
             />
           </div>
 
-          <Button title={"Cadastro"} type={"submit"} style={"darkStyle"} />
+          <Button
+            title={"Cadastro"}
+            type={"submit"}
+            style={"darkStyle"}
+            linkTo={"/homepage"}
+          />
         </form>
       </main>
     </>

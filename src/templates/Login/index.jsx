@@ -30,7 +30,7 @@ export default function Login() {
           </div>
           <img src={engineerIcon} alt="engineer-icon" />
 
-          <Button title={"Fazer Login"} type={"submit"} style={"darkStyle"} />
+          <Button title={"Fazer Login"} type={"submit"} style={"darkStyle"} linkTo={"/homepage"}/>
         </form>
       </main>
     </>
