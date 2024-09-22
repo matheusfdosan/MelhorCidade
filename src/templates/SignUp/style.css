@@ -21,11 +21,15 @@
   cursor: pointer;
   padding: 2rem;
   border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .custom-file-button > img {
   width: 3.5rem;
   height: 3.5rem;
+
 }
 
 .custom-file-button:hover {
@@ -34,4 +38,19 @@
 
 .data {
   margin-bottom: 3rem;
+}
+
+.registerSubmitButton {
+  background-color: #0c0c0d;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 1.5rem 0;
+  border: 0.2rem solid #0c0c0d;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+  height: fit-content;
+  cursor: pointer;
+  text-decoration: none;
 }

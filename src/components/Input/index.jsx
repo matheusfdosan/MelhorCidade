@@ -1,6 +1,15 @@
 import "./styles.css"
 
-export default function Input({ label, type, idName, placeholder }) {
+export default function Input({
+  label,
+  type,
+  idName,
+  placeholder,
+  onChangeInput,
+  maximum,
+  minimum,
+  maximumOfLetters
+}) {
   return (
     <>
       <label className="label-input" htmlFor={idName}>
@@ -11,6 +20,10 @@ export default function Input({ label, type, idName, placeholder }) {
           id={idName}
           className="input"
           placeholder={placeholder}
+          onChange={onChangeInput}
+          max={maximum}
+          min={minimum}
+          maxLength={maximumOfLetters}
           required
         />
       </label>
