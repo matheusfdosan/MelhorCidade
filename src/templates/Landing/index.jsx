@@ -1,5 +1,5 @@
 import maps from "../../assets/person-on-maps.png"
-import laptopBoy from "../../assets/person-with-laptop.png"
+import illustration from "../../assets/illustration.png"
 import "./styles.css"
 import Button from "../../components/Button"
 
@@ -19,11 +19,13 @@ export default function Landing() {
             </p>
           </div>
           <img
-            className="laptop-boy"
-            src={laptopBoy}
-            alt="person-with-laptop"
+            className="illustration-image"
+            src={illustration}
+            alt="illustration"
           />
         </div>
+
+
 
         <div className="more-info">
           <h2>Localize problemas estruturais em sua cidade.</h2>
