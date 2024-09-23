@@ -4,6 +4,7 @@ import plusIcon from "../../assets/plus.svg"
 import registerUser from "../../utils/registerUsers"
 import Header from "../../components/Header"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -58,46 +59,48 @@ export default function SignUp() {
       <Header linkTo="/" title="Faça seu cadastro aqui" />
 
       <main>
-        <form onSubmit={handleSubmit} className="form">
+        <form onSubmit={handleSubmit} className="form-signup">
           <div className="data">
-            <div className="profile-picture">
-              <h3>Foto de Perfil</h3>
-              <label htmlFor="user-photo" className="custom-file-button">
-                <img src={plusIcon} alt="plus-icon" />
-              </label>
-              <input
-                type="file"
-                alt="profile-picture"
-                id="user-photo"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+            <div className="signup-text">
+              <div className="login-signup">
+                <Link to="/login">Login</Link>/
+                <Link to="/signup">Cadastro</Link>
+              </div>
+
+              <h2>
+                Cadastre-se e Descubra Todos os Benefícios da Nossa Plataforma
+              </h2>
+              <p>
+                Crie sua conta para acessar todos os recursos da plataforma.
+                Basta fornecer algumas informações básicas para concluir o
+                cadastro e começar a aproveitar todos os benefícios disponíveis.
+              </p>
             </div>
 
-            <Input
-              label="Nome"
-              type="text"
-              idName="name"
-              placeholder="Digite o seu nome"
-              onChangeInput={handleChange}
-            />
-
+            <div className="name-age">
+              <Input
+                label="Nome"
+                type="text"
+                idName="name"
+                placeholder="Digite o seu nome"
+                onChangeInput={handleChange}
+              />
+              {/* <Input
+                label="Idade"
+                type="number"
+                idName="age"
+                placeholder="Digite a sua idade"
+                onChangeInput={handleChange}
+                maximum={120}
+                minimum={1}
+              /> */}
+            </div>
             <Input
               label="E-mail"
               type="email"
               idName="email"
               placeholder="Digite o seu email"
               onChangeInput={handleChange}
-            />
-
-            <Input
-              label="Idade"
-              type="number"
-              idName="age"
-              placeholder="Digite a sua idade"
-              onChangeInput={handleChange}
-              maximum={120}
-              minimum={1}
             />
 
             <Input
@@ -108,7 +111,6 @@ export default function SignUp() {
               onChangeInput={handleChange}
               maximumOfLetters={13}
             />
-
             <Input
               label="Endereço"
               type="text"
@@ -116,22 +118,22 @@ export default function SignUp() {
               placeholder="Digite o seu endereço"
               onChangeInput={handleChange}
             />
-
-            <Input
-              label="Senha"
-              type="password"
-              idName="password"
-              placeholder="Crie uma senha"
-              onChangeInput={handleChange}
-            />
-
-            <Input
-              label="Confirmar Senha"
-              type="password"
-              idName="confirmPassword"
-              placeholder="Digite a sua senha novamente"
-              onChangeInput={handleChange}
-            />
+            <div className="password-confirm-password">
+              <Input
+                label="Senha"
+                type="password"
+                idName="password"
+                placeholder="Crie uma senha"
+                onChangeInput={handleChange}
+              />
+              <Input
+                label="Confirmar Senha"
+                type="password"
+                idName="confirmPassword"
+                placeholder="Digite a sua senha novamente"
+                onChangeInput={handleChange}
+              />
+            </div>
 
             {confirmPassword && (
               <span style={{ color: "red" }}>As senhas não coincidem.</span>
@@ -148,3 +150,19 @@ export default function SignUp() {
     </>
   )
 }
+
+/*
+            <div className="profile-picture">
+              <h3>Foto de Perfil</h3>
+              <label htmlFor="user-photo" className="custom-file-button">
+                <img src={plusIcon} alt="plus-icon" />
+              </label>
+              <input
+                type="file"
+                alt="profile-picture"
+                id="user-photo"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </div>
+*/
