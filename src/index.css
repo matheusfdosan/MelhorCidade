@@ -9,6 +9,14 @@
   --sora-font: "Sora", sans-serif;
   --urbanist-font: "Urbanist", sans-serif;
   --poppinst-font: "Poppins", sans-serif;
+  --gray-one: #424242;
+  --gray-inputs-border: #a3a3a3;
+  --gray-inputs: #e4e4e6;
+  --gray-background: #F1F2F3;
+  --white: #ffffff;
+  --dark: #212121;
+  --red: #FF353A;
+  --light-blue: #597de1;
 }
 
 html {
@@ -22,9 +30,10 @@ body {
   font-family: var(--poppinst-font);
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
+  color: var(--dark);
 }
 
 body {
   font-size: 1.6rem;
-  background-color: #f1f2f3;
+  background-color: var(--gray-background);
 }
