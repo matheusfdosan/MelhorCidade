@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import RecentComplaints from "../../components/RecentComplaints"
 
 export default function Landing() {
-  const handleMenu = () => {}
-
   return (
     <>
       <header id="landing_header">
@@ -21,12 +19,6 @@ export default function Landing() {
               </li>
             </ul>
           </nav>
-
-          <div id="burguer" onClick={handleMenu}>
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
         </div>
       </header>
       <main id="landign_main">
