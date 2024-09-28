@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom"
-// import busão from ""
-// import transito from ""
-// import esgoto from ""
 import "./styles.css"
 
 export default function RecentComplaints() {
@@ -43,6 +40,39 @@ export default function RecentComplaints() {
             <p>
               Cheiro muito ruim de esgoto no meio da rua! Cadê o prefeito para
               consertar isso!!! 😡
+            </p>
+          </Link>
+          <Link className="complaint">
+            <img
+              src={
+                "https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3030949:1610126820/lixo.jpg?f=default&$p$f=07bc60e"
+              }
+              alt="bus"
+            />
+            <p>
+              O caminhão de lixo parou de passar a semanas, e o lixo está acumulando em um só lugar.
+            </p>
+          </Link>
+          <Link className="complaint">
+            <img
+              src={
+                "https://jpimg.com.br/uploads/2023/02/avenida-23-de-maio-buraco-sao-paulo-sos-sao-paulo-750x450.jpg"
+              }
+              alt="bus"
+            />
+            <p>
+              Tem um buraco gigante na estrada. Existe a muito tempo e ninguém veio reclamar disso.
+            </p>
+          </Link>
+          <Link className="complaint">
+            <img
+              src={
+                "https://polijunior.com.br/wp-content/webp-express/webp-images/uploads/2020/04/rachadura-na-parede.jpg.webp"
+              }
+              alt="bus"
+            />
+            <p>
+              Depois da obra aqui do lado, a minha casa começou a aparecer rachaduras grandes. 
             </p>
           </Link>
         </div>
