@@ -1,65 +1,267 @@
-main {
-  width: 90%;
-  margin: 5rem auto;
-
-  .informative-text {
-    padding-top: 3rem;
-    position: relative;
-
-    div > h2 {
-      font-family: var(--urbanist-font);
-      font-size: 3.6rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    div > p {
-      color: #a3a3a3;
-      max-width: 30rem;
-      margin: auto;
-      text-align: center;
-    }
-
-    .illustration-image {
-      width: 30.6rem;
-      margin: auto;
-      text-align: center;
-      display: block;
-      margin-top: 3rem;
-    }
-  }
-
-  .more-info {
-    margin-top: 8rem;
-
-    h2 {
-      font-size: 2rem;
-    }
-
-    img[alt="person-on-maps"] {
-      width: 100%;
-      margin-top: 2rem;
-    }
-  }
+#landing_header {
+  width: 100%;
+  background-color: var(--white);
+  border-bottom: 0.15rem solid var(--gray-inputs);
 }
 
-footer {
+#landing_header > .container {
   width: 90%;
-  padding: 2rem 0;
   margin: auto;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+#landing_header > .container > h1 {
+  font-family: var(--urbanist-font);
+  color: var(--dark);
+  font-size: 2rem;
+}
+
+#landing_header > .container > nav > ul {
+  display: flex;
+  list-style: none;
   gap: 2rem;
+  font-size: 1.6rem;
 }
 
-@media (min-width: 765px) {
-
+#landing_header > .container > nav > ul > li > a {
+  color: var(--dark);
+  font-weight: normal;
+  text-decoration: underline transparent;
+  text-underline-offset: 0.6rem;
+  transition: text-decoration 200ms ease-in-out;
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
+#landing_header > .container > nav > ul > li > a:hover {
+  text-decoration: underline var(--dark);
+}
+
+#landing_header .container > nav > ul > li:nth-child(2) > a {
+  padding: 1rem;
+  background-image: linear-gradient(45deg, #153fb3, #597de1);
+  color: var(--white);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: box-shadow 500ms ease;
+}
+
+#landing_header .container > nav > ul > li:nth-child(2) > a:hover {
+  box-shadow: 0px 1px 9px #153fb340, 1px 1px 12px #597de14a;
+}
+
+#landing_main {
+  width: 100%;
+}
+
+section#landing_hero {
+  width: 100%;
+  height: fit-content;
+  background: linear-gradient(to top, var(--gray-background), #597de10a);
+  color: var(--dark);
+  border-bottom: 0.2rem dashed var(--gray-inputs);
+}
+
+section#landing_hero > .container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  padding: 10rem 0;
+}
+
+section#landing_hero > .container > h2 {
+  font-family: var(--sora-font);
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+section#landing_hero > .container > #hero_description {
+  font-size: 1.6rem;
+  width: 70%;
+  margin: 2rem auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+#slogan-text {
+  opacity: 0.5;
+  font-size: 1.4rem;
+  font-style: oblique;
+  margin-bottom: 4rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+#slogan-text:hover {
+  text-decoration: underline;
+}
+
+section#landing_hero > .container > a {
+  background-color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 1.8rem;
+  transition: box-shadow 200ms ease;
+  box-shadow: 15px 15px 29px #acacac, -15px -15px 29px #ffffff;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-select: none;
+}
+section#landing_hero > .container > a:hover {
+  box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px #ffffff;
+}
+
+#burguer {
+  display: none;
+}
+
+#landing_complaints {
+  padding: 5rem 0;
+}
+
+#landing_complaints > .container {
+  width: 90%;
+  margin: auto;
+}
+
+#landing_complaints > .container > h2 {
+  color: var(--dark);
+}
+
+#landing_video {
+  background-color: var(--dark);
+  padding: 12rem 0;
+}
+
+#landing_video > .container {
+  width: 90%;
+  margin: auto;
+}
+
+#landing_video > .container > h2 {
+  color: var(--white);
+  margin-bottom: 3rem;
+}
+
+#landing_video > .container > #info_video {
+  display: flex;
+  gap: 4rem;
+  color: #fff;
+  align-items: flex-start;
+}
+
+#landing_video > .container > #info_video > iframe {
+  width: 60%;
+}
+
+#landing_video > .container > #info_video > #video_description {
+  width: 50%;
+}
+
+#landing_video > .container > #info_video > #video_description > p {
+  margin-top: 3rem;
+}
+
+footer .container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 0;
+}
+
+footer .container > ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+footer .container > ul > li > a{
+  color: var(--dark);
+  text-decoration: none;
+}
+
+footer .container > ul > li > a:hover {
+  text-decoration: underline;
+  text-underline-offset: .6rem;
+}
+
+
+
+@media (max-width: 970px) {
+  #landing_video {
+    padding: 5rem 0;
+    text-align: center;
   }
-  100% {
-    transform: translateX(-100%);
+
+  #landing_video > .container > #info_video > iframe {
+    width: 100%;
+  }
+
+  #landing_video > .container > #info_video {
+    flex-direction: column-reverse;
+  }
+
+  #landing_video > .container > #info_video > #video_description {
+    width: 100%;
+  }
+}
+
+@media (max-width: 765px) {
+  section#landing_hero > .container {
+    width: 90%;
+  }
+
+  section#landing_hero > .container > h2 {
+    font-size: 3rem;
+  }
+
+  section#landing_hero > .container > #hero_description {
+    font-size: 1.4rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 700px) {
+  footer .container {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 390px) {
+  #landing_video > .container > h2 {
+    font-size: 1.8rem;
+  }
+
+  #landing_header > .container > nav {
+    display: none;
+  }
+
+  #burguer {
+    display: block;
+    width: 3rem;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  #burguer > .line {
+    width: 100%;
+    height: 0.2rem;
+    background-color: var(--dark);
   }
 }
