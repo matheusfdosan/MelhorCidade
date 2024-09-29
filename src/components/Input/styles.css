@@ -1,10 +1,11 @@
-.label-input {
+.label_input {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+#password_container > input,
 .input {
   width: 100%;
   height: 3.5rem;
@@ -14,4 +15,43 @@
   font-family: var(--poppinst-font);
   font-size: 1.4rem;
   padding-left: 1rem;
+}
+
+#password_container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 3.5rem;
+  border: none;
+  background-color: #e4e4e6;
+  border-radius: 0.5rem;
+  font-family: var(--poppinst-font);
+  font-size: 1.4rem;
+  padding-left: 1rem;
+  overflow: hidden;
+}
+
+#password_container > input {
+  width: 90%;
+  border: none;
+  background-color: transparent;
+}
+
+#password_container > button {
+  width: 10%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+.eye {
+  width: 2rem;
+  height: 2rem;
 }
