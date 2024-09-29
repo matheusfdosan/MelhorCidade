@@ -85,19 +85,19 @@ export default function Landing() {
             <em>&copy; 2024 MelhorCidade.</em>
           <ul>
             <li>
-              <Link>Sobre</Link>
+              <Link to="/about">Sobre</Link>
             </li>
             <li>
-              <Link>Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link>Cadastro</Link>
+              <Link to="/signup">Cadastro</Link>
             </li>
             <li>
-              <Link>Github</Link>
+              <Link to="https://github.com/matheusfdosan/MelhorCidade_FrontEnd" target="_blank">Github</Link>
             </li>
             <li>
-              <Link>Contact</Link>
+              <Link to="">Contact</Link>
             </li>
           </ul>
         </div>

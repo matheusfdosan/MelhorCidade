@@ -4,9 +4,9 @@ a.borderStyle {
   background-color: #fff;
   color: #0c0c0d;
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   width: 100%;
   height: fit-content;
   text-align: center;
@@ -18,8 +18,8 @@ a.darkStyle {
   background-color: #0c0c0d;
   color: #fff;
   text-decoration: none;
-  font-size: 1.8rem;
-  padding: 1.5rem 0;
+  font-size: 1.6rem;
+  padding: 1rem 0;
   border: 0.2rem solid #0c0c0d;
   width: 100%;
   border-radius: 0.5rem;
