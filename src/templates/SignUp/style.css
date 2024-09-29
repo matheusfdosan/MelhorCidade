@@ -1,55 +1,45 @@
-/* .form-signup {
-  background-color: #fff;
-    border-radius: 1rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    overflow: hidden;
-}
-
-.profile-picture {
-  margin: auto;
+#signup_container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-#user-photo[type="file"] {
-  display: none;
-}
-
-.custom-file-button {
-  background-color: #d9d9d9;
-  border: 1px solid #d9d9d9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 10.5rem;
-  height: 10.5rem;
-  cursor: pointer;
-  padding: 2rem;
-  border-radius: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.custom-file-button > img {
-  width: 3.5rem;
-  height: 3.5rem;
-}
-
-.custom-file-button:hover {
-  background-color: #d1d1d1;
-}
-
-.form-signup .data {
-  margin-bottom: 3rem;
   width: 100%;
 }
 
-.registerSubmitButton {
+#illustration {
+  width: 50%;
+
+  background-image: url("https://images.unsplash.com/photo-1510846606678-710c05a5c776?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#form_signup {
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden;
+  gap: 2rem;
+  padding: 5rem 0;
+  width: 50%;
+}
+
+#form_signup > #form_inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#form_inputs > h1 {
+  font-family: var(--urbanist-font);
+  font-size: 2rem;
+}
+
+#form_inputs > h2 {
+  font-size: 2.5rem;
+}
+
+#register_submit_button {
   background-color: #0c0c0d;
   color: #fff;
   text-decoration: none;
@@ -64,57 +54,73 @@
   text-decoration: none;
 }
 
-.photo-name-email {
-  display: inline;
+#already_have_account {
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
 }
 
-.signup-text {
-  display: none;
+#already_have_account > a {
+  color: var(--light-blue);
+  text-decoration: none;
 }
 
-.name-age,
-.password-confirm-password {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.form-signup {
+#form_signup {
   display: flex;
   flex-direction: column;
   padding: 2rem;
 }
 
+#i_agree {
+  font-size: 1.2rem;
+  color: var(--gray-inputs-border);
+  font-style: italic;
+}
+
+#i_agree > a {
+  text-decoration: none;
+  color: var(--light-blue);
+}
+
+@media (max-width: 900px) {
+  #form_signup {
+    width: 70%;
+  }
+
+  #illustation {
+    width: 30%;
+  }
+}
+
 @media (min-width: 765px) {
-  .form-signup {
+  #form_signup {
     flex-direction: column;
   }
 
-  .form-signup .data {
+  #form_signup > #form_inputs {
     width: 90%;
   }
 
-  .name-age,
-  .password-confirm-password {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 2rem;
-  }
-
-  .signup-text {
-    display: block;
-    margin-top: 2rem;
-  }
-
-  .registerSubmitButton {
+  #register_submit_button {
     padding: 1rem;
     width: 90%;
-    margin-bottom: 2rem;
   }
-  
-  .login-signup a {
-    display: block;
+}
+
+@media (max-width: 765px) {
+  #form_signup {
+    padding: 5rem 0 ;
+    width: 90%;
+    margin: auto;
   }
-} */
+
+  #illustration {
+    display: none;
+  }
+}
+
+
+@media (max-width: 470px) {
+  #form_inputs > h2 {
+    font-size: 2rem;
+  }
+}
