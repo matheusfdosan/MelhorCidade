@@ -1,7 +1,7 @@
 #how_can_help {
   width: 90%;
   margin: auto;
-  padding: 1.5rem 0;
+  padding: 5rem 0 2rem 0;
 }
 
 #how_can_help h2 {
@@ -11,10 +11,36 @@
 }
 
 #tools {
-  display: flex;
-  position: relative;
-  gap: 1.5rem;
-  width: fit-content;
+  scroll-behavior: smooth;
+  scroll-snap-align: start;
+  display: grid;
+  width: 100%;
+  grid-auto-flow: column;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: both mandatory;
+  scroll-padding-left: 2rem;
+  padding-bottom: 1rem;
+  justify-content: start;
+  overflow: auto visible ;
+}
+
+#tools::-webkit-scrollbar {
+  height: 1rem;
+}
+
+#tools::-webkit-scrollbar-track {
+  border-radius: 0.5rem;
+}
+
+#tools::-webkit-scrollbar-thumb {
+  background: var(--gray-inputs-border);
+  border-radius: 1rem;
+  border: 0.2rem solid var(--gray-background);
+}
+
+#tools::-webkit-scrollbar-thumb:hover {
+  background: var(--dark);
 }
 
 .tool {
@@ -23,11 +49,6 @@
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
-  transition: transform 200ms ease;
-}
-
-.tool:hover {
-  transform: scale(1.15);
 }
 
 .tool-icon {

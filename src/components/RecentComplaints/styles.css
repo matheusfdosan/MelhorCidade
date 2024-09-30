@@ -1,7 +1,7 @@
 #recent_complaints {
   width: 90%;
   margin: auto;
-  padding: 1.5rem 0;
+  padding: 6rem 0 2rem;
 }
 
 #header_recent_complaints {
@@ -10,21 +10,21 @@
   align-items: baseline;
 }
 
-#header_recent_complaints h2 {
+#header_recent_complaints > h2 {
   font-size: 2rem;
   color: #424242;
   margin-bottom: 2rem;
+  word-break: keep-all;
 }
 
-#header_recent_complaints a {
+#header_recent_complaints > a {
   color: #5e89e5;
   font-size: 1.2rem;
+  word-break: keep-all;
+  text-decoration: none;
 }
 
 #complaints {
-  display: grid;
-  gap: 1.5rem;
-  width: fit-content;
   scroll-behavior: smooth;
   scroll-snap-align: start;
   display: grid;
@@ -35,6 +35,7 @@
   scroll-snap-type: both mandatory;
   scroll-padding-left: 2rem;
   padding-bottom: 1rem;
+  justify-content: start;
 }
 
 /* width */

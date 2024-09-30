@@ -1,5 +1,5 @@
 import "./styles.css"
-import appsIcon from "../../assets/apps-icon.svg"
+import { Link } from "react-router-dom"
 
 export default function Header_homepage() {
   return (
@@ -7,9 +7,28 @@ export default function Header_homepage() {
       <div id="header_container">
         <h1>Página Inicial</h1>
 
-        <button>
-          <img src={appsIcon} alt="apps-button" />
-        </button>
+        <nav>
+          <ul>
+            <li>
+              <Link to={"/explorer"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/explorer"}>Explorar</Link>
+            </li>
+            <li>
+              <Link to={"/explorer"}>Sua Conta</Link>
+            </li>
+          </ul>
+          <div id="burguer">
+          <div id="lines">
+            <div className="line"></div>
+            <div className="line"></div>
+            <div className="line"></div>
+          </div>
+        </div>
+        </nav>
+
+
       </div>
     </header>
   )

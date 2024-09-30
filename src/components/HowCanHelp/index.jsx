@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import "./styles.css"
-import report from "../../assets/report.svg"
-import map from "../../assets/map.svg"
-import helpChat from "../../assets/help-chat.svg"
-import doubts from "../../assets/doubts.svg"
+import report from "../../assets/report-icon.svg"
+import map from "../../assets/map-icon.svg"
+import helpChat from "../../assets/help-chat-icon.svg"
+import doubts from "../../assets/doubts-icon.svg"
+import news from "../../assets/news-icon.svg"
 
 export default function HowCanHelp() {
   return (
@@ -16,7 +17,7 @@ export default function HowCanHelp() {
             <div className="tool-icon">
               <img src={report} alt="report" />
             </div>
-            <div className="tool-description">Denunciar</div>
+            <div className="tool-description">Postagem</div>
           </Link>
           <Link className="tool">
             <div className="tool-icon">
@@ -31,6 +32,10 @@ export default function HowCanHelp() {
           <Link className="tool">
             <div className="tool-icon"><img src={helpChat} alt="help-chat" /></div>
             <div className="tool-description">Chat Ajuda</div>
+          </Link>
+          <Link className="tool">
+            <div className="tool-icon"><img src={news} alt="help-chat" /></div>
+            <div className="tool-description">Notícias</div>
           </Link>
         </div>
       </div>

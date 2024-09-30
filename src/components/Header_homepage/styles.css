@@ -1,9 +1,10 @@
 #header_homepage {
-  border-bottom: 0.1rem solid #adadad;
+  border-bottom: 0.1rem solid var(--gray-inputs);
+  padding: 2rem 0;
 }
 
 #header_container {
-  width: 95%;
+  width: 90%;
   margin: auto;
   padding-top: 0.3rem;
   display: flex;
@@ -11,20 +12,59 @@
   align-items: center;
 }
 
-#header_container h1 {
+#header_container > h1 {
   color: #424242;
   font-size: 1.6rem;
   pointer-events: none;
   user-select: none;
+  font-family: var(--sora-font);
 }
 
-#header_container button {
-  border: none;
-  background: none;
+#header_container > nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+#header_container > nav > ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+#header_container > nav > ul > li > a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+#burguer {
   cursor: pointer;
-  transition: transform 200ms ease;
 }
 
-#header_container button:hover {
-  transform: scale(1.1);
+#burguer > #lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 3rem;
+  height: 2.4rem;
+}
+
+#burguer > #lines > .line {
+  width: 100%;
+  height: .2rem;
+  background-color: var(--dark);
+}
+
+#header_container > nav > ul > li > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.6rem;
+}
+
+@media (max-width: 450px) {
+  #header_container > nav > ul {
+    display: none;
+  }
 }

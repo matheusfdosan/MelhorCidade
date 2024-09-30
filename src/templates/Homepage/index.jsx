@@ -8,7 +8,6 @@ export default function Homepage() {
   return (
     <>
       <Header_homepage />
-      <HowCanHelp />
       <RecentComplaints />
       <RelevantPosts />
       <Footer_homepage />
