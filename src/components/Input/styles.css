@@ -9,8 +9,8 @@
 .input {
   width: 100%;
   height: 3.5rem;
-  border: none;
-  background-color: #e4e4e6;
+  border: 0.1rem solid var(--gray-inputs-border);
+  background-color: var(--gray-inputs);
   border-radius: 0.5rem;
   font-family: var(--poppinst-font);
   font-size: 1.4rem;
@@ -23,8 +23,8 @@
   gap: 1rem;
   width: 100%;
   height: 3.5rem;
-  border: none;
-  background-color: #e4e4e6;
+  border: 0.1rem solid var(--gray-inputs-border);
+  background-color: var(--gray-inputs);
   border-radius: 0.5rem;
   font-family: var(--poppinst-font);
   font-size: 1.4rem;
@@ -48,7 +48,6 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-
 }
 
 .eye {

@@ -6,7 +6,7 @@ export default function Landing() {
   return (
     <>
       <header id="landing_header">
-        <div className="container">
+        <div className="container" inert>
           <h1>MelhorCidade</h1>
 
           <nav>

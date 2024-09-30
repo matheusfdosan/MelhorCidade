@@ -46,6 +46,11 @@ section#landing_hero {
   width: 100%;
   height: fit-content;
   background: linear-gradient(to top, var(--gray-background), #577fef40);
+  background-color: #577fef40;
+  background-image: url("../../assets/park.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   color: var(--dark);
   border-bottom: 0.2rem dashed var(--gray-inputs);
 }
@@ -54,7 +59,7 @@ section#landing_hero > .container {
   width: 90%;
   margin: auto;
   text-align: center;
-  padding: 15rem 0;
+  padding: 8rem 0 15rem 0;
 }
 
 section#landing_hero > .container > h2 {
@@ -64,6 +69,7 @@ section#landing_hero > .container > h2 {
   user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  animation: fromBottom 0.8s 0.5s backwards ease;
 }
 
 section#landing_hero > .container > #hero_description {
@@ -73,6 +79,7 @@ section#landing_hero > .container > #hero_description {
   user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  animation: fromBottom 0.8s 0.7s backwards ease;
 }
 
 #slogan-text {
@@ -83,6 +90,7 @@ section#landing_hero > .container > #hero_description {
   user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  animation: fromBottom 0.8s 0.8s backwards ease;
 }
 
 #slogan-text:hover {
@@ -103,6 +111,7 @@ section#landing_hero > .container > a {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-select: none;
+  animation: fromBottom 0.8s 1.2s backwards ease;
 }
 section#landing_hero > .container > a:hover {
   box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px #ffffff;
@@ -124,6 +133,7 @@ section#landing_hero > .container > a:hover {
 #landing_video {
   background-color: var(--dark);
   padding: 12rem 0;
+  
 }
 
 #landing_video > .container {
@@ -177,6 +187,12 @@ footer .container > ul > li > a {
 footer .container > ul > li > a:hover {
   text-decoration: underline;
   text-underline-offset: 0.6rem;
+}
+
+@media (min-width: 1115px) {
+  section#landing_hero {
+    height: 100vh;
+  }
 }
 
 @media (max-width: 970px) {
@@ -237,5 +253,17 @@ footer .container > ul > li > a:hover {
   footer .container > ul {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
