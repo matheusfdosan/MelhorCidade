@@ -191,7 +191,7 @@ footer .container > ul > li > a:hover {
 
 @media (min-width: 1115px) {
   section#landing_hero {
-    height: 100vh;
+    height: 78vh;
   }
 }
 
