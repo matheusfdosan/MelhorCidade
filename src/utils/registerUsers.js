@@ -1,23 +1,32 @@
+import axios from "axios"
+
 export default async function registerUser(form) {
-  
-  const { name, email, age, phone, address, password } = form
+  const { name, email, address, password } = form
 
   try {
-    const response = await fetch(
-      `http://localhost:3000/criarConta/${name}/${email}/${password}/${phone}/${age}/${address}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    axios
+      .post(
+        "http://localhost:1324/api/users",
+        {
+          name: name,
+          email: email,
+          address: address,
+          password: password,
         },
-        mode: "no-cors", // Isso vai evitar o erro de CORS, mas limita a resposta
-      }
-    )
-    
-    if (response.ok) {
-      console.log("Data sent successfully!" + response)
-    }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        console.log("Data sent successfully!", response.data)
+      })
+      .catch((error) => {
+        console.error("Failed to fetch:", error)
+      })
   } catch (error) {
     throw new Error("Failed to fetch" + error)
   }
 }
+
