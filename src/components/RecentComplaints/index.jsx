@@ -7,7 +7,7 @@ export default function RecentComplaints() {
       <div id="recent_complaints">
         <div id="header_recent_complaints">
           <h2>Denúncias Recentes</h2>
-          <Link to={""}>Ver mais</Link>
+          <Link to={"/login"}>Ver mais</Link>
         </div>
 
         <div id="complaints">
