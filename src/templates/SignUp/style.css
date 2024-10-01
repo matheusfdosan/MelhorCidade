@@ -1,7 +1,11 @@
 #signup_container {
   display: flex;
   width: 100%;
+<<<<<<< HEAD
   overflow-y: auto;
+=======
+  height: 100vh;
+>>>>>>> 867c2ab473854d774e8a2ff62cf711e1d9251796
   background-color: var(--white);
 }
 

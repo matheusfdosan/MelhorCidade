@@ -83,7 +83,7 @@ section#landing_hero > .container > #hero_description {
 }
 
 #slogan-text {
-  opacity: 0.5;
+  color: var(--white);
   font-size: 1.4rem;
   font-style: oblique;
   margin-bottom: 4rem;
@@ -191,7 +191,8 @@ footer .container > ul > li > a:hover {
 
 @media (min-width: 1115px) {
   section#landing_hero {
-    height: 100vh;
+    height: 78vh;
+    background-position: center bottom;
   }
 }
 
