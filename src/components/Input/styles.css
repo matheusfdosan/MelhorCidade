@@ -14,7 +14,7 @@
   border-radius: 0.5rem;
   font-family: var(--poppinst-font);
   font-size: 1.4rem;
-  padding-left: 1rem;
+  padding-inline: 1rem;
 }
 
 #password_container {

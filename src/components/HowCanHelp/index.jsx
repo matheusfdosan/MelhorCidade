@@ -10,8 +10,6 @@ export default function HowCanHelp() {
   return (
     <>
       <div id="how_can_help">
-        <h2>Como podemos te ajudar hoje?</h2>
-
         <div id="tools">
           <Link className="tool">
             <div className="tool-icon">

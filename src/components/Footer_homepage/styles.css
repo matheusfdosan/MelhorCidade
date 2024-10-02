@@ -1,9 +1,11 @@
 #footer_homepage {
   width: 100%;
+  padding: 1rem 0;
   background-color: #fff;
   border-top: 0.1rem solid #adadad;
   position: fixed;
   bottom: 0;
+  display: none;
 }
 
 #footer_container {
@@ -22,4 +24,10 @@
 
 #footer_container a:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 500px) {
+  #footer_homepage {
+    display: block;
+  }
 }

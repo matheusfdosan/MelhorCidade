@@ -1,6 +1,9 @@
 #header_homepage {
-  border-bottom: 0.1rem solid var(--gray-inputs);
   padding: 2rem 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.1rem solid var(--gray-inputs);
 }
 
 #header_container {
@@ -35,9 +38,16 @@
 
 #header_container > nav > ul > li > a {
   text-decoration: none;
-  color: var(--dark);
+  color: var(--white);
+  background-color: var(--light-blue);
+  padding: 1rem 2rem;
   font-weight: normal;
+  border-radius: 0.5rem;
   font-size: 1.4rem;
+}
+
+#header_container > nav > ul > li > a:hover {
+  background-color: #4d6199;
 }
 
 #burguer {
@@ -54,16 +64,69 @@
 
 #burguer > #lines > .line {
   width: 100%;
-  height: .2rem;
+  height: 0.2rem;
   background-color: var(--dark);
+  transition: transform 300ms ease;
 }
 
-#header_container > nav > ul > li > a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.6rem;
+#burguer > #lines.cross > .line:nth-child(1) {
+  transform: rotate(45deg) translate(0.8rem, 0.6rem);
 }
 
-@media (max-width: 450px) {
+#burguer > #lines.cross > .line:nth-child(2) {
+  transform: translateX(10rem);
+}
+
+#burguer > #lines.cross > .line:nth-child(3) {
+  transform: rotate(-45deg) translate(0.6rem, -0.3rem);
+}
+
+.burguer_menu.deactivate {
+  display: none;
+}
+
+.burguer_menu.active {
+  margin-top: 1rem;
+  display: block;
+  background-color: #fff;
+  transition: display 300ms ease;
+  width: 100%;
+  height: 30%;
+  user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.burguer_menu.active > #nav_item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 3rem;
+  list-style: none;
+  width: 90%;
+  margin: auto;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+
+.burguer_menu.active > #nav_item > hr {
+  width: 100%;
+}
+
+.burguer_menu.active > #nav_item > a {
+  text-decoration: none;
+  color: var(--dark);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+}
+
+.burguer_menu.active > #nav_item > a:hover {
+  background-color: var(--gray-inputs);
+}
+
+@media (max-width: 500px) {
   #header_container > nav > ul {
     display: none;
   }

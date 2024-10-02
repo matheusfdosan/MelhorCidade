@@ -1,7 +1,19 @@
 import "./styles.css"
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import rightArrow from "../../assets/right-arrow-icon.svg"
 
 export default function Header_homepage() {
+  const [modalVisibility, setModalVisibility] = useState("deactivate")
+
+  const handleClickBurguer = () => {
+    if (modalVisibility === "active") {
+      setModalVisibility("deactivate")
+    } else {
+      setModalVisibility("active")
+    }
+  }
+
   return (
     <header id="header_homepage">
       <div id="header_container">
@@ -10,25 +22,45 @@ export default function Header_homepage() {
         <nav>
           <ul>
             <li>
-              <Link to={"/explorer"}>Home</Link>
-            </li>
-            <li>
-              <Link to={"/explorer"}>Explorar</Link>
-            </li>
-            <li>
-              <Link to={"/explorer"}>Sua Conta</Link>
+              <Link to={"/report"}>Denunciar</Link>
             </li>
           </ul>
           <div id="burguer">
-          <div id="lines">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
+            <div
+              id="lines"
+              className={modalVisibility === "active" && "cross"}
+              onClick={handleClickBurguer}
+            >
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
+            </div>
           </div>
-        </div>
         </nav>
-
-
+      </div>
+      <div className={`burguer_menu ${modalVisibility}`}>
+        <div id="nav_item">
+          <hr />
+          <Link to={""}>
+            Ver Mapa
+            <img src={rightArrow} alt="right-arrow" />
+          </Link>
+          <hr />
+          <Link to={""}>
+            Notícias
+            <img src={rightArrow} alt="right-arrow" />
+          </Link>
+          <hr />
+          <Link to={""}>
+            Dúvidas
+            <img src={rightArrow} alt="right-arrow" />
+          </Link>
+          <hr />
+          <Link to={""}>
+            Sua Conta
+            <img src={rightArrow} alt="right-arrow" />
+          </Link>
+        </div>
       </div>
     </header>
   )

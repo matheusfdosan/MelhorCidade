@@ -1,6 +1,7 @@
 import "./styles.css"
 import redMarker from "../../assets/red-marker.svg"
 import relevantButton from "../../assets/like-icon.svg"
+import Input from "../Input"
 import { Link } from "react-router-dom"
 
 export default function RelevantPosts() {
@@ -9,9 +10,31 @@ export default function RelevantPosts() {
       <div id="relevant_posts">
         <h2>Postagens mais relevantes</h2>
 
+        <div id="search_complaints_container">
+          <Input
+            type="search"
+            idName="search_complaints"
+            placeholder="Pesquise a denúcia"
+          />
+          <button>Pesquisar</button>
+        </div>
+
+        <div id="classify">
+          <p>Classificar por: </p>
+
+          <select id="choose_classify">
+            <option>Relevantes</option>
+            <option>Mais recentes</option>
+            <option>Mais antigos</option>
+          </select>
+        </div>
+
         <div id="posts">
           <div className="post">
-            <img src="https://beartac-imgs.s3.sa-east-1.amazonaws.com/uploads/DSC08361-1300x731.jpg" alt="post-image" />
+            <img
+              src="https://beartac-imgs.s3.sa-east-1.amazonaws.com/uploads/DSC08361-1300x731.jpg"
+              alt="post-image"
+            />
             <div className="post-content">
               <div className="post-header">
                 <div className="locale">
@@ -22,7 +45,10 @@ export default function RelevantPosts() {
               </div>
               <div className="post-body">
                 <p>
-                  <strong>José de Camargo:</strong> Essas guerras de arminhas de gel estão preocupando moradores da região. Muitas crianças estão brincando desse negócio está metendo o apavoro em todo mundo!
+                  <strong>José de Camargo:</strong> Essas guerras de arminhas de
+                  gel estão preocupando moradores da região. Muitas crianças
+                  estão brincando desse negócio está metendo o apavoro em todo
+                  mundo!
                 </p>
               </div>
               <div className="post-footer">
@@ -35,7 +61,10 @@ export default function RelevantPosts() {
           </div>
 
           <div className="post">
-            <img src="https://assets.b9.com.br/wp-content/uploads/2018/04/71749-1200x720.jpg" alt="post-image" />
+            <img
+              src="https://assets.b9.com.br/wp-content/uploads/2018/04/71749-1200x720.jpg"
+              alt="post-image"
+            />
             <div className="post-content">
               <div className="post-header">
                 <div className="locale">
@@ -46,7 +75,10 @@ export default function RelevantPosts() {
               </div>
               <div className="post-body">
                 <p>
-                  <strong>Zézé de Luciano:</strong> Cheiro absurdo de maconha na região. Essa gente não tem respeito pelas pessoas, ficam F1 em qualquer lugar, e a gente tem que aguentar esse cheiro maldito!
+                  <strong>Zézé de Luciano:</strong> Cheiro absurdo de maconha na
+                  região. Essa gente não tem respeito pelas pessoas, ficam F1 em
+                  qualquer lugar, e a gente tem que aguentar esse cheiro
+                  maldito!
                 </p>
               </div>
               <div className="post-footer">
@@ -59,7 +91,10 @@ export default function RelevantPosts() {
           </div>
 
           <div className="post">
-            <img src="https://ogimg.infoglobo.com.br/in/4065262-96e-0ed/FT1086A/Gringos-dancam-ate-o-chao-no-baile-funk-do-Emocoes-na-RocinhaFoto-deEduardo-Naddar.jpg" alt="post-image" />
+            <img
+              src="https://ogimg.infoglobo.com.br/in/4065262-96e-0ed/FT1086A/Gringos-dancam-ate-o-chao-no-baile-funk-do-Emocoes-na-RocinhaFoto-deEduardo-Naddar.jpg"
+              alt="post-image"
+            />
             <div className="post-content">
               <div className="post-header">
                 <div className="locale">
@@ -70,7 +105,10 @@ export default function RelevantPosts() {
               </div>
               <div className="post-body">
                 <p>
-                  <strong>Viviana Santana:</strong> Música muito alta! Baile funk rolando solto aqui na comunidade desde às 23:00. Eu querendo durmir, tenho que trampar amanhã e essa gentalha na curtição.
+                  <strong>Viviana Santana:</strong> Música muito alta! Baile
+                  funk rolando solto aqui na comunidade desde às 23:00. Eu
+                  querendo durmir, tenho que trampar amanhã e essa gentalha na
+                  curtição.
                 </p>
               </div>
               <div className="post-footer">

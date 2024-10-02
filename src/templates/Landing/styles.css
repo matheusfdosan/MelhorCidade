@@ -45,14 +45,12 @@
 section#landing_hero {
   width: 100%;
   height: fit-content;
-  background: linear-gradient(to top, var(--gray-background), #577fef40);
-  background-color: #577fef40;
+  background-color: #2d65ffa6;
   background-image: url("../../assets/park.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   color: var(--dark);
-  border-bottom: 0.2rem dashed var(--gray-inputs);
 }
 
 section#landing_hero > .container {
@@ -70,6 +68,7 @@ section#landing_hero > .container > h2 {
   -webkit-user-select: none;
   -o-user-select: none;
   animation: fromBottom 0.8s 0.5s backwards ease;
+  color: var(--white);
 }
 
 section#landing_hero > .container > #hero_description {
@@ -80,6 +79,7 @@ section#landing_hero > .container > #hero_description {
   -webkit-user-select: none;
   -o-user-select: none;
   animation: fromBottom 0.8s 0.7s backwards ease;
+  color: var(--white);
 }
 
 #slogan-text {
@@ -191,7 +191,7 @@ footer .container > ul > li > a:hover {
 
 @media (min-width: 1115px) {
   section#landing_hero {
-    height: 78vh;
+    height: 85vh;
     background-position: center bottom;
   }
 }
