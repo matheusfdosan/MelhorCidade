@@ -1,13 +1,13 @@
-import Header_homepage from "../../components/Header_homepage"
-import Footer_homepage from "../../components/Footer_homepage"
+import Header from "../../components/Header"
+import Footer from "../../components/Footer"
 import RelevantPosts from "../../components/RelevantPosts"
 
 export default function Homepage() {
   return (
     <>
-      <Header_homepage />
+      <Header />
       <RelevantPosts />
-      <Footer_homepage />
+      <Footer target={0} />
     </>
   )
 }

@@ -1,9 +1,10 @@
 import "./styles.css"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import plusIcon from "../../assets/plus-icon.svg"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 
-export default function Header_homepage() {
+export default function Header() {
   const [modalVisibility, setModalVisibility] = useState("deactivate")
 
   const handleClickBurguer = () => {
@@ -22,7 +23,10 @@ export default function Header_homepage() {
         <nav>
           <ul>
             <li>
-              <Link to={"/report"}>Denunciar</Link>
+              <Link to={"/report"}>
+                <img src={plusIcon} alt="plus_icon" />
+                Denunciar
+                </Link>
             </li>
           </ul>
           <div id="burguer">
