@@ -1,7 +1,6 @@
 import "./styles.css"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function Login() {

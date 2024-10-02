@@ -1,8 +1,6 @@
 import "./style.css"
 import Input from "../../components/Input"
-import Button from "../../components/Button"
 import registerUser from "../../utils/registerUsers"
-import Header from "../../components/Header"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
