@@ -20,7 +20,7 @@
   font-size: 1.6rem;
   pointer-events: none;
   user-select: none;
-  font-family: var(--sora-font);
+  font-family: var(--urbanist-font);
 }
 
 #header_container > nav {

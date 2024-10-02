@@ -17,7 +17,7 @@ export default function Header_homepage() {
   return (
     <header id="header_homepage">
       <div id="header_container">
-        <h1>Página Inicial</h1>
+        <h1>MelhorCidade</h1>
 
         <nav>
           <ul>
