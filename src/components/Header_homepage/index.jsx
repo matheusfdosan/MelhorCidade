@@ -41,23 +41,23 @@ export default function Header_homepage() {
       <div className={`burguer_menu ${modalVisibility}`}>
         <div id="nav_item">
           <hr />
-          <Link to={""}>
+          <Link to={"/maps"}>
             Ver Mapa
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />
-          <Link to={""}>
+          <Link to={"/notices"}>
             Notícias
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />
-          <Link to={""}>
+          <Link to={"/doubts"}>
             Dúvidas
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />
-          <Link to={""}>
-            Sua Conta
+          <Link to={"/settings"}>
+            Configurações
             <img src={rightArrow} alt="right-arrow" />
           </Link>
         </div>
