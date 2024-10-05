@@ -1,0 +1,115 @@
+#settings_container {
+  padding: 3rem 0;
+  padding-bottom: 9rem;
+  width: 90%;
+  max-width: 100rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#settings_container section > h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+#settings_container section > .settings {
+  width: 100%;
+  background-color: var(--gray-inputs);
+  border: 0.1rem solid var(--gray-inputs-border);
+  border-radius: 0.5rem;
+  padding: 2rem 1rem;
+}
+
+#settings_container #your_account > .settings > h3 {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+#settings_container #visibility > .settings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  position: relative;
+  width: 6rem;
+  border: 0.2rem solid var(--dark);
+  border-radius: 9rem;
+  height: 3rem;
+  cursor: pointer;
+  transform: scale(.8);
+}
+
+#toggler {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  background-color: var(--dark);
+  position: absolute;
+  top: 50%;
+  transition: transform 200ms ease;
+}
+
+.wrapper.false > #toggler {
+  transform: translateY(-50%) translateX(0.5rem);
+}
+
+.wrapper.true > #toggler {
+  transform: translateY(-50%) translateX(3.1rem);
+}
+
+#manage_account > .settings {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#manage_account > .settings > li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+#manage_account > .settings > li:hover {
+  background-color: #c7c7c7;
+}
+
+#manage_account > .settings > li > span {
+  background-color: var(--white);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  height: 3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#delete_account {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#delete_account > button {
+  padding: 0.7rem 2rem;
+  font-size: 1.6rem;
+  font-family: var(--poppins-font);
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+#delete_account > button:hover {
+  background-color: #a72a2a;
+}
