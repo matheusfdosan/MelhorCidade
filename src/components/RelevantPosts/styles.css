@@ -1,5 +1,6 @@
 #relevant_posts {
   width: 90%;
+  max-width: 100rem;
   margin: auto;
   padding-top: 1.5rem;
   padding-bottom: 10rem;

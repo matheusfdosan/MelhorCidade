@@ -18,7 +18,9 @@ export default function Header() {
   return (
     <header id="header_homepage">
       <div id="header_container">
-        <h1>MelhorCidade</h1>
+        <Link to="/homepage">
+          <h1>MelhorCidade</h1>
+        </Link>
 
         <nav>
           <ul>
@@ -26,9 +28,10 @@ export default function Header() {
               <Link to={"/report"}>
                 <img src={plusIcon} alt="plus_icon" />
                 Denunciar
-                </Link>
+              </Link>
             </li>
           </ul>
+
           <div id="burguer">
             <div
               id="lines"

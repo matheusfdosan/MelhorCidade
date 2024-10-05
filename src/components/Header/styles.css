@@ -9,19 +9,24 @@
 
 #header_container {
   width: 90%;
+  max-width: 100rem;
   margin: auto;
-  padding-top: 0.3rem;
+  padding: .7rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#header_container > h1 {
-  color: #424242;
-  font-size: 1.8rem;
-  pointer-events: none;
+#header_container > a {
   user-select: none;
+  color: #424242;
+  text-decoration: none;
+  cursor: pointer;
   font-family: var(--urbanist-font);
+}
+
+#header_container > a > h1 {
+  font-size: 1.8rem;
 }
 
 #header_container > nav {
@@ -78,7 +83,7 @@
 }
 
 #burguer > #lines.cross > .line:nth-child(2) {
-  transform: translateX(10rem);
+  opacity: 0;
 }
 
 #burguer > #lines.cross > .line:nth-child(3) {
@@ -105,7 +110,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 3rem;
+  max-width: 100rem;
+  padding-top: 1rem;
   list-style: none;
   width: 90%;
   margin: auto;
@@ -124,6 +130,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 2rem;
+  border-radius: .5rem;
 }
 
 .burguer_menu.active > #nav_item > a:hover {
