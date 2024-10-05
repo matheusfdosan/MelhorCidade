@@ -6,6 +6,7 @@ import Login from "./templates/Login"
 import SignUp from "./templates/SignUp"
 import Homepage from "./templates/Homepage"
 import Report from "./templates/Report"
+import Settings from "./templates/Settings"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/report" element={<Report />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </Router>
   )
