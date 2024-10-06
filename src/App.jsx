@@ -9,6 +9,7 @@ import Report from "./templates/Report"
 import Settings from "./templates/Settings"
 import Profile from "./templates/Profile"
 import TermsOfUse from "./templates/TermsOfUse"
+import Map from "./templates/Map"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/account" element={<Profile />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/map" element={<Map />} />
       </Routes>
     </Router>
   )

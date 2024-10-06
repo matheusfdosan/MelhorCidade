@@ -40,7 +40,7 @@ export default function Profile() {
           <Posts />
         </div>
       </main>
-      <Footer target={2} />
+      <Footer target={3} />
     </>
   )
 }

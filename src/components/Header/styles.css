@@ -1,9 +1,10 @@
 #header_homepage {
   padding: 1rem 0;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   background-color: var(--white);
+  position: relative;
+  z-index: 2;
 }
 
 #header_container {
@@ -14,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 #header_container > a {
@@ -144,7 +146,10 @@
 }
 
 @media (min-width: 500px) {
-  #nav_item > a:nth-child(8) {
+  #nav_item > a:nth-child(8),
+  #nav_item > hr:nth-child(7),
+  #nav_item > a:nth-child(2),
+  #nav_item > hr:nth-child(1) {
     display: flex !important;
   }
 }
@@ -155,14 +160,17 @@
   }
 
   .burguer_menu.active {
-    top: 4.8rem;
+    top: 4.7rem;
   }
 
   #settings_btn {
     display: flex;
   }
 
-  #nav_item > a:nth-child(8) {
+  #nav_item > a:nth-child(8),
+  #nav_item > hr:nth-child(7),
+  #nav_item > a:nth-child(2),
+  #nav_item > hr:nth-child(1) {
     display: none !important;
   }
 }

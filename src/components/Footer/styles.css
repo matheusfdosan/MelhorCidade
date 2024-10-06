@@ -5,6 +5,7 @@
   border-top: 0.1rem solid #adadad;
   position: fixed;
   bottom: 0;
+  z-index: 10;
   display: none;
 }
 

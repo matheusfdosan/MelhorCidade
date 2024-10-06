@@ -53,7 +53,7 @@ export default function Header() {
       <div className={`burguer_menu ${modalVisibility}`}>
         <div id="nav_item">
           <hr />
-          <Link to={"/maps"}>
+          <Link to={"/map"}>
             Ver Mapa
             <img src={rightArrow} alt="right-arrow" />
           </Link>
