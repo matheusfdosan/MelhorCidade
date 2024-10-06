@@ -7,6 +7,8 @@ import SignUp from "./templates/SignUp"
 import Homepage from "./templates/Homepage"
 import Report from "./templates/Report"
 import Settings from "./templates/Settings"
+import Profile from "./templates/Profile"
+import TermsOfUse from "./templates/TermsOfUse"
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/report" element={<Report />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/account" element={<Profile />} />
+        <Route path="/terms-of-use" element={<TermsOfUse />} />
       </Routes>
     </Router>
   )
