@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import plusIcon from "../../assets/plus-icon.svg"
 import rightArrow from "../../assets/right-arrow-icon.svg"
+import settingsIcon from "../../assets/settings-icon.svg"
 
 export default function Header() {
   const [modalVisibility, setModalVisibility] = useState("deactivate")
@@ -32,10 +33,14 @@ export default function Header() {
             </li>
           </ul>
 
+          <Link to={"/settings"} id="settings_btn">
+            <img src={settingsIcon} alt="configs-btn" />
+          </Link>
+
           <div id="burguer">
             <div
               id="lines"
-              className={modalVisibility === "active" && "cross"}
+              className={modalVisibility === "active" ? "cross" : "active"}
               onClick={handleClickBurguer}
             >
               <div className="line"></div>
