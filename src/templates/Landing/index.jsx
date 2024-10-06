@@ -1,12 +1,12 @@
 import "./styles.css"
 import { Link } from "react-router-dom"
-import RecentComplaints from "../../components/RecentComplaints"
+import Posts from "../../components/Posts"
 
 export default function Landing() {
   return (
     <>
       <header id="landing_header">
-        <div className="container" inert>
+        <div className="container">
           <h1>MelhorCidade</h1>
 
           <nav>
@@ -45,7 +45,10 @@ export default function Landing() {
               Leia algumas das denúncias mais recentes em nossa plataforma.
             </h2>
           </div>
-          <RecentComplaints />
+
+          <div id="posts_container">
+            <Posts />
+          </div>
         </section>
 
         <section id="landing_video">
@@ -82,7 +85,7 @@ export default function Landing() {
       </main>
       <footer>
         <div className="container">
-            <em>&copy; 2024 MelhorCidade.</em>
+          <em>&copy; 2024 MelhorCidade.</em>
           <ul>
             <li>
               <Link to="/about">Sobre</Link>
@@ -94,7 +97,12 @@ export default function Landing() {
               <Link to="/signup">Cadastro</Link>
             </li>
             <li>
-              <Link to="https://github.com/matheusfdosan/MelhorCidade_FrontEnd" target="_blank">Github</Link>
+              <Link
+                to="https://github.com/matheusfdosan/MelhorCidade_FrontEnd"
+                target="_blank"
+              >
+                Github
+              </Link>
             </li>
             <li>
               <Link to="">Contact</Link>

@@ -1,0 +1,49 @@
+#users_posts {
+  width: 90%;
+  max-width: 100rem;
+  margin: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 10rem;
+}
+
+#users_posts h2 {
+  font-size: 2rem;
+  color: #424242;
+  margin-bottom: 2rem;
+}
+
+#search_complaints_container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+
+}
+
+#search_complaints_container > button {
+  height: 3.5rem;
+  font-size: 1.4rem;
+  padding-inline: 2rem;
+  background-color: var(--light-blue);
+  color: var(--white);
+  font-family: var(--poppins);
+  border: none;
+  cursor: pointer;
+  border-radius: .5rem;
+}
+
+
+#classify {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+#choose_classify {
+  padding: .5rem;
+  font-family: var(--poppins);
+  background-color: var(--gray-inputs);
+  border: .1rem solid var(--gray-inputs-border);
+  border-radius: .5rem;
+}
