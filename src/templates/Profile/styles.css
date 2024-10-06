@@ -1,0 +1,88 @@
+#profile_container {
+  width: 90%;
+  max-width: 100rem;
+  margin: auto;
+}
+
+#profile_container > h2 {
+  margin: 2rem 0 1rem;
+}
+
+#user_info {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  height: fit-content;
+  padding: 2rem 0;
+}
+
+#profile_picture_container > img {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 100%;
+  object-fit: cover;
+  border: 0.5rem solid transparent;
+  cursor: pointer;
+}
+
+#profile_picture_container > img:hover {
+  border-color: var(--light-blue);
+}
+
+#user_datas {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+#user_datas > h3 {
+  font-size: 2.5rem;
+  font-weight: normal;
+  font-family: var(--sora-font);
+  margin-bottom: 2.5rem;
+}
+
+#user_datas > ul {
+  display: flex;
+  gap: 2rem;
+}
+
+#user_datas > ul > li {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  align-items: center;
+}
+
+#user_datas > ul > li > .amout {
+  font-weight: bold;
+}
+
+#posts_container {
+  max-width: 100rem;
+  margin: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 10rem;
+}
+
+@media (max-width: 550px) {
+  #user_info {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #user_datas {
+    align-items: center;
+  }
+
+  #user_datas > h3 {
+    font-size: 2rem;
+  }
+
+  #user_datas > ul > li {
+    font-size: 1.4rem;
+  }
+
+}
