@@ -94,8 +94,9 @@ export default function SignUp() {
           </button>
 
           <p id="i_agree">
-            Ao se cadastrar, você concorda com os <Link>Termos</Link> e a{" "}
-            <Link>Política de privacidade</Link>.
+            Ao se cadastrar, você concorda com os{" "}
+            <Link to={"/terms-of-use"}>Termos e a Política de privacidade</Link>
+            .
           </p>
         </form>
       </main>
