@@ -22,14 +22,28 @@
   padding: 2rem 1rem;
 }
 
+#settings_container #your_account > .settings {
+  padding: 2rem 1.9rem;
+}
+
 #settings_container #your_account > .settings > h3 {
   font-weight: bold;
   font-size: 1.6rem;
 }
 
+#settings_container #your_account > .settings > h3 > a {
+  color: var(--dark);
+  text-decoration: none;
+}
+
+#settings_container #your_account > .settings > h3 > a:hover {
+  color: var(--light-blue);
+}
+
 #settings_container #visibility > .settings {
   display: flex;
   justify-content: space-between;
+  padding-inline: 1.9rem;
 }
 
 .wrapper {
@@ -39,7 +53,7 @@
   border-radius: 9rem;
   height: 3rem;
   cursor: pointer;
-  transform: scale(.8);
+  transform: scale(0.8);
 }
 
 #toggler {

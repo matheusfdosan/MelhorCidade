@@ -3,6 +3,7 @@ import Footer from "../../components/Footer"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 import "./styles.css"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 export default function Settings() {
   const [darkTheme, setDarkTheme] = useState(false)
@@ -17,14 +18,16 @@ export default function Settings() {
       <main id="settings_container">
         <section id="your_account">
           <h2>Sua Conta</h2>
-          <div class="settings">
-            <h3>Gregory Singleton</h3>
+          <div className="settings">
+            <h3>
+              <Link to="/account">Gregory Singleton</Link>
+            </h3>
             <p>gregory.singleton@email.com</p>
           </div>
         </section>
         <section id="visibility">
           <h2>Visibilidade</h2>
-          <div class="settings">
+          <div className="settings">
             <p>Tema Escuro</p>
             <div
               className={`wrapper ${darkTheme}`}
@@ -36,7 +39,7 @@ export default function Settings() {
         </section>
         <section id="manage_account">
           <h2>Gerenciar Conta</h2>
-          <ul class="settings">
+          <ul className="settings">
             <li>
               <p>Mudar senha</p>
               <img src={rightArrow} alt="right-arrow" />
