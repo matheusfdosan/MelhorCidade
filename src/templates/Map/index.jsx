@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import markerIcon from "../../assets/red-marker.svg"
 import { Link } from "react-router-dom"
 
@@ -12,44 +11,22 @@ import leftArrowIcon from "../../assets/left-arrow-icon.svg"
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import "./styles.css"
+import TheMap from "../../components/TheMap"
 
 export default function Map() {
-  const [barVisibility, setBarVisibility] = useState(true)
+  const [barVisibility, setBarVisibility] = useState(false)
 
   const handleClickMinimize = () => {
     setBarVisibility(!barVisibility)
-    console.log(barVisibility)
   }
-
-  const position = [-23.6865, -46.6234]
-
-  const customIcon = new L.Icon({
-    iconUrl: markerIcon,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-  })
 
   return (
     <div id="map_screen">
       <Header />
       <main id="map_container">
-        <MapContainer
-          center={position}
-          zoom={13}
-          scrollWheelZoom={true}
-          minZoom={8}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position} icon={customIcon}>
-            <Popup>
-              <p>Veja esse problema</p>
-            </Popup>
-          </Marker>
-        </MapContainer>
+        <div id="the_map_container">
+          <TheMap />
+        </div>
 
         <div
           className={`complaints_bar ${barVisibility ? "active" : "minimized"}`}

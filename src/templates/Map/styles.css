@@ -6,8 +6,15 @@
 
 #map_container {
   width: 100%;
-  height: 82vh;
+  height: 100%;
   z-index: -1;
+  display: flex;
+  flex-direction: column;
+}
+
+#the_map_container {
+  width: 100%;
+  height: 100%;
 }
 
 .leaflet-container {
@@ -17,16 +24,10 @@
 }
 
 .complaints_bar {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
   width: 100%;
-  border-top-left-radius: 2rem;
-  border-top-right-radius: 2rem;
   background-color: var(--white);
   transition: width, height 200ms ease;
-  border: .1rem solid var(--gray-inputs-border);
+  border: 0.1rem solid var(--gray-inputs-border);
 }
 
 .complaints_bar > .container {
@@ -37,10 +38,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 2rem;
 }
 
 .complaints_bar > .container > #header_complaints_bar > h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-family: var(--sora-font);
   padding: 1rem 0;
 }
@@ -59,7 +61,7 @@
 
 /* width */
 .complaints_bar > .container > #complaints_container_bar::-webkit-scrollbar {
-  height: 0.1rem;
+  width: 1.1rem;
 }
 
 /* Track */
@@ -96,7 +98,7 @@
   gap: 1rem;
   padding: 1rem 0.5rem;
   color: var(--dark);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   text-decoration: none;
   border-radius: 0.7rem;
 }
@@ -107,7 +109,7 @@
 
 .complaints_bar > .container > #complaints_container_bar > ul > li > a > p {
   padding-right: 1rem;
-  height: 2.6rem;
+  height: 2.4rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -116,11 +118,11 @@
 }
 
 .complaints_bar.active {
-  height: 50vh;
+  height: 100rem;
 }
 
 .complaints_bar.minimized {
-  height: 20vh;
+  height: 30vh;
 }
 
 #minimize_btn_right {
@@ -128,22 +130,22 @@
 }
 
 @media (min-width: 830px) {
-
-  .complaints_bar {
-    left: 0;
-    width: 30%;
-    height: 100% !important;
-    z-index: 1;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  .complaints_bar.minimized > .container {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .complaints_bar > .container {
-    padding: 8rem 2rem 2rem;
+  .complaints_bar {
+    width: 50%;
+    height: 100% !important;
+    z-index: 1;
   }
 
   #map_container {
-    height: 100vh;
+    height: 90%;
+    flex-direction: row-reverse;
   }
 
   #minimize_btn_right {
@@ -169,7 +171,18 @@
   }
 
   .complaints_bar > .container > #complaints_container_bar {
-    max-width: 48rem;
+    max-height: 48rem;
     height: 100%;
+  }
+
+  #the_map_container {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (min-width: 500px) {
+  .complaints_bar.minimized {
+    height: 23vh;
   }
 }
