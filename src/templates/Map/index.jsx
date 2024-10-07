@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import markerIcon from "../../assets/red-marker.svg"
 import { Link } from "react-router-dom"
 
@@ -11,15 +10,34 @@ import leftArrowIcon from "../../assets/left-arrow-icon.svg"
 
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
+
 import "./styles.css"
+
 import TheMap from "../../components/TheMap"
+import getLocations from "../../utils/getLocations"
 
 export default function Map() {
   const [barVisibility, setBarVisibility] = useState(false)
+  const [locationData, setLocationData] = useState([])
+  const [centerMap, setCenterMap] = useState([-23.68524, -46.620502])
 
   useEffect(() => {
     document.title = "Melhor Cidade - Mapa de Denúncias"
+    const loadLocationData = async () => {
+      try {
+        const data = await getLocations()
+        setLocationData(data)
+      } catch (error) {
+        console.log("Failed to fetch locals:" + error)
+      }
+    }
+
+    loadLocationData()
   }, [])
+
+  const handleClickLocalItem = (local) => {
+    setCenterMap(local)
+  }
 
   const handleClickMinimize = () => {
     setBarVisibility(!barVisibility)
@@ -30,7 +48,7 @@ export default function Map() {
       <Header />
       <main id="map_container">
         <div id="the_map_container">
-          <TheMap />
+          <TheMap centerProp={centerMap} />
         </div>
 
         <div
@@ -55,96 +73,22 @@ export default function Map() {
 
             <div id="complaints_container_bar">
               <ul>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Essas guerras de arminhas de gel estão preocupando
-                      moradores da região. Muitas crianças estão brincando desse
-                      negócio está metendo o apavoro em todo mundo!{" "}
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Cheiro absurdo de maconha na região. Essa gente não tem
-                      respeito pelas pessoas, ficam F1 em qualquer lugar, e a
-                      gente tem que aguentar esse cheiro maldito!
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <Link>
-                    <img src={markerIcon} alt="marker-icon" />
-                    <p>
-                      Música muito alta! Baile funk rolando solto aqui na
-                      comunidade desde às 23:00. Eu querendo durmir, tenho que
-                      trampar amanhã e essa gentalha na curtição.
-                    </p>
-                  </Link>
-                </li>
+                {locationData.map((data, index) => (
+                  <li
+                    key={data.id || index}
+                    onClick={() =>
+                      handleClickLocalItem([
+                        data.location.lat,
+                        data.location.long,
+                      ])
+                    }
+                  >
+                    <Link>
+                      <img src={markerIcon} alt="marker-icon" />
+                      <p>{data.name}</p>
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
