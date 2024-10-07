@@ -2,8 +2,13 @@ import "./styles.css"
 import Button from "../../components/Button"
 import Input from "../../components/Input"
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 
 export default function Login() {
+  useEffect(() => {
+    document.title = "Melhor Cidade - Login"
+  }, [])
+
   return (
     <>
       <main id="login_container">
@@ -28,7 +33,7 @@ export default function Login() {
             <p>
               Não tem uma conta? <Link to={"/signup"}>Registre-se</Link>
             </p>
-            
+
             <Button
               title={"Fazer Login"}
               type={"submit"}

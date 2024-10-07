@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom"
+import { useEffect } from "react"
 import "./styles.css"
 
 export default function TermsOfUse() {
+  useEffect(() => {
+    document.title = "Melhor Cidade - Termos de Uso"
+  }, [])
+
   return (
     <main id="all_terms">
       <div id="title_and_go_out">

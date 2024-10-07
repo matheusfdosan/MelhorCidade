@@ -2,11 +2,15 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 import "./styles.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 export default function Settings() {
   const [darkTheme, setDarkTheme] = useState(false)
+
+  useEffect(() => {
+    document.title = "Melhor Cidade - Configurações"
+  }, [])
 
   const handleClickToggler = () => {
     setDarkTheme(!darkTheme)

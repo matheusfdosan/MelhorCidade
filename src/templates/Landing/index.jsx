@@ -1,8 +1,13 @@
 import "./styles.css"
 import { Link } from "react-router-dom"
 import Posts from "../../components/Posts"
+import { useEffect } from "react"
 
 export default function Landing() {
+  useEffect(() => {
+    document.title = "Melhor Cidade"
+  }, [])
+
   return (
     <>
       <header id="landing_header">

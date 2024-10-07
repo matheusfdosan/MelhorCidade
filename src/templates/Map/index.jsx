@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useEffect } from "react"
 import markerIcon from "../../assets/red-marker.svg"
 import { Link } from "react-router-dom"
 
@@ -15,6 +16,10 @@ import TheMap from "../../components/TheMap"
 
 export default function Map() {
   const [barVisibility, setBarVisibility] = useState(false)
+
+  useEffect(() => {
+    document.title = "Melhor Cidade - Mapa de Denúncias"
+  }, [])
 
   const handleClickMinimize = () => {
     setBarVisibility(!barVisibility)

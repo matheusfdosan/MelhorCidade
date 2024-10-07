@@ -3,8 +3,13 @@ import Footer from "../../components/Footer"
 import "./styles.css"
 import Posts from "../../components/Posts"
 import Input from "../../components/Input"
+import { useEffect } from "react"
 
 export default function Homepage() {
+  useEffect(() => {
+    document.title = "Melhor Cidade - Página Inicial"
+  }, [])
+
   return (
     <>
       <Header />

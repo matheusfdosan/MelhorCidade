@@ -1,7 +1,7 @@
 import "./style.css"
 import Input from "../../components/Input"
 import registerUser from "../../utils/registerUsers"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 export default function SignUp() {
@@ -12,6 +12,10 @@ export default function SignUp() {
     password: "",
     confirmPassword: "",
   })
+
+  useEffect(() => {
+    document.title = "Melhor Cidade - Cadastro"
+  }, [])
 
   const [confirmPassword, setConfirmPassword] = useState(false)
 
