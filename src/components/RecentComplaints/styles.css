@@ -65,7 +65,7 @@
   height: 23rem;
   border-radius: 1rem;
   overflow: hidden;
-  background-color: #fff;
+  background-color: var(--white)#fff;
   text-decoration: none;
   user-select: none;
   border: 0.3rem solid transparent;

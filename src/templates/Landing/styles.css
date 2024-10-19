@@ -107,14 +107,14 @@ section#landing_hero > .container > a {
   font-weight: 600;
   font-size: 1.4rem;
   transition: box-shadow 200ms ease;
-  box-shadow: 15px 15px 29px #acacac, -15px -15px 29px #ffffff;
+  box-shadow: 15px 15px 29px #acacac, -15px -15px 29px var(--white)fff;
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-select: none;
   animation: fromBottom 0.8s 1.2s backwards ease;
 }
 section#landing_hero > .container > a:hover {
-  box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px #ffffff;
+  box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px var(--white)fff;
 }
 
 #landing_complaints {
@@ -155,7 +155,7 @@ section#landing_hero > .container > a:hover {
 #landing_video > .container > #info_video {
   display: flex;
   gap: 4rem;
-  color: #fff;
+  color: var(--white);
   align-items: flex-start;
 }
 

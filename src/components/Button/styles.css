@@ -1,7 +1,7 @@
 a.borderStyle {
   border-radius: 0.5rem;
   border: 0.2rem solid #0c0c0d;
-  background-color: #fff;
+  background-color: var(--white);
   color: #0c0c0d;
   text-decoration: none;
   font-size: 1.6rem;
@@ -16,7 +16,7 @@ a.borderStyle {
 
 a.darkStyle {
   background-color: #0c0c0d;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-size: 1.6rem;
   padding: 1rem 0;
@@ -25,6 +25,6 @@ a.darkStyle {
   border-radius: 0.5rem;
   text-align: center;
   height: fit-content;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
 }
