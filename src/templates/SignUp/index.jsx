@@ -28,6 +28,10 @@ export default function SignUp() {
     if (form.password === form.confirmPassword) {
       registerUser(form)
       setConfirmPassword(false)
+      localStorage.setItem("Login", JSON.stringify({
+        email: form.email,
+        password: form.password,
+      }))
     } else {
       setConfirmPassword(true)
     }
