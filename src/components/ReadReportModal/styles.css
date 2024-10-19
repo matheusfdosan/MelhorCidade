@@ -1,0 +1,148 @@
+#post-modal-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5rem;
+  background-color: #6969692c;
+  z-index: 9999;
+}
+
+#post-container {
+  background-color: var(--white);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  overflow-y: scroll;
+  padding-bottom: 2rem;
+}
+
+#close-modal {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#post-header {
+  padding: 2rem;
+  border-bottom: 0.1rem solid #a3a3a35e;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#post-main {
+  width: 90%;
+  margin: auto;
+}
+
+#post-main > img {
+  display: block;
+  margin: 1rem auto;
+  width: 100%;
+  max-height: 30rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+#local-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  margin: 2rem 0;
+}
+
+#locale {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+#post-desc {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+#relevance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#relevance-points {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: underline;
+  vertical-align: middle;
+}
+
+#relevance-points-btn {
+  background-color: var(--light-blue);
+  border: none;
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+  font-family: var(--poppins);
+  cursor: pointer;
+}
+
+#relevance-points-btn:hover {
+  filter: brightness(0.9);
+}
+
+#relevance-points-btn > img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+#solution {
+  background-color: var(--gray-inputs);
+  margin: 2rem 0;
+  padding: 2rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--gray-inputs-border);
+}
+
+#solution > h2 {
+  font-size: 1.8rem;
+  color: var(--light-blue);
+  margin-bottom: 1rem;
+}
+
+#solution > p {
+  font-size: 1.6rem;
+}
+
+#comments > ul {
+  list-style: none;
+}
+
+/* Em Andamento */
+
+@media (max-width: 765px) {
+  #relevance {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  #post-modal-overlay {
+    padding: 3rem;
+  }  
+}
+
+@media (max-width: 550px) {
+  #post-modal-overlay {
+    padding: 0rem;
+  }  
+}

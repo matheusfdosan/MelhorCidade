@@ -8,12 +8,18 @@
   width: 100%;
   overflow: hidden;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: var(--white);
+  transition: transform 200ms ease;
 }
 
-.post img {
+.post:hover {
+  transform: scale(1.01);
+}
+
+.post > img {
   object-fit: cover;
   width: 100%;
+  height: 18rem;
 }
 
 .post-content {
@@ -25,6 +31,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .post-header > .locale {
@@ -39,7 +46,6 @@
 }
 
 .post-header > .locale > p {
-  font-size: 1.2rem;
   font-family: var(--poppins);
   height: 1.4rem;
   display: -webkit-box;
@@ -54,9 +60,9 @@
   font-size: 1.4rem;
   font-family: var(--poppins);
   min-height: 8rem;
-  height: 12rem;
+  height: 10rem;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -66,18 +72,37 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 1rem;
+  margin: 1.5rem 0;
 }
 
 .post-footer .relevant-doubts-btn {
+  font-family: var(--poppins);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  transition: filter 200ms ease;
 }
 
-.post-footer a {
-  color: #5e89e5;
+.post-footer .relevant-doubts-btn:hover {
+  filter: brightness(1.6);
+}
+
+.post-footer #see-more {
+  color: var(--light-blue);
+  cursor: pointer;
+  text-decoration: underline transparent;
+}
+
+.post-footer #see-more:hover {
+  text-decoration: underline var(--light-blue);
+  text-underline-offset: 0.5rem;
+}
+
+@media (max-width: 705px) {
+  .post > img {
+    height: 28rem;
+  }
 }
