@@ -144,5 +144,6 @@
 @media (max-width: 550px) {
   #post-modal-overlay {
     padding: 0rem;
+    border-radius: 0;
   }  
 }

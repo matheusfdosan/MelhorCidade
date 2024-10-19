@@ -9,9 +9,9 @@ export default function Login() {
     document.title = "Melhor Cidade - Login"
   }, [])
 
-  const getLoginInfo = localStorage.getItem("Login")
-  const loginEmail = JSON.parse(getLoginInfo).email
-  const loginPassword = JSON.parse(getLoginInfo).password
+  // const getLoginInfo = localStorage.getItem("Login")
+  // const loginEmail = JSON.parse(getLoginInfo).email
+  // const loginPassword = JSON.parse(getLoginInfo).password
 
   return (
     <>
