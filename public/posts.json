@@ -1,128 +1,212 @@
 [
   {
     "id": 0,
-    "title": "Semáforo quebrado causando acidentes",
-    "owner": "Olive Curry",
-    "image": "https://www.acordacidade.com.br/fotos/p/229899-3.jpeg",
-    "description": "Na rua onde moro, o poste de iluminação pública localizado próximo ao número 85 está apagado há várias semanas. Isso tem deixado a região muito escura durante a noite, o que gera uma sensação de insegurança para os moradores que transitam pela área. Diversos vizinhos já tentaram entrar em contato com a prefeitura, mas até agora nada foi feito. Além disso, a falta de iluminação favorece a ação de pessoas mal-intencionadas, tornando o local perigoso para quem chega tarde do trabalho ou para as crianças que retornam da escola em horários mais próximos ao entardecer. Urge uma solução para que o problema seja resolvido o mais rápido possível.",
+    "title": "Buraco perigoso na via principal",
+    "owner": "Maria Antunes",
+    "image": "https://cdn.codiehost.com.br/eusoucidadania/878c4dd8-cc37-4042-ac6c-2dd56dfd04c9.jpg",
+    "description": "Um grande buraco se formou na Avenida Paulista, próximo ao número 1000, há cerca de três semanas. O buraco está causando muitos transtornos, com vários motoristas tendo seus veículos danificados. Já ocorreram dois acidentes leves, além de muitos motoristas tendo que desviar bruscamente para evitar o buraco, o que representa um risco iminente de acidentes mais graves. É urgente que a prefeitura realize o reparo, pois se trata de uma via de grande movimento, especialmente durante o horário de pico.",
     "location": {
       "position": {
-        "lat": -22.887755,
-        "long": -47.062854,
-        "city": "Campinas"
+        "lat": -23.561531,
+        "long": -46.655981,
+        "city": "São Paulo"
       },
-      "address": "Rua do Comércio, 150 - Centro"
+      "address": "Avenida Paulista, 1000 - Bela Vista"
     },
-    "date": "25/09/2024",
-    "relevance_points": 22,
-    "solution": "A IA poderia sugerir a comunicação imediata com a autoridade de trânsito da cidade, explicando que o semáforo é vital para a segurança viária. A plataforma também pode gerar uma notificação de urgência, acompanhada de registros fotográficos, para o departamento de trânsito."
+    "date": "02/10/2024",
+    "relevance_points": 35,
+    "solution": "A plataforma poderia gerar um relatório de urgência destacando o risco à segurança pública e notificar diretamente o setor de infraestrutura viária. Além disso, poderia sugerir uma interdição temporária da via até que o reparo seja realizado.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "João Sousa",
+        "body": "Esse buraco está aí há muito tempo, meu pneu já foi danificado uma vez. Precisamos de uma solução rápida!"
+      },
+      {
+        "id": 1,
+        "username": "Carla Lima",
+        "body": "Ontem quase vi um acidente grave por conta desse buraco. Um motorista desviou de última hora e quase bateu no carro ao lado."
+      }
+    ]
   },
   {
     "id": 1,
-    "title": "Cheiro absurdo de maconha na região.",
-    "owner": "Rhoda Foster",
-    "image": "https://assets.b9.com.br/wp-content/uploads/2018/04/71749-1200x720.jpg",
-    "description": "Cheiro absurdo de maconha na região. Essa gente não tem respeito pelas pessoas, ficam F1 em qualquer lugar, e a gente tem que aguentar esse cheiro maldito!",
+    "title": "Lixo acumulado em praça pública",
+    "owner": "Lucas Oliveira",
+    "image": "https://saopauloantiga.com.br/wp-content/uploads/2009/12/lixonocentrodesp.jpg",
+    "description": "A Praça dos Trabalhadores, localizada no bairro Centro, está cheia de lixo espalhado. Os caminhões de coleta não passam há mais de uma semana, e o lixo acumulado está começando a atrair insetos e roedores. A situação está insuportável, especialmente com o cheiro forte nos dias mais quentes. Além disso, o acúmulo de lixo pode causar problemas de saúde pública, principalmente para as crianças que costumam brincar na praça.",
     "location": {
       "position": {
-        "lat": -23.682255,
-        "long": -46.620854,
-        "city": "Diadema"
+        "lat": -19.924101,
+        "long": -43.941895,
+        "city": "Belo Horizonte"
       },
-      "address": "R. Ferdinando Duca, 127 - Taboão"
+      "address": "Praça dos Trabalhadores - Centro"
     },
-    "date": "12/09/2024",
-    "relevance_points": 9,
-    "solution": "Para resolver essa denúncia, a plataforma \"O Melhor Cidade\" poderia primeiramente identificar a localização exata do problema e gerar uma resposta automática informando ao denunciante as ações que podem ser tomadas dentro da legislação vigente. O sistema poderia sugerir que o usuário entre em contato com a guarda municipal ou com a polícia local, já que o uso de substâncias ilícitas em locais públicos é uma questão de ordem pública e segurança. Além disso, a plataforma poderia encaminhar a denúncia para as autoridades competentes, preservando o anonimato do denunciante, e sugerir o fortalecimento de campanhas de conscientização sobre o uso de drogas em espaços públicos na região, promovendo o diálogo entre a comunidade e os órgãos responsáveis."
+    "date": "30/09/2024",
+    "relevance_points": 28,
+    "solution": "A IA pode recomendar uma comunicação urgente com o serviço de coleta de lixo da cidade, destacando a possibilidade de danos à saúde pública. A plataforma também pode sugerir um mutirão temporário com a ajuda de voluntários até a coleta oficial ser regularizada.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "Paula Mendes",
+        "body": "Passei por lá hoje e o cheiro estava insuportável. Algo precisa ser feito imediatamente."
+      },
+      {
+        "id": 1,
+        "username": "Carlos Souza",
+        "body": "As crianças da escola municipal ali perto correm risco de saúde com todo esse lixo."
+      }
+    ]
   },
   {
     "id": 2,
-    "title": "Buraco enorme na Rua das Flores",
-    "owner": "Jimmy Freeman",
-    "image": "https://cdn6.campograndenews.com.br/uploads/noticias/2022/02/07/1poq1g707goug.jpeg",
-    "description": "Há um buraco enorme na Av. Dona Maria Rosa, quase na altura do cruzamento com a Rua das Flores. O buraco está ali há mais de dois meses, e já causou diversos acidentes, especialmente com motociclistas. Em dias de chuva, o buraco fica escondido pela água acumulada, o que piora ainda mais a situação. Além dos acidentes, ele tem gerado congestionamentos, pois os motoristas precisam desviar, o que reduz a fluidez do trânsito. Já fizemos algumas reclamações, mas não houve retorno até agora. O risco de acidentes mais graves aumenta a cada dia, principalmente à noite, quando a visibilidade é reduzida.",
+    "title": "Poste sem iluminação em área residencial",
+    "owner": "Ana Costa",
+    "image": "https://img.cmswebsg.com.br/araraquaraagora.com/image?src=https://araraquaraagora.com/images/noticias/11247/10035730_Img0_600x4.jpg&w=1200&h=630&output=webp",
+    "description": "No bairro Jardim América, o poste de iluminação na Rua das Flores está apagado há mais de dois meses. A rua fica completamente escura à noite, e a insegurança entre os moradores só cresce. Houve relatos de assaltos e de atividades suspeitas nas últimas semanas. Os moradores já tentaram acionar a prefeitura diversas vezes, mas o problema persiste. Precisamos de uma solução para evitar mais problemas e garantir a segurança da comunidade.",
     "location": {
       "position": {
-        "lat": -23.555255,
-        "long": -46.635354,
+        "lat": -23.650007,
+        "long": -46.712836,
         "city": "São Paulo"
       },
-      "address": "Rua das Flores, 345 - Vila Mariana"
+      "address": "Rua das Flores, 120 - Jardim América"
     },
-    "date": "15/09/2024",
-    "relevance_points": 15,
-    "solution": "A plataforma pode sugerir que o usuário envie a reclamação diretamente para a prefeitura local e indique a necessidade de manutenção urgente. A IA poderia explicar que, segundo a legislação municipal, buracos que afetam o trânsito devem ser reparados rapidamente. A plataforma também poderia gerar um relatório para os responsáveis pela manutenção urbana."
+    "date": "28/09/2024",
+    "relevance_points": 30,
+    "solution": "A IA pode gerar um pedido de urgência ao departamento responsável pela iluminação pública e sugerir um aumento no patrulhamento policial na área até que o problema seja resolvido.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "José Silva",
+        "body": "Tivemos um assalto na semana passada por causa da escuridão. A prefeitura precisa agir rápido."
+      },
+      {
+        "id": 1,
+        "username": "Cláudia Ferreira",
+        "body": "A rua está completamente insegura, tenho medo de voltar tarde do trabalho."
+      }
+    ]
   },
   {
     "id": 3,
-    "title": "Poste de luz quebrado há semanas",
-    "owner": "Raymond Cook",
-    "image": "https://img.cmswebsg.com.br/araraquaraagora.com/image?src=https://araraquaraagora.com/images/noticias/11247/10035730_Img0_600x4.jpg&w=1200&h=630&output=webp",
-    "description": "O poste de luz na esquina está quebrado há semanas e a rua fica extremamente escura à noite, aumentando o risco de assaltos.",
+    "title": "Árvore caindo em via pública",
+    "owner": "Pedro Lima",
+    "image": "https://abcreporter.com.br/wp-content/uploads/2019/02/ARVORE.jpeg",
+    "description": "Uma grande árvore na Rua das Palmeiras está inclinada e prestes a cair. Após uma forte tempestade, a árvore ficou visivelmente danificada e balançando a cada vento forte. Muitos pedestres e motoristas passam por essa rua diariamente, e há um risco iminente de acidentes. Já fizemos contato com a prefeitura, mas até agora ninguém veio verificar a situação.",
     "location": {
       "position": {
-        "lat": -22.967755,
-        "long": -47.057964,
-        "city": "Campinas"
+        "lat": -22.906847,
+        "long": -43.172896,
+        "city": "Rio de Janeiro"
       },
-      "address": "Av. Barão de Itapura, 789 - Guanabara"
+      "address": "Rua das Palmeiras, 450 - Botafogo"
     },
-    "date": "18/09/2024",
-    "relevance_points": 12,
-    "solution": "A resposta automática sugeriria contatar a concessionária responsável pela iluminação pública, com base na legislação que estipula prazos para reparos. A plataforma também poderia enviar um relatório às autoridades, destacando o risco à segurança pública, e fornecer o número de protocolo da reclamação."
+    "date": "26/09/2024",
+    "relevance_points": 42,
+    "solution": "A plataforma pode acionar diretamente o setor de parques e jardins, que é responsável pela poda de árvores, sugerindo uma intervenção imediata. Além disso, pode notificar as autoridades de trânsito para fechar a rua temporariamente.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "Lucas Martins",
+        "body": "Passo por essa rua todos os dias, e a árvore está cada vez mais inclinada. Vai acabar caindo se não fizerem nada."
+      },
+      {
+        "id": 1,
+        "username": "Marina Castro",
+        "body": "A situação está perigosa demais. Fico com medo de passar por ali com as crianças."
+      }
+    ]
   },
   {
     "id": 4,
-    "title": "Lixo acumulado na praça",
-    "owner": "Erik Lyons",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-C5BclJsOdFUkcA1i3MT_ymuuGRheln1L8w&s",
-    "description": "Um terreno baldio localizado na Rua Oliveira, próximo ao número 32, tem sido usado como depósito irregular de lixo. O local está repleto de entulho, sacos de lixo doméstico e até mesmo móveis velhos. Esse acúmulo de lixo atrai roedores e insetos, colocando em risco a saúde dos moradores próximos. Além disso, o mau cheiro tem se intensificado nos últimos dias, especialmente por conta do calor. Apesar de várias denúncias feitas à prefeitura, nenhuma ação foi tomada para limpar o terreno. A situação está se tornando insustentável e precisamos de uma solução urgente para a limpeza e, se possível, para a instalação de uma placa que proíba o descarte de lixo.",
+    "title": "Vazamento de esgoto em rua residencial",
+    "owner": "Fernanda Ribeiro",
+    "image": "https://www.cacavazamento.srv.br/wp-content/uploads/2015/01/blog_bueiro.jpg",
+    "description": "Na Rua do Sol, no bairro Nova Esperança, há um vazamento de esgoto que corre pela calçada e invade as casas. O problema já dura quase um mês, e a situação está insustentável. O cheiro é insuportável e os moradores estão preocupados com o risco de doenças. Entramos em contato com a empresa de saneamento básico, mas até agora nada foi feito.",
     "location": {
       "position": {
-        "lat": -23.000255,
-        "long": -47.000854,
-        "city": "Jundiaí"
+        "lat": -12.971379,
+        "long": -38.512382,
+        "city": "Salvador"
       },
-      "address": "Praça Central, 50 - Centro"
+      "address": "Rua do Sol, 200 - Nova Esperança"
     },
-    "date": "19/09/2024",
-    "relevance_points": 18,
-    "solution": "A IA poderia sugerir que o usuário entre em contato com a prefeitura, já que a responsabilidade da coleta de lixo é do município. Também indicaria que a denúncia pode ser encaminhada à vigilância sanitária, que pode multar a empresa responsável pela coleta."
+    "date": "01/10/2024",
+    "relevance_points": 40,
+    "solution": "A IA pode sugerir a comunicação direta com a empresa de saneamento básico para priorizar o atendimento. Além disso, pode fornecer instruções temporárias de como minimizar o impacto do esgoto até o reparo ser feito.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "Carlos Nunes",
+        "body": "Minha casa está sendo afetada pelo esgoto. A situação é insustentável!"
+      },
+      {
+        "id": 1,
+        "username": "Juliana Santos",
+        "body": "A rua toda está sofrendo com esse problema. Precisamos de uma solução urgente."
+      }
+    ]
   },
   {
     "id": 5,
-    "title": "Árvore caída bloqueando rua",
-    "owner": "Amy Hill",
-    "image": "https://midias.agazeta.com.br/2022/11/25/arvore-caiu-em-madrugada-chuvosa-em-jardim-da-penha-vitoria-918037-article.jpeg",
-    "description": "Uma árvore caiu após a última tempestade e está bloqueando completamente a rua. Ninguém veio remover, está perigoso!",
+    "title": "Ciclovia sem manutenção",
+    "owner": "Renato Braga",
+    "image": "https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/UAKM5UQFKJKMZHFXRJCHHJI7YA.jpg?auth=7b4d2f9dfeb6b421dc4ca3e2e6176bda990e49db4bb5167447bb61e5e0efedf5&width=1224&height=816",
+    "description": "A ciclovia que liga o bairro Jardim Novo à região central está sem manutenção há meses. O asfalto está cheio de buracos e rachaduras, o que torna perigoso para os ciclistas, especialmente durante a noite. Alguns trechos estão tão danificados que os ciclistas precisam desviar para a via de carros, o que aumenta o risco de acidentes. Já entramos em contato com a prefeitura, mas não houve resposta.",
     "location": {
       "position": {
-        "lat": -23.678255,
-        "long": -46.559854,
-        "city": "Santo André"
+        "lat": -23.55052,
+        "long": -46.633308,
+        "city": "São Paulo"
       },
-      "address": "Rua das Acácias, 890 - Jardim"
+      "address": "Ciclovia Jardim Novo - Centro"
     },
-    "date": "21/09/2024",
-    "relevance_points": 20,
-    "solution": "A IA poderia informar o usuário sobre a legislação municipal, que exige a remoção rápida de obstáculos como árvores caídas. Sugeriria contatar a Defesa Civil e a secretaria de Meio Ambiente. A plataforma também poderia fornecer ao usuário uma atualização sobre as ações das autoridades locais para remover a árvore."
+    "date": "03/10/2024",
+    "relevance_points": 25,
+    "solution": "A IA pode recomendar a mobilização da comunidade para chamar a atenção para a ciclovia e sugerir ações temporárias, como a colocação de sinalizações de aviso. Também pode notificar o departamento de transportes para que uma manutenção emergencial seja realizada.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "Paulo Gomes",
+        "body": "Já tive que desviar várias vezes por causa dos buracos, está ficando perigoso."
+      },
+      {
+        "id": 1,
+        "username": "Lívia Andrade",
+        "body": "A ciclovia deveria ser um espaço seguro, mas está cheia de problemas. Precisamos de manutenção urgente."
+      }
+    ]
   },
   {
     "id": 6,
-    "title": "Vazamento de água em via pública",
-    "owner": "Todd Carlson",
-    "image": "https://cdn6.campograndenews.com.br/uploads/noticias/2020/03/10/29gfjtpafta80.jpg",
-    "description": "Há um vazamento de água na calçada, causando desperdício e erosão do pavimento. Já foi reportado, mas ninguém resolveu.",
+    "title": "Vazamento de água potável em calçada",
+    "owner": "Gabriel Freitas",
+    "image": "https://decorandocasas.com.br/wp-content/uploads/2021/06/Vazamento-na-cal%C3%A7ada-de-quem-%C3%A9-a-responsabilidade-1.jpg",
+    "description": "Há um vazamento de água potável na calçada da Rua das Acácias, próximo ao número 210, que já dura mais de uma semana. A água está escorrendo continuamente pela rua, desperdiçando um recurso tão precioso. Além do desperdício, a água tem se acumulado, criando poças que dificultam a passagem dos pedestres e podem causar quedas. Vários moradores já notificaram a empresa de saneamento, mas até agora nada foi feito.",
     "location": {
       "position": {
-        "lat": -23.554755,
-        "long": -46.653854,
-        "city": "São Paulo"
+        "lat": -22.908333,
+        "long": -43.196388,
+        "city": "Rio de Janeiro"
       },
-      "address": "Av. Paulista, 900 - Bela Vista"
+      "address": "Rua das Acácias, 210 - Tijuca"
     },
-    "date": "22/09/2024",
-    "relevance_points": 14,
-    "solution": "A IA pode sugerir ao usuário relatar o vazamento à companhia de saneamento local e indicar que, segundo a legislação, o reparo deve ocorrer rapidamente para evitar maiores danos. A plataforma poderia enviar a reclamação diretamente à companhia, acompanhada de fotos e localização precisa."
+    "date": "05/10/2024",
+    "relevance_points": 38,
+    "solution": "A plataforma pode gerar uma notificação para a empresa de saneamento responsável, destacando o desperdício de água potável e o risco de acidentes para pedestres. A IA também pode sugerir soluções temporárias, como a sinalização da área para evitar quedas enquanto o vazamento não é consertado.",
+    "comments": [
+      {
+        "id": 0,
+        "username": "Mariana Costa",
+        "body": "Esse vazamento está se espalhando pela rua toda. Além do desperdício de água, é perigoso para os pedestres."
+      },
+      {
+        "id": 1,
+        "username": "Roberto Lima",
+        "body": "Inacreditável a demora para resolver algo tão simples. E a quantidade de água sendo desperdiçada é enorme."
+      }
+    ]
   }
 ]
