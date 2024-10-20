@@ -4,8 +4,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 5rem;
-  background-color: #6969692c;
+  padding: 3rem 5rem;
+  background-color: #6969697d;
   z-index: 9999;
 }
 
@@ -45,7 +45,7 @@
   display: block;
   margin: 1rem auto;
   width: 100%;
-  max-height: 30rem;
+  max-height: 35rem;
   border-radius: 0.5rem;
   object-fit: cover;
 }
@@ -73,6 +73,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 3rem 0;
 }
 
 #relevance-points {
@@ -129,21 +130,29 @@
 
 /* Em Andamento */
 
-@media (max-width: 765px) {
+@media (max-width: 800px) {
   #relevance {
     flex-direction: column;
     gap: 2rem;
     align-items: flex-start;
   }
+}
 
+@media (min-width: 900px) {
+  #post-main > img {
+    width: auto;
+  }
+}
+
+@media (max-width: 765px) {
   #post-modal-overlay {
     padding: 3rem;
-  }  
+  }
 }
 
 @media (max-width: 550px) {
   #post-modal-overlay {
     padding: 0rem;
     border-radius: 0;
-  }  
+  }
 }

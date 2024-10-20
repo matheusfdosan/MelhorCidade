@@ -11,9 +11,15 @@ export default function ReadReportModal({
     setShowPostDetailsModal(false)
   }
 
+  const handleClickOutOfModal = (e) => {
+    if (e.target.id === "post-modal-overlay") {
+      setShowPostDetailsModal(false)
+    }
+  }
+
   return (
     <>
-      <div id="post-modal-overlay">
+      <div id="post-modal-overlay" onClick={handleClickOutOfModal}>
         <div id="post-container">
           <div id="post-header">
             <h1>{data.title}</h1>

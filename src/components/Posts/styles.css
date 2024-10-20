@@ -83,11 +83,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  transition: filter 200ms ease;
+  transition: transform 200ms ease;
 }
 
 .post-footer .relevant-doubts-btn:hover {
-  filter: brightness(1.6);
+  transform: translateX(.3rem);
 }
 
 .post-footer #see-more {
