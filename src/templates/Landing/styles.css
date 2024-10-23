@@ -1,7 +1,6 @@
 #landing_header {
   width: 100%;
-  background-color: var(--white);
-  border-bottom: 0.15rem solid var(--gray-inputs);
+  background-color: #2d65ffa6;
 }
 
 #landing_header > .container {
@@ -15,7 +14,7 @@
 
 #landing_header > .container > h1 {
   font-family: var(--urbanist-font);
-  color: var(--dark);
+  color: var(--white);
   font-size: 2rem;
 }
 
@@ -27,7 +26,7 @@
 }
 
 #landing_header > .container > nav > ul > li > a {
-  color: var(--dark);
+  color: var(--white);
   font-weight: normal;
   text-decoration: underline transparent;
   text-underline-offset: 0.6rem;
@@ -35,7 +34,7 @@
 }
 
 #landing_header > .container > nav > ul > li > a:hover {
-  text-decoration: underline var(--dark);
+  text-decoration: underline var(--white);
 }
 
 #landing_main {
@@ -82,21 +81,6 @@ section#landing_hero > .container > #hero_description {
   color: var(--white);
 }
 
-#slogan-text {
-  color: var(--white);
-  font-size: 1.4rem;
-  font-style: oblique;
-  margin-bottom: 4rem;
-  user-select: none;
-  -webkit-user-select: none;
-  -o-user-select: none;
-  animation: fromBottom 0.8s 0.8s backwards ease;
-}
-
-#slogan-text:hover {
-  text-decoration: underline;
-}
-
 section#landing_hero > .container > a {
   background-color: var(--white);
   padding: 1rem 2rem;
@@ -111,8 +95,9 @@ section#landing_hero > .container > a {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-select: none;
-  animation: fromBottom 0.8s 1.2s backwards ease;
+  animation: fromBottom 0.8s 1s backwards ease;
 }
+
 section#landing_hero > .container > a:hover {
   box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px var(--white)fff;
 }

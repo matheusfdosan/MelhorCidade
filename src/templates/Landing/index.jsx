@@ -38,8 +38,6 @@ export default function Landing() {
               iluminação, problemas estruturais, qualquer coisa que não esteja
               nos conformes da sua cidade.
             </p>
-            <p id="slogan-text">Informe, Participe e Faça a Diferença!</p>
-
             <Link to="/signup">Comece Já</Link>
           </div>
         </section>
