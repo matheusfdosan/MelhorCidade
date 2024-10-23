@@ -1,5 +1,6 @@
 #landing_header {
   width: 100%;
+  height: 10vh;
   background-color: #2d65ffa6;
 }
 
@@ -43,6 +44,7 @@
 
 section#landing_hero {
   width: 100%;
+  height: 100vh;
   height: fit-content;
   background-color: #2d65ffa6;
   background-image: url("../../assets/park.png");
@@ -91,7 +93,7 @@ section#landing_hero > .container > a {
   font-weight: 600;
   font-size: 1.4rem;
   transition: box-shadow 200ms ease;
-  box-shadow: 15px 15px 29px #acacac, -15px -15px 29px var(--white)fff;
+  box-shadow: 15px 15px 29px #acacac, -15px -15px 29px var(--white) fff;
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-select: none;
@@ -99,7 +101,7 @@ section#landing_hero > .container > a {
 }
 
 section#landing_hero > .container > a:hover {
-  box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px var(--white)fff;
+  box-shadow: 15px 15px 35px #9b9b9b, -15px -15px 35px var(--white) fff;
 }
 
 #landing_complaints {
@@ -183,7 +185,7 @@ footer .container > ul > li > a:hover {
 
 @media (min-width: 1115px) {
   section#landing_hero {
-    height: 85vh;
+    height: 90vh;
     background-position: center bottom;
   }
 }
