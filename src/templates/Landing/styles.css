@@ -117,6 +117,7 @@ section#landing_hero > .container > a:hover {
 
 #posts_container {
   max-width: 100rem;
+  width: 90%;
   margin: auto;
   padding-top: 1.5rem;
   padding-bottom: 10rem;
