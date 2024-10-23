@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import bottomArrowIcon from "../../assets/bottom-arrow-icon.svg"
 import topArrowIcon from "../../assets/top-arrow-icon.svg"
 
-import rightArrowIcon from "../../assets/right-arrow-icon.svg"
+import seeReportsIcon from "../../assets/report-icon.svg"
 import leftArrowIcon from "../../assets/left-arrow-icon.svg"
 
 import Header from "../../components/Header"
@@ -14,7 +14,7 @@ import Footer from "../../components/Footer"
 import "./styles.css"
 
 import TheMap from "../../components/TheMap"
-import getLocations from "../../utils/getLocations"
+import getPosts from "../../utils/getPosts.js"
 
 export default function Map() {
   const [barVisibility, setBarVisibility] = useState(false)
@@ -23,9 +23,10 @@ export default function Map() {
 
   useEffect(() => {
     document.title = "Melhor Cidade - Mapa de Denúncias"
+    
     const loadLocationData = async () => {
       try {
-        const data = await getLocations()
+        const data = await getPosts()
         setLocationData(data)
       } catch (error) {
         console.log("Failed to fetch locals:" + error)
@@ -65,7 +66,7 @@ export default function Map() {
               </button>
               <button id="minimize_btn_right" onClick={handleClickMinimize}>
                 <img
-                  src={barVisibility ? leftArrowIcon : rightArrowIcon}
+                  src={barVisibility ? leftArrowIcon : seeReportsIcon}
                   alt="minimize-icon"
                 />
               </button>
@@ -73,19 +74,19 @@ export default function Map() {
 
             <div id="complaints_container_bar">
               <ul>
-                {locationData.map((data, index) => (
+                {locationData.map((data) => (
                   <li
-                    key={data.id || index}
+                    key={data.id}
                     onClick={() =>
                       handleClickLocalItem([
-                        data.location.lat,
-                        data.location.long,
+                        data.location.position.lat,
+                        data.location.position.long,
                       ])
                     }
                   >
                     <Link>
                       <img src={markerIcon} alt="marker-icon" />
-                      <p>{data.name}</p>
+                      <p>{data.title}</p>
                     </Link>
                   </li>
                 ))}

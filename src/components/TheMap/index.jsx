@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import {
   MapContainer,
   TileLayer,
@@ -9,7 +9,7 @@ import {
   Circle,
 } from "react-leaflet"
 import markerIcon from "../../assets/red-marker.svg"
-import getLocations from "../../utils/getLocations"
+import getPosts from "../../utils/getPosts.js"
 import "leaflet/dist/leaflet.css"
 import "./styles.css"
 
@@ -23,14 +23,14 @@ function ChangeMapView({ center }) {
   return null
 }
 
-export default function TheMap({ centerProp }) {
+export default function TheMap({ centerProp, mapIsMovng }) {
   const [locationData, setLocationData] = useState([])
-  const fillRedOptions = { color: 'blue', fillColor: 'blue' }
+  const fillRedOptions = { color: "#ff353a", fillColor: "#ff353a" }
 
   useEffect(() => {
     const loadLocationData = async () => {
       try {
-        const data = await getLocations()
+        const data = await getPosts()
         setLocationData(data)
       } catch (error) {
         console.log("Failed to fetch locals:" + error)
@@ -47,10 +47,9 @@ export default function TheMap({ centerProp }) {
     popupAnchor: [1, -34],
   })
 
+
   return (
     <>
-      {console.log(centerProp)}
-
       <MapContainer
         className="mapPane"
         zoom={15}
@@ -64,16 +63,21 @@ export default function TheMap({ centerProp }) {
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
         <LayerGroup>
-          <Circle center={centerProp} pathOptions={fillRedOptions} radius={15} />
+          <Circle
+            center={centerProp}
+            pathOptions={fillRedOptions}
+            radius={15}
+          />
         </LayerGroup>
-        {locationData.map((data, index) => (
+        {locationData.map((data) => (
           <Marker
-            key={data.id || index}
+            key={data.id}
             icon={customIcon}
-            position={[data.location.lat, data.location.long]}
+            onClick={() => handleClickMarker(data.id)}
+            position={[data.location.position.lat, data.location.position.long]}
           >
             <Tooltip>
-              <h2>{data.name}</h2>
+              <h2>{data.title}</h2>
             </Tooltip>
           </Marker>
         ))}
