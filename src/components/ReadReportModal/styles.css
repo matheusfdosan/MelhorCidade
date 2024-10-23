@@ -155,4 +155,8 @@
     padding: 0rem;
     border-radius: 0;
   }
+
+  #post-container {
+    border-radius: 0;
+  }
 }
