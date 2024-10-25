@@ -44,7 +44,7 @@
 
 section#landing_hero {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   height: fit-content;
   background-color: #2d65ffa6;
   background-image: url("../../assets/park.png");
@@ -237,12 +237,8 @@ footer .container > ul > li > a:hover {
     font-size: 1.8rem;
   }
 
-  #landing_header > .container > nav {
+  #landing_header > .container > nav > ul > li:last-child {
     display: none;
-  }
-
-  #landing_header > .container > h1 {
-    margin: auto;
   }
 
   footer .container > ul {
