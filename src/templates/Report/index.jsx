@@ -6,7 +6,16 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 import getAddress from "../../utils/getAddress"
 import "./styles.css"
 import uploadIcon from "../../assets/upload-icon.svg"
+import markerIcon from "../../assets/red-marker-filled-icon.svg"
 
+const customIcon = new L.Icon({
+    iconUrl: markerIcon,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+})
+
+// Centro de São Paulo
 const center = {
   lat: -23.5506507,
   lng: -46.6333824,
@@ -33,6 +42,7 @@ function DraggableMarker() {
       draggable={true}
       eventHandlers={eventHandlers}
       position={position}
+      icon={customIcon}
       ref={markerRef}
     >
       <Popup minWidth={90}></Popup>

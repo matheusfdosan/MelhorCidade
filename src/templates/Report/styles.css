@@ -3,7 +3,7 @@
   max-width: 100rem;
   margin: auto;
   padding-top: 3rem;
-  padding-bottom: 6rem;
+  padding-bottom: 7.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +54,6 @@ label[for="add_image_btn"] {
   background-color: var(--gray-inputs);
   background-position: center;
   background-repeat: no-repeat;
-  
   background-size: contain;
   border: 0.2rem dashed var(--gray-inputs-border);
   cursor: pointer;
