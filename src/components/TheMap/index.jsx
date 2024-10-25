@@ -60,7 +60,7 @@ export default function TheMap({ centerProp, mapIsMovng }) {
         <ChangeMapView center={centerProp} />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <LayerGroup>
           <Circle
