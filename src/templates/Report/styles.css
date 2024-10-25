@@ -1,0 +1,106 @@
+#main_report {
+  width: 90%;
+  max-width: 100rem;
+  margin: auto;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#main_report > label {
+  font-weight: 600;
+  font-family: var(--poppins-font);
+  margin-bottom: 1rem;
+}
+
+#main_report > input,
+#main_report > textarea {
+  font-family: var(--poppins-font);
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 0.1rem solid var(--gray-inputs-border);
+  background-color: var(--gray-inputs);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+}
+
+textarea {
+  resize: none;
+  height: 10rem;
+}
+
+#doubt {
+  color: var(--red);
+  cursor: help;
+}
+
+#point_on_the_map {
+  width: 100%;
+  height: 30rem;
+  margin-bottom: 1.5rem;
+  border: 0.1rem solid var(--gray-inputs-border);
+  border-radius: 1rem;
+}
+
+#add_image_btn {
+  display: none;
+}
+
+label[for="add_image_btn"] {
+  width: 100%;
+  height: 25rem;
+  background-color: var(--gray-inputs);
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  background-size: contain;
+  border: 0.2rem dashed var(--gray-inputs-border);
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--light-blue);
+}
+
+label[for="add_image_btn"]:hover {
+  background-color: #cdcdcd;
+}
+
+label[for="add_image_btn"] > img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.post-btn {
+  display: block;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 2rem 1rem;
+  background-color: var(--light-blue);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.post-btn:hover {
+}
+
+@media (min-width: 768px) {
+  .map-container {
+    height: 300px;
+  }
+
+  textarea {
+    height: 150px;
+  }
+
+  .preview-image {
+    height: 250px;
+  }
+}
