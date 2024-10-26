@@ -58,7 +58,14 @@ export default function ReadReportModal({
             <div id="comments">
               <h2>Comentários:</h2>
 
-              <ul></ul>
+              <ul>
+                {data.comments.map(comment => {
+                  return <li key={comment.id}>
+                    <h3>{comment.username}: </h3>
+                    <p>{comment.body}</p>
+                  </li>
+                })}
+              </ul>
             </div>
           </div>
         </div>
