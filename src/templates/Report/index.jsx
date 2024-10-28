@@ -7,22 +7,16 @@ import getAddress from "../../utils/getAddress"
 import "./styles.css"
 import uploadIcon from "../../assets/upload-icon.svg"
 import markerIcon from "../../assets/red-marker-filled-icon.svg"
+import FooterLinks from "../../components/FooterLinks"
 
 const customIcon = new L.Icon({
-    iconUrl: markerIcon,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
+  iconUrl: markerIcon,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
 })
 
-// Centro de São Paulo
-const center = {
-  lat: -23.5506507,
-  lng: -46.6333824,
-}
-
-function DraggableMarker() {
-  const [position, setPosition] = useState(center)
+function DraggableMarker({ position, setPosition }) {
   const markerRef = useRef(null)
 
   const eventHandlers = useMemo(
@@ -30,11 +24,12 @@ function DraggableMarker() {
       dragend() {
         const marker = markerRef.current
         if (marker != null) {
-          setPosition(marker.getLatLng())
+          const newPosition = marker.getLatLng()
+          setPosition(newPosition)
         }
       },
     }),
-    []
+    [setPosition]
   )
 
   return (
@@ -44,9 +39,7 @@ function DraggableMarker() {
       position={position}
       icon={customIcon}
       ref={markerRef}
-    >
-      <Popup minWidth={90}></Popup>
-    </Marker>
+    />
   )
 }
 
@@ -54,24 +47,47 @@ export default function Report() {
   const [inputAddress, setInputAddress] = useState()
   const [address, setAddress] = useState()
   const [complaintImage, setComplaintImage] = useState()
+  const [positionMap, setPositionMap] = useState(null)
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Fazer Denúncia"
-  }, [])
-
-  const handleAddressInput = (e) => {
-    setInputAddress(e.target.value)
-
-    const getTheAddress = async () => {
+    const getUserLocation = async () => {
       try {
-        const data = await getAddress(inputAddress)
-        setAddress(data[0].display_name)
-      } catch (error) {
-        console.log("Failed to fetch posts:" + error)
+        const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject)
+        })
+        const { latitude, longitude } = position.coords
+        setPositionMap({ lat: latitude, lng: longitude })
+      } catch (err) {
+        setError("Não foi possível obter a localização.")
+        console.error(err)
       }
     }
 
-    getTheAddress()
+    getUserLocation()
+    document.title = "Melhor Cidade - Fazer Denúncia"
+  }, [])
+
+  useEffect(() => {
+    const fetchAddress = async () => {
+      if (positionMap) {
+        try {
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${positionMap.lat}&lon=${positionMap.lng}&format=json`
+          )
+          const data = await response.json()
+          setAddress(data.display_name || "Endereço não encontrado")
+        } catch (error) {
+          console.error("Erro ao buscar o endereço:", error)
+          setAddress("Erro ao buscar o endereço")
+        }
+      }
+    }
+
+    fetchAddress()
+  }, [positionMap])
+
+  const handleAddressInput = (e) => {
+    setInputAddress(e.target.value)
   }
 
   const handleImageChange = (e) => {
@@ -95,6 +111,19 @@ export default function Report() {
     console.log(e)
   }
 
+  const handleAnalyzeClick = () => {
+    const getTheAddress = async () => {
+      try {
+        const data = await getAddress(inputAddress)
+        setPositionMap({lat: data[0].lat, lng: data[0].lon})
+      } catch (error) {
+        console.log("Failed to fetch posts:" + error)
+      }
+    }
+    
+    getTheAddress()
+  }
+
   return (
     <>
       <Header />
@@ -110,13 +139,21 @@ export default function Report() {
         <label htmlFor="location_input">
           Diga onde está localizado esse problema:
         </label>
-        <input
-          type="text"
-          id="location_input"
-          required
-          placeholder="Endereço: rua/avenida, bairro, estado"
-          onChange={handleAddressInput}
-        />
+        <div id="set_address">
+          <input
+            type="text"
+            id="location_input"
+            
+            required
+            placeholder="Endereço: rua/avenida, bairro, estado"
+            onChange={handleAddressInput}
+          />
+          <button type="button" onClick={handleAnalyzeClick}>
+            Analisar
+          </button>
+        </div>
+
+        <address id="address_in_map">{address}</address>
 
         <label htmlFor="point_on_the_map">
           Aponte-o no mapa:{" "}
@@ -127,14 +164,22 @@ export default function Report() {
             *
           </span>
         </label>
+
         <div id="point_on_the_map">
-          <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <DraggableMarker position={center} />
-          </MapContainer>
+          {positionMap && (
+            <MapContainer center={positionMap} zoom={20} scrollWheelZoom={true}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {positionMap && (
+                <DraggableMarker
+                  position={positionMap}
+                  setPosition={setPositionMap}
+                />
+              )}
+            </MapContainer>
+          )}
         </div>
 
         <label>Adicione uma imagem do problema</label>
@@ -159,8 +204,9 @@ export default function Report() {
           onChange={handleImageChange}
         />
 
-        <button className="post-btn">Postar</button>
+        <button className="post-btn">Publicar</button>
       </form>
+      <FooterLinks />
 
       <Footer target={1} />
     </>

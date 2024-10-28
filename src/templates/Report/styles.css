@@ -14,7 +14,6 @@
   margin-bottom: 1rem;
 }
 
-#main_report > input,
 #main_report > textarea {
   font-family: var(--poppins-font);
   width: 100%;
@@ -28,7 +27,39 @@
 
 textarea {
   resize: none;
-  height: 10rem;
+  height: 20rem;
+}
+
+#set_address {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+#set_address > input {
+  font-family: var(--poppins-font);
+  width: 100%;
+  padding: 1rem;
+  border: 0.1rem solid var(--gray-inputs-border);
+  background-color: var(--gray-inputs);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+}
+
+#set_address > button {
+  background-color: var(--light-blue);
+  color: var(--white);
+  border: none;
+  height: 4.7rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+#set_address > button:hover {
+  background-color: #435a99;
 }
 
 #doubt {
@@ -42,6 +73,11 @@ textarea {
   margin-bottom: 1.5rem;
   border: 0.1rem solid var(--gray-inputs-border);
   border-radius: 1rem;
+}
+
+#address_in_map {
+  margin-bottom: 1rem;
+  font-style: oblique;
 }
 
 #add_image_btn {
@@ -104,5 +140,11 @@ label[for="add_image_btn"] > img {
 
   .preview-image {
     height: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+  #point_on_the_map {
+    height: 50rem;
   }
 }
