@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react"
-import markerIcon from "../../assets/red-marker.svg"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import markerIcon from "../../assets/red-marker.svg"
+import "./styles.css"
 
 import bottomArrowIcon from "../../assets/bottom-arrow-icon.svg"
 import topArrowIcon from "../../assets/top-arrow-icon.svg"
 
-import seeReportsIcon from "../../assets/report-icon.svg"
 import leftArrowIcon from "../../assets/left-arrow-icon.svg"
+import seeReportsIcon from "../../assets/report-icon.svg"
 
-import Header from "../../components/Header"
 import Footer from "../../components/Footer"
-
-import "./styles.css"
+import Header from "../../components/Header"
 
 import TheMap from "../../components/TheMap"
 import getPosts from "../../utils/getPosts.js"
@@ -23,7 +22,7 @@ export default function Map() {
 
   useEffect(() => {
     document.title = "Melhor Cidade - Mapa de Denúncias"
-    
+
     const loadLocationData = async () => {
       try {
         const data = await getPosts()
