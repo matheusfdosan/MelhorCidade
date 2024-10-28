@@ -2,8 +2,9 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import { useEffect } from "react"
 import React, { useState, useRef, useMemo } from "react"
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet"
 import getAddress from "../../utils/getAddress"
+import "leaflet/dist/leaflet.css"
 import "./styles.css"
 import uploadIcon from "../../assets/upload-icon.svg"
 import markerIcon from "../../assets/red-marker-filled-icon.svg"
@@ -15,6 +16,18 @@ const customIcon = new L.Icon({
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
 })
+
+function ChangeMapView({ center }) {
+  const map = useMap()
+
+  useEffect(() => {
+    if (center.length === 2) {
+      map.setView(center, map.getZoom(), { animate: true })
+    }
+  }, [center])
+
+  return null
+}
 
 function DraggableMarker({ position, setPosition }) {
   const markerRef = useRef(null)
@@ -48,6 +61,7 @@ export default function Report() {
   const [address, setAddress] = useState()
   const [complaintImage, setComplaintImage] = useState()
   const [positionMap, setPositionMap] = useState(null)
+  const [centerMap, setCenterMap] = useState([])
 
   useEffect(() => {
     const getUserLocation = async () => {
@@ -57,6 +71,7 @@ export default function Report() {
         })
         const { latitude, longitude } = position.coords
         setPositionMap({ lat: latitude, lng: longitude })
+        setCenterMap([latitude, longitude])
       } catch (err) {
         setError("Não foi possível obter a localização.")
         console.error(err)
@@ -115,12 +130,13 @@ export default function Report() {
     const getTheAddress = async () => {
       try {
         const data = await getAddress(inputAddress)
-        setPositionMap({lat: data[0].lat, lng: data[0].lon})
+        setPositionMap({ lat: data[0].lat, lng: data[0].lon })
+        setCenterMap([data[0].lat, data[0].lon])
       } catch (error) {
         console.log("Failed to fetch posts:" + error)
       }
     }
-    
+
     getTheAddress()
   }
 
@@ -143,7 +159,6 @@ export default function Report() {
           <input
             type="text"
             id="location_input"
-            
             required
             placeholder="Endereço: rua/avenida, bairro, estado"
             onChange={handleAddressInput}
@@ -167,7 +182,15 @@ export default function Report() {
 
         <div id="point_on_the_map">
           {positionMap && (
-            <MapContainer center={positionMap} zoom={20} scrollWheelZoom={true}>
+            <MapContainer
+              center={
+                positionMap.length == 2 ? positionMap : [-23.68524, -46.620502]
+              }
+              zoom={15}
+              minZoom={8}
+              scrollWheelZoom={true}
+            >
+              <ChangeMapView center={centerMap} />
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
