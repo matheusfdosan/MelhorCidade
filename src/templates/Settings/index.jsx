@@ -4,6 +4,7 @@ import rightArrow from "../../assets/right-arrow-icon.svg"
 import "./styles.css"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import FooterLinks from "../../components/FooterLinks"
 
 export default function Settings() {
   const [darkTheme, setDarkTheme] = useState(false)
@@ -18,7 +19,7 @@ export default function Settings() {
 
   return (
     <>
-      <Header />
+      <Header configPage={true} />
       <main id="settings_container">
         <section id="your_account">
           <h2>Sua Conta</h2>
@@ -65,6 +66,9 @@ export default function Settings() {
           <button>Deletar</button>
         </section>
       </main>
+
+      <FooterLinks />
+
       <Footer />
     </>
   )
