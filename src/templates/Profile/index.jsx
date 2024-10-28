@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import Posts from "../../components/Posts"
+import FooterLinks from "../../components/FooterLinks"
 
 export default function Profile() {
   useEffect(() => {
@@ -44,7 +45,10 @@ export default function Profile() {
         <div id="posts_container">
           <Posts />
         </div>
+
+        <FooterLinks />
       </main>
+
       <Footer target={3} />
     </>
   )

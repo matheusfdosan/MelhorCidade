@@ -2,6 +2,7 @@ import "./styles.css"
 import { Link } from "react-router-dom"
 import Posts from "../../components/Posts"
 import { useEffect } from "react"
+import FooterLinks from "../../components/FooterLinks"
 
 export default function Landing() {
   useEffect(() => {
@@ -86,33 +87,7 @@ export default function Landing() {
           </div>
         </section>
       </main>
-      <footer>
-        <div className="container">
-          <em>&copy; 2024 MelhorCidade.</em>
-          <ul>
-            <li>
-              <Link to="/about">Sobre</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/signup">Cadastro</Link>
-            </li>
-            <li>
-              <Link
-                to="https://github.com/matheusfdosan/MelhorCidade_FrontEnd"
-                target="_blank"
-              >
-                Github
-              </Link>
-            </li>
-            <li>
-              <Link to="">Contact</Link>
-            </li>
-          </ul>
-        </div>
-      </footer>
+     <FooterLinks />
     </>
   )
 }

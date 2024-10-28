@@ -4,6 +4,7 @@ import "./styles.css"
 import Posts from "../../components/Posts"
 import Input from "../../components/Input"
 import { useEffect } from "react"
+import FooterLinks from "../../components/FooterLinks"
 
 export default function Homepage() {
   useEffect(() => {
@@ -36,7 +37,9 @@ export default function Homepage() {
         </div>
 
         <Posts />
+        <FooterLinks />
       </main>
+
       <Footer target={0} />
     </>
   )
