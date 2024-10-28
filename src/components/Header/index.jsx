@@ -3,7 +3,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import plusIcon from "../../assets/plus-icon.svg"
 import rightArrow from "../../assets/right-arrow-icon.svg"
-import settingsIcon from "../../assets/settings-icon.svg"
+import settingsIconFilled from "../../assets/settings-icon-filled.svg"
+import settingsIconOutlined from "../../assets/settings-icon-outlined.svg"
 
 export default function Header() {
   const [modalVisibility, setModalVisibility] = useState("deactivate")
@@ -34,7 +35,11 @@ export default function Header() {
           </ul>
 
           <Link to={"/settings"} id="settings_btn">
-            <img src={settingsIcon} alt="configs-btn" />
+            {document.URL.includes("settings") ? (
+              <img src={settingsIconFilled} alt="configs-btn" />
+            ) : (
+              <img src={settingsIconOutlined} alt="configs-btn" />
+            )}
           </Link>
 
           <div id="burguer">
@@ -58,13 +63,8 @@ export default function Header() {
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />
-          <Link to={"/notices"}>
-            Notícias
-            <img src={rightArrow} alt="right-arrow" />
-          </Link>
-          <hr />
-          <Link to={"/doubts"}>
-            Dúvidas
+          <Link to={"/account"}>
+            Sua Conta
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />

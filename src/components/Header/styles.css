@@ -160,8 +160,8 @@
     display: none;
   }
 
-  .burguer_menu.active {
-    top: 4.7rem;
+  #burguer {
+    display: none;
   }
 
   #settings_btn {
