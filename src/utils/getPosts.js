@@ -1,5 +1,5 @@
 import axios from "axios"
-
+//
 export default async function getLocations() {
   try {
     const response = await axios.get("/posts.json")
