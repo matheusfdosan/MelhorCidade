@@ -1,31 +1,46 @@
-import "./styles.css";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import makeLogin from "../../utils/makeLogin";
+import "./styles.css"
+import Input from "../../components/Input"
+import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import makeLogin from "../../utils/makeLogin"
 
 export default function Login() {
-  const [loginEmail, setLoginEmail] = useState();
-  const [loginPassword, setLoginPassword] = useState();
+  const [loginEmail, setLoginEmail] = useState()
+  const [loginPassword, setLoginPassword] = useState()
+
+  const [errorMessage, setErrorMessage] = useState(false)
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Login";
-  }, []);
-  
-  // const getLoginInfo = localStorage.getItem("Login")
-  // JSON.parse(getLoginInfo).email
-  // JSON.parse(getLoginInfo).password
+    document.title = "Melhor Cidade - Login"
+  }, [])
 
   const handleSubmitLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const makeLoginInfo = await makeLogin(loginEmail, loginPassword)
 
-    if (makeLoginInfo) {
-      document.location.href = "/homepage"  
+    if (makeLoginInfo.serverResponse) {
+      localStorage.setItem(
+        "Login",
+        JSON.stringify({
+          email: loginEmail,
+          password: loginPassword,
+        })
+      )
+
+      localStorage.setItem(
+        "CookieId",
+        JSON.stringify({
+          cookie: makeLoginInfo.cookie,
+          id: makeLoginInfo.id,
+        })
+      )
+
+      document.location.href = "/homepage"
+      setErrorMessage(false)
+    } else {
+      setErrorMessage(true)
     }
-    
-  };
+  }
 
   return (
     <>
@@ -50,15 +65,21 @@ export default function Login() {
               onChangeInput={(e) => setLoginPassword(e.target.value)}
             />
 
+            <span id={"error_msg_" + errorMessage}>
+              Dados de login incorretos
+            </span>
+
             <p>
               Não tem uma conta? <Link to={"/signup"}>Registre-se</Link>
             </p>
 
-            <button type="submit">Fazer Login</button>
+            <button type="submit" id="login_submit_button">
+              Fazer Login
+            </button>
           </form>
         </div>
         <div id="login_right"></div>
       </main>
     </>
-  );
+  )
 }

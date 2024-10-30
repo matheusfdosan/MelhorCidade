@@ -41,6 +41,36 @@
   background-repeat: no-repeat;
 }
 
+#error_msg_false {
+  display: none;
+  color: var(--red);
+}
+
+#error_msg_true {
+  display: block;
+  color: var(--red);
+}
+
+#login_submit_button {
+  background-color: var(--light-blue);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.8rem;
+  padding: 1.5rem 0;
+  border: none;
+  width: 100%;
+  border-radius: 0.5rem;
+  text-align: center;
+  height: fit-content;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 200ms ease-in;
+}
+
+#login_submit_button:hover {
+  background-color: #4666be;
+}
+
 @media (max-width: 900px) {
   #login_left {
     width: 70%;

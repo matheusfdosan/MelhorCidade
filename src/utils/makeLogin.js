@@ -7,17 +7,15 @@ export default async function makeLogin(email, password) {
       senha: password,
     });
 
+    console.log(response.data);
+
     if (response.data.acesso) {
       const userCookie = response.data.cookie
       const userId = response.data.id
-      localStorage.setItem("CookieId", JSON.stringify({
-        cookie: userCookie,
-        id: userId
-      }))
-      return true
+      return {serverResponse: response.data.acesso, cookie: userCookie, id: userId}
     }
   } catch (error) {
-    console.log("Failed to fetch posts:" + error);
+    console.log("Failed to make login:" + error);
     throw error;
   }
 }
