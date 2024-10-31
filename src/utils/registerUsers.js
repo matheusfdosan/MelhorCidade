@@ -6,7 +6,7 @@ export default async function registerUser(form) {
   try {
     axios
       .post(
-        "http://localhost:3002/api/",
+        "http://localhost:3002/api/criarConta",
         {
           nome: name,
           email: email,
@@ -29,4 +29,3 @@ export default async function registerUser(form) {
     throw new Error("Failed to fetch" + error)
   }
 }
-
