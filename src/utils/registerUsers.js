@@ -6,12 +6,12 @@ export default async function registerUser(form) {
   try {
     axios
       .post(
-        "http://localhost:1324/api/users",
+        "http://localhost:3002/api/",
         {
-          name: name,
+          nome: name,
           email: email,
-          address: address,
-          password: password,
+          endereco: address,
+          senha: password,
         },
         {
           headers: {
