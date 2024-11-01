@@ -30,8 +30,8 @@ export default function Login() {
       localStorage.setItem(
         "CookieId",
         JSON.stringify({
-          cookie: makeLoginInfo.cookie,
-          id: makeLoginInfo.id,
+          cookie: authServiceResponse.cookie,
+          id: authServiceResponse.id,
         })
       )
 

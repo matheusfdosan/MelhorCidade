@@ -10,7 +10,13 @@ export default function Settings() {
   const [darkTheme, setDarkTheme] = useState(false)
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Configurações"
+    const cookie = localStorage.getItem("CookieId")
+    if (!cookie) {
+      document.location.href = "/login"
+    } else {
+      document.title = "Melhor Cidade - Configurações"
+
+    }
   }, [])
 
   const handleClickToggler = () => {

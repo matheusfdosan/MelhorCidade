@@ -8,7 +8,12 @@ import FooterLinks from "../../components/FooterLinks"
 
 export default function Homepage() {
   useEffect(() => {
-    document.title = "Melhor Cidade - Página Inicial"
+    const cookie = localStorage.getItem("CookieId")
+    if (!cookie) {
+      document.location.href = "/login"
+    } else {
+      document.title = "Melhor Cidade - Página Inicial"
+    }
   }, [])
 
   return (

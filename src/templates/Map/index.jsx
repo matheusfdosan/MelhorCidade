@@ -21,18 +21,23 @@ export default function Map() {
   const [centerMap, setCenterMap] = useState([-23.68524, -46.620502])
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Mapa de Denúncias"
+    const cookie = localStorage.getItem("CookieId")
+    if (!cookie) {
+      document.location.href = "/login"
+    } else {
+      document.title = "Melhor Cidade - Mapa de Denúncias"
 
-    const loadLocationData = async () => {
-      try {
-        const data = await getPosts()
-        setLocationData(data)
-      } catch (error) {
-        console.log("Failed to fetch locals:" + error)
+      const loadLocationData = async () => {
+        try {
+          const data = await getPosts()
+          setLocationData(data)
+        } catch (error) {
+          console.log("Failed to fetch locals:" + error)
+        }
       }
-    }
 
-    loadLocationData()
+      loadLocationData()
+    }
   }, [])
 
   const handleClickLocalItem = (local) => {

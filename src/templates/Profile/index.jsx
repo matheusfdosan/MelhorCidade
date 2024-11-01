@@ -7,7 +7,12 @@ import FooterLinks from "../../components/FooterLinks"
 
 export default function Profile() {
   useEffect(() => {
-    document.title = "Melhor Cidade - Perfil"
+    const cookie = localStorage.getItem("CookieId")
+    if (!cookie) {
+      document.location.href = "/login"
+    } else {
+      document.title = "Melhor Cidade - Perfil"
+    }
   }, [])
 
   return (
