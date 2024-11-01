@@ -1,6 +1,6 @@
 import "./style.css"
 import Input from "../../components/Input"
-import registerUser from "../../utils/registerUsers"
+import registerService from "../../utils/registerService"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
@@ -26,7 +26,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (form.password === form.confirmPassword) {
-      registerUser(form)
+      registerService(form)
       setConfirmPassword(false)
       localStorage.setItem(
         "Login",
