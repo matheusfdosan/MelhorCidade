@@ -9,7 +9,7 @@ import "./styles.css";
 import uploadIcon from "../../assets/upload-icon.svg";
 import markerIcon from "../../assets/red-marker-filled-icon.svg";
 import FooterLinks from "../../components/FooterLinks";
-import makePost from "../../utils/makePost";
+import contentService from "../../utils/contentService";
 
 const customIcon = new L.Icon({
   iconUrl: markerIcon,
@@ -153,7 +153,7 @@ export default function Report() {
       userId
     );
 
-    // makePost(
+    // contentService(
     //   form.category,
     //   address,
     //   form.what_happend,
