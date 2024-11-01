@@ -2,7 +2,7 @@ import "./styles.css"
 import Input from "../../components/Input"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import makeLogin from "../../utils/makeLogin"
+import authService from "../../utils/authService"
 
 export default function Login() {
   const [loginEmail, setLoginEmail] = useState()
@@ -16,9 +16,9 @@ export default function Login() {
 
   const handleSubmitLogin = async (e) => {
     e.preventDefault()
-    const makeLoginInfo = await makeLogin(loginEmail, loginPassword)
+    const authServiceResponse = await authService(loginEmail, loginPassword)
 
-    if (makeLoginInfo.serverResponse) {
+    if (authServiceResponse.serverResponse) {
       localStorage.setItem(
         "Login",
         JSON.stringify({
