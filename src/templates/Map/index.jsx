@@ -27,6 +27,19 @@ export default function Map() {
     } else {
       document.title = "Melhor Cidade - Mapa de Denúncias"
 
+      const getUserLocation = async () => {
+        try {
+          const position = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject)
+          })
+          const { latitude, longitude } = position.coords
+          setCenterMap([latitude, longitude])
+        } catch (err) {
+          console.log("Error to get user coordinates: " + err)
+        }
+      }
+      getUserLocation()
+
       const loadLocationData = async () => {
         try {
           const data = await getPosts()

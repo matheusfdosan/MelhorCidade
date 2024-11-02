@@ -23,9 +23,9 @@ function ChangeMapView({ center }) {
   return null
 }
 
-export default function TheMap({ centerProp, mapIsMovng }) {
+export default function TheMap({ centerProp }) {
   const [locationData, setLocationData] = useState([])
-  const fillRedOptions = { color: "#ff353a", fillColor: "#ff353a" }
+  const fillRedOptions = { color: "#3545ff", fillColor: "#3545ff91" }
 
   useEffect(() => {
     const loadLocationData = async () => {
@@ -46,7 +46,6 @@ export default function TheMap({ centerProp, mapIsMovng }) {
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
   })
-
 
   return (
     <>

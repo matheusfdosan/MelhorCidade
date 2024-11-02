@@ -58,6 +58,7 @@ textarea {
   color: var(--white);
   border: none;
   height: 4.7rem;
+  font-family: var(--poppins-font);
   font-size: 1.6rem;
   border-radius: 0.5rem;
   padding: 1rem;

@@ -233,7 +233,7 @@ export default function Report() {
             onChange={handleAddressInput}
           />
           <button type="button" onClick={handleAnalyzeClick}>
-            Analisar
+            Posicionar
           </button>
         </div>
 
