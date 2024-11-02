@@ -3,13 +3,15 @@ import Footer from "../../components/Footer";
 import { useEffect } from "react";
 import React, { useState, useRef, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import getAddress from "../../utils/getAddress";
+import getAddress from "../../utils/geocodeService";
 import "leaflet/dist/leaflet.css";
 import "./styles.css";
 import uploadIcon from "../../assets/upload-icon.svg";
 import markerIcon from "../../assets/red-marker-filled-icon.svg";
 import FooterLinks from "../../components/FooterLinks";
 import contentService from "../../utils/contentService";
+import geocodeService from "../../utils/geocodeService";
+import reverseGeocodeService from "../../utils/reverseGeocodeService";
 
 const customIcon = new L.Icon({
   iconUrl: markerIcon,
@@ -97,10 +99,8 @@ export default function Report() {
     const fetchAddress = async () => {
       if (positionMap) {
         try {
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${positionMap.lat}&lon=${positionMap.lng}&format=json`
-          );
-          const data = await response.json();
+          const response = await reverseGeocodeService(positionMap.lat, positionMap.lng)
+          const data = response;
           setAddress(data.display_name || "Endereço não encontrado");
         } catch (error) {
           console.error("Erro ao buscar o endereço:", error);
@@ -165,9 +165,9 @@ export default function Report() {
   };
 
   const handleAnalyzeClick = () => {
-    const getTheAddress = async () => {
+    const getCoordinates = async () => {
       try {
-        const data = await getAddress(inputAddress);
+        const data = await geocodeService(inputAddress);
         setPositionMap({ lat: data[0].lat, lng: data[0].lon });
         setCenterMap([data[0].lat, data[0].lon]);
       } catch (error) {
@@ -175,7 +175,7 @@ export default function Report() {
       }
     };
 
-    getTheAddress();
+    getCoordinates();
   };
 
   return (
