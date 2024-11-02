@@ -37,7 +37,13 @@ textarea {
   margin-bottom: 2rem;
 }
 
-#set_address > input, #category {
+#complaints_category {
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+}
+
+#set_address > input,
+#complaints_category {
   font-family: var(--poppins-font);
   width: 100%;
   padding: 1rem;
@@ -84,31 +90,42 @@ textarea {
   display: none;
 }
 
-label[for="add_image_btn"] {
-  width: 100%;
-  height: 25rem;
-  background-color: var(--gray-inputs);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border: 0.2rem dashed var(--gray-inputs-border);
-  cursor: pointer;
-  border-radius: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: background-color 200ms ease;
-  color: var(--light-blue);
+#add_img_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22rem, auto));
+  gap: 2rem;
 }
 
-label[for="add_image_btn"]:hover {
+.add_img {
+  background-color: var(--gray-inputs);
+  border: 0.1rem solid var(--gray-inputs-border);
+  border-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 100ms ease;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 15rem;
+}
+
+.add_img > img {
+  transition: transform 200ms ease;
+  transform: scale(1.2);
+}
+
+.add_img:hover > img {
+  transform: scale(1.4);
+}
+
+.add_img:hover {
   background-color: #cdcdcd;
 }
 
-label[for="add_image_btn"] > img {
-  width: 6rem;
-  height: 6rem;
+.file_input {
+  display: none;
 }
 
 .post-btn {
