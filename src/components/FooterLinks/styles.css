@@ -69,6 +69,7 @@ footer .container > #links > ul > li > a:hover::after {
   }
 
   footer .container > #links {
+    align-items: normal;
     flex-direction: column-reverse;
     gap: 3rem;
   }
