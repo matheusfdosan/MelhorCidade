@@ -2,6 +2,7 @@ import "./styles.css"
 import crossIcon from "../../assets/cross-icon.svg"
 import redMarker from "../../assets/red-marker.svg"
 import thumbUpIcon from "../../assets/thumb-up-icon.svg"
+import Input from "../../components/Input"
 
 export default function ReadReportModal({
   specificPostData: data,
@@ -58,12 +59,21 @@ export default function ReadReportModal({
             <div id="comments">
               <h2>Comentários:</h2>
 
+
+                <label htmlFor="add_a_comment">Adicione um comentário</label>
+                <div id="add_your_comment">
+                  <Input idName={"add_a_comment"} placeholder={"Seu comentário..."} />
+                  <button>Comentar</button>
+                </div>
+
               <ul>
-                {data.comments.map(comment => {
-                  return <li key={comment.id}>
-                    <h3>{comment.username}: </h3>
-                    <p>{comment.body}</p>
-                  </li>
+                {data.comments.map((comment) => {
+                  return (
+                    <li key={comment.id}>
+                      <h3>{comment.username}: </h3>
+                      <p>{comment.body}</p>
+                    </li>
+                  )
                 })}
               </ul>
             </div>
