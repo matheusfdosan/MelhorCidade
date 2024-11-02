@@ -159,28 +159,10 @@ section#landing_hero > .container > a:hover {
   margin-top: 3rem;
 }
 
-footer .container {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 3rem 0;
-}
-
-footer .container > ul {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-footer .container > ul > li > a {
-  color: var(--dark);
-  text-decoration: none;
-}
-
-footer .container > ul > li > a:hover {
-  text-decoration: underline;
-  text-underline-offset: 0.6rem;
+#landing_footer {
+  width: 100%;
+  padding: 0 10%;
+  background-color: var(--gray-inputs);
 }
 
 @media (min-width: 1115px) {

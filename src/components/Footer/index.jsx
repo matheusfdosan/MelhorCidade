@@ -15,7 +15,7 @@ import userIcon_filled from "../../assets/user-icon-filled.svg"
 
 export default function Footer({ target }) {
   return (
-    <footer id="footer_homepage">
+    <div id="footer_homepage">
       <div id="footer_container">
         <Link to="/homepage">
           <img
@@ -42,6 +42,6 @@ export default function Footer({ target }) {
           />
         </Link>
       </div>
-    </footer>
+    </div>
   )
 }

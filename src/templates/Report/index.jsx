@@ -128,7 +128,7 @@ export default function Report() {
     if (!(e.target && e.target.files && e.target.files.length > 0)) {
       return
     }
-    console.log();
+    console.log()
     const file = e.target.files[0]
 
     if (file) {
@@ -138,13 +138,12 @@ export default function Report() {
 
       const reader = new FileReader()
       reader.onload = () => {
-        if (e.target.id == "add_first_img"){
+        if (e.target.id == "add_first_img") {
           setComplaintImageFirst(reader.result)
         } else if (e.target.id == "add_second_img") {
           setComplaintImageSecond(reader.result)
         } else if (e.target.id == "add_third_img") {
           setComplaintImageThird(reader.result)
-
         }
       }
       reader.readAsDataURL(file)
@@ -351,7 +350,10 @@ export default function Report() {
           Publicar
         </button>
       </form>
-      <FooterLinks />
+
+      <div id="report_footer">
+        <FooterLinks />
+      </div>
 
       <Footer target={1} />
     </>

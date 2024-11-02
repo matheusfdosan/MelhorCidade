@@ -42,8 +42,11 @@ export default function Homepage() {
         </div>
 
         <Posts />
-        <FooterLinks />
       </main>
+
+      <div id="homepage_footer">
+        <FooterLinks />
+      </div>
 
       <Footer target={0} />
     </>

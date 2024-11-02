@@ -87,7 +87,10 @@ export default function Landing() {
           </div>
         </section>
       </main>
-     <FooterLinks />
+
+      <div id="landing_footer">
+        <FooterLinks />
+      </div>
     </>
   )
 }

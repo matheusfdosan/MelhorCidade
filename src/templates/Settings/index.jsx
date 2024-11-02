@@ -15,7 +15,6 @@ export default function Settings() {
       document.location.href = "/login"
     } else {
       document.title = "Melhor Cidade - Configurações"
-
     }
   }, [])
 
@@ -72,8 +71,10 @@ export default function Settings() {
           <button>Deletar</button>
         </section>
       </main>
-
-      <FooterLinks />
+      
+      <div id="settings_footer">
+        <FooterLinks />
+      </div>
 
       <Footer />
     </>

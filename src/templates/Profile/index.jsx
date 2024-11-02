@@ -47,12 +47,12 @@ export default function Profile() {
         </div>
 
         <h2>Suas Postagens</h2>
-        <div id="posts_container">
           <Posts />
-        </div>
+        </main>
 
+      <div id="profile_footer">
         <FooterLinks />
-      </main>
+      </div>
 
       <Footer target={3} />
     </>

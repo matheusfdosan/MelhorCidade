@@ -126,3 +126,10 @@
 #delete_account > button:hover {
   background-color: #a72a2a;
 }
+
+#settings_footer {
+  width: 100%;
+  padding: 0 10%;
+  background-color: var(--gray-inputs);
+
+}

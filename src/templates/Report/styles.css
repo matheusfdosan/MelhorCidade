@@ -146,6 +146,12 @@ textarea {
   background-color: #435a99;
 }
 
+#report_footer {
+  width: 100%;
+  padding: 0 10%;
+  background-color: var(--gray-inputs);
+}
+
 @media (min-width: 768px) {
   .map-container {
     height: 300px;
