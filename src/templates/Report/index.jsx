@@ -1,20 +1,19 @@
 import "./styles.css"
 
-import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import FooterLinks from "../../components/FooterLinks"
+import Header from "../../components/Header"
 
-import { useEffect } from "react"
-import React, { useState, useRef, useMemo } from "react"
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet"
 import "leaflet/dist/leaflet.css"
+import React, { useEffect, useMemo, useRef, useState } from "react"
+import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet"
 
-import uploadIcon from "../../assets/rounded-plus-icon.svg"
 import markerIcon from "../../assets/red-marker-filled-icon.svg"
+import uploadIcon from "../../assets/rounded-plus-icon.svg"
 
+import contentService from "../../utils/contentService"
 import geocodeService from "../../utils/geocodeService"
 import reverseGeocodeService from "../../utils/reverseGeocodeService"
-import contentService from "../../utils/contentService"
 
 const customIcon = new L.Icon({
   iconUrl: markerIcon,
@@ -71,15 +70,10 @@ export default function Report() {
   const [complaintImageFirst, setComplaintImageFirst] = useState()
   const [complaintImageSecond, setComplaintImageSecond] = useState()
   const [complaintImageThird, setComplaintImageThird] = useState()
-
-  const [form, setForm] = useState({
-    what_happend: "",
-    category: "",
-  })
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value })
-  }
+  const [whatHappend, setWhatHappend] = useState()
+  const [category, setCategory] = useState()
+  const [buffers, setBuffers] = useState([])
+  const [formData, setFormData] = useState([])
 
   useEffect(() => {
     const getUserLocation = async () => {
@@ -128,13 +122,12 @@ export default function Report() {
     if (!(e.target && e.target.files && e.target.files.length > 0)) {
       return
     }
-    console.log()
+
     const file = e.target.files[0]
 
     if (file) {
       const buffer = await file.arrayBuffer()
-
-      setImages(buffer)
+      setBuffers((prevBuffers) => [...prevBuffers, buffer])
 
       const reader = new FileReader()
       reader.onload = () => {
@@ -150,32 +143,48 @@ export default function Report() {
     }
   }
 
+  const handleWhatHappendInput = (e) => {
+    setWhatHappend(e.target.value)
+  }
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value)
+  }
+
   const handleSubmitComplaint = (e) => {
     e.preventDefault()
 
-    const cookieAndId = localStorage.getItem("cookieId")
+    const cookieAndId = localStorage.getItem("CookieId")
     const userCookie = JSON.parse(cookieAndId).cookie
     const userId = JSON.parse(cookieAndId).id
 
-    console.log(
-      form.category,
+    console.log(whatHappend,
+      category,
       address,
-      form.what_happend,
-      images,
+      buffers,
       { latitude: positionMap.lat, longitude: positionMap.lng },
       userCookie,
-      userId
-    )
+      userId)
 
-    // contentService(
-    //   form.category,
-    //   address,
-    //   form.what_happend,
-    //   images,
-    //   { latitude: positionMap.lat, longitude: positionMap.lng },
-    //   userCookie,
-    //   userId
-    // );
+    const sendPostData = async () => {
+      try {
+        const reponseContent = await contentService(
+          whatHappend,
+          category,
+          address,
+          buffers,
+          { latitude: positionMap.lat, longitude: positionMap.lng },
+          userCookie,
+          userId
+        )
+
+        console.log(reponseContent)
+      } catch (err) {
+        console.log("Error to send post data: " + err)
+      }
+    }
+
+    sendPostData()
   }
 
   const handleAnalyzeClick = () => {
@@ -201,23 +210,42 @@ export default function Report() {
         <textarea
           placeholder="O que aconteceu?"
           id="what_happened"
-          onChange={handleChange}
+          onChange={handleWhatHappendInput}
           required
         ></textarea>
 
         <label htmlFor="category">Categoria do problema:</label>
-        <select name="complaints_category" id="complaints_category">
-          <option>Espaços Públicos e Áreas de Lazer</option>
-          <option>Iluminação Pública</option>
-          <option>Infraestrutura Viária</option>
-          <option>Serviços de Transporte e Mobilidade</option>
-          <option>Saneamento Básico</option>
-          <option>Segurança Urbana</option>
-          <option>Problemas com Telefonia e Internet</option>
-          <option>Poluição e Meio Ambiente</option>
-          <option>Edificações e Estruturas Públicas</option>
-          <option>Saúde Pública e Controle de Pragas</option>
-          <option>Equipamentos Públicos e Tecnológicos</option>
+        <select
+          name="complaints_category"
+          id="category"
+          value={category}
+          onChange={handleCategoryChange}
+        >
+          <option value="Espaços Públicos e Áreas de Lazer">
+            Espaços Públicos e Áreas de Lazer
+          </option>
+          <option value="Iluminação Pública">Iluminação Pública</option>
+          <option value="Infraestrutura Viária">Infraestrutura Viária</option>
+          <option value="Serviços de Transporte e Mobilidade">
+            Serviços de Transporte e Mobilidade
+          </option>
+          <option value="Saneamento Básico">Saneamento Básico</option>
+          <option value="Segurança Urbana">Segurança Urbana</option>
+          <option value="Problemas com Telefonia e Internet">
+            Problemas com Telefonia e Internet
+          </option>
+          <option value="Poluição e Meio Ambiente">
+            Poluição e Meio Ambiente
+          </option>
+          <option value="Edificações e Estruturas Públicas">
+            Edificações e Estruturas Públicas
+          </option>
+          <option value="Saúde Pública e Controle de Pragas">
+            Saúde Pública e Controle de Pragas
+          </option>
+          <option value="Equipamentos Públicos e Tecnológicos">
+            Equipamentos Públicos e Tecnológicos
+          </option>
           <option>Outro...</option>
         </select>
 
@@ -322,7 +350,6 @@ export default function Report() {
         <input
           type="file"
           accept="image/*"
-          required
           id="add_first_img"
           className="file_input"
           onChange={handleImageChange}
@@ -331,7 +358,6 @@ export default function Report() {
         <input
           type="file"
           accept="image/*"
-          required
           id="add_second_img"
           className="file_input"
           onChange={handleImageChange}
@@ -340,7 +366,6 @@ export default function Report() {
         <input
           type="file"
           accept="image/*"
-          required
           id="add_third_img"
           className="file_input"
           onChange={handleImageChange}

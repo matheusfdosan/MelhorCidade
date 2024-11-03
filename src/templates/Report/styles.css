@@ -37,13 +37,13 @@ textarea {
   margin-bottom: 2rem;
 }
 
-#complaints_category {
+#category {
   margin-bottom: 2rem;
   padding-right: 2rem;
 }
 
 #set_address > input,
-#complaints_category {
+#category {
   font-family: var(--poppins-font);
   width: 100%;
   padding: 1rem;

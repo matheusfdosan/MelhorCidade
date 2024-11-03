@@ -3,7 +3,7 @@
     "id": 0,
     "title": "Buraco perigoso na via principal",
     "owner": "Maria Antunes",
-    "image": "https://cdn.codiehost.com.br/eusoucidadania/878c4dd8-cc37-4042-ac6c-2dd56dfd04c9.jpg",
+    "image": ["https://cdn.codiehost.com.br/eusoucidadania/878c4dd8-cc37-4042-ac6c-2dd56dfd04c9.jpg"],
     "description": "Um grande buraco se formou na Avenida Paulista, próximo ao número 1000, há cerca de três semanas. O buraco está causando muitos transtornos, com vários motoristas tendo seus veículos danificados. Já ocorreram dois acidentes leves, além de muitos motoristas tendo que desviar bruscamente para evitar o buraco, o que representa um risco iminente de acidentes mais graves. É urgente que a prefeitura realize o reparo, pois se trata de uma via de grande movimento, especialmente durante o horário de pico.",
     "location": {
       "position": {

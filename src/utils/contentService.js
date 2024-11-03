@@ -11,19 +11,26 @@ export default async function contentService(
 ) {
   try {
     const url = import.meta.env.VITE_NEW_REPORT_API
-    console.log("Tá aqui: " + url);
 
-    const response = await axios.post(url, {
-      Categoria: category,
-      Referencia: address,
-      Ocorrencia: what_happened,
-      Imagens: new Blob([images]),
-      CoordenadasOcorrencia: coords,
-      cookie: cookie,
-      _idUser: id,
-    })
+    const response = await axios.post(
+      url,
+      JSON.stringify({
+        Categoria: category,
+        Referencia: address,
+        Ocorrencia: what_happened,
+        Imagens: images,
+        CoordenadasOcorrencia: coords,
+        cookie: cookie,
+        _idUser: id,
+      }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
 
-    console.log(response)
+    console.log(response.data)
   } catch (error) {
     console.log("Failed to send complaint:" + error)
     throw error
