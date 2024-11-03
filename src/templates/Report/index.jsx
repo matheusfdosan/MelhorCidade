@@ -64,16 +64,17 @@ function DraggableMarker({ position, setPosition }) {
 export default function Report() {
   const [inputAddress, setInputAddress] = useState()
   const [address, setAddress] = useState()
+
   const [positionMap, setPositionMap] = useState(null)
-  const [images, setImages] = useState(null)
   const [centerMap, setCenterMap] = useState([])
+  
   const [complaintImageFirst, setComplaintImageFirst] = useState()
   const [complaintImageSecond, setComplaintImageSecond] = useState()
   const [complaintImageThird, setComplaintImageThird] = useState()
-  const [whatHappend, setWhatHappend] = useState()
-  const [category, setCategory] = useState()
   const [buffers, setBuffers] = useState([])
-  const [formData, setFormData] = useState([])
+  
+  const [whatHappend, setWhatHappend] = useState()
+  const [category, setCategory] = useState("Espaços Públicos e Áreas de Lazer")
 
   useEffect(() => {
     const getUserLocation = async () => {
@@ -168,7 +169,7 @@ export default function Report() {
 
     const sendPostData = async () => {
       try {
-        const reponseContent = await contentService(
+        await contentService(
           whatHappend,
           category,
           address,

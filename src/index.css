@@ -9,15 +9,41 @@
   --sora-font: "Sora", sans-serif;
   --urbanist-font: "Urbanist", sans-serif;
   --poppinst-font: "Poppins", sans-serif;
+  --red: #ff353a;
+  --light-blue: #597de1;
+}
+
+:root {
   --gray-one: #424242;
   --gray-inputs-border: #a3a3a3;
   --gray-inputs: #e9e9e9;
   --gray-scroll: #a3a3a3;
   --gray-background: #f1f2f3;
-  --white: #FBFBFB;
+  --white: #fbfbfb;
   --dark: #212121;
-  --red: #ff353a;
-  --light-blue: #597de1;
+}
+
+/* :root {
+  --gray-one: #323638;
+  --gray-inputs-border: #4c5255;
+  --gray-inputs: #242729;
+  --gray-scroll: #4c5255;
+  --gray-background: #1f2223;
+  --white: #1a1c1e;
+  --dark: #d7d4cf;
+} */
+
+h1,
+h2,
+h3,
+p,
+span,
+input,
+select,
+textarea,
+button,
+a {
+  color: var(--dark);
 }
 
 html {

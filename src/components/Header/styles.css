@@ -3,7 +3,8 @@
   flex-direction: column;
   border-bottom: .1rem solid var(--gray-inputs-border);
   background-color: var(--white);
-  height: 8rem;
+  height: 10%;
+  min-height: 7rem;
   position: relative;
   z-index: 2;
 }
@@ -22,7 +23,7 @@
 
 #header_container > a {
   user-select: none;
-  color: #424242;
+  color: var(--dark);
   text-decoration: none;
   cursor: pointer;
   font-family: var(--urbanist-font);

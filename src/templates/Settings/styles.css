@@ -116,7 +116,7 @@
   font-size: 1.6rem;
   font-family: var(--poppins-font);
   background-color: var(--red);
-  color: var(--white);
+  color: #fbfbfb;
   border-radius: 1rem;
   border: none;
   cursor: pointer;

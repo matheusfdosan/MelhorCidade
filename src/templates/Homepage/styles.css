@@ -7,7 +7,7 @@
 
 #users_posts > h2 {
   font-size: 2rem;
-  color: #424242;
+  color: var(--dark);
   margin-bottom: 2rem;
 }
 
