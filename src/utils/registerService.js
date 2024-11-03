@@ -8,12 +8,12 @@ export default async function registerService(form) {
     axios
       .post(
         url,
-        {
+        JSON.stringify({
           nome: name,
           email: email,
           endereco: address,
           senha: password,
-        },
+        }),
         {
           headers: {
             "Content-Type": "application/json",

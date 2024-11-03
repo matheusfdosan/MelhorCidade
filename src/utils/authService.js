@@ -17,8 +17,6 @@ export default async function authService(email, password) {
       }
     )
 
-    console.log(response.data)
-
     if (response.data.acesso) {
       const userCookie = response.data.cookie
       const userId = response.data.id
@@ -29,7 +27,7 @@ export default async function authService(email, password) {
       }
     }
   } catch (error) {
-    console.log("Failed to make login:" + error)
+    console.log("Failed to make login: " + error)
     throw error
   }
 }

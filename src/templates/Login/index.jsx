@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault()
     const authServiceResponse = await authService(loginEmail, loginPassword)
 
-    if (authServiceResponse.serverResponse) {
+    if (authServiceResponse) {
       localStorage.setItem(
         "Login",
         JSON.stringify({
