@@ -9,14 +9,18 @@ import topArrowIcon from "../../assets/top-arrow-icon.svg"
 import leftArrowIcon from "../../assets/left-arrow-icon.svg"
 import seeReportsIcon from "../../assets/report-icon.svg"
 
-import Footer from "../../components/Footer"
+import homeIcon_outlined from "../../assets/home-icon-outlined.svg"
+import darkPlusIcon_Outilined from "../../assets/dark-plus-icon-outlined.svg"
+import mapIcon_filled from "../../assets/map-icon-filled.svg"
+import userIcon_outlined from "../../assets/user-icon-outlined.svg"
+
 import Header from "../../components/Header"
 
 import TheMap from "../../components/TheMap"
 import getPosts from "../../utils/getPosts.js"
 
 export default function Map() {
-  const [barVisibility, setBarVisibility] = useState(false)
+  const [barVisibility, setBarVisibility] = useState(true)
   const [locationData, setLocationData] = useState([])
   const [centerMap, setCenterMap] = useState([-23.68524, -46.620502])
 
@@ -112,7 +116,35 @@ export default function Map() {
           </div>
         </div>
       </main>
-      <Footer target={2} />
+
+      <footer id="footer_homepage_handmade">
+      <div id="footer_container">
+        <Link to="/homepage">
+          <img
+            src={homeIcon_outlined}
+            alt="home-button"
+          />
+        </Link>
+        <Link to="/report">
+          <img
+            src={darkPlusIcon_Outilined}
+            alt="report-button"
+          />
+        </Link>
+        <Link to="/map">
+          <img
+            src={mapIcon_filled}
+            alt="profile-button"
+          />
+        </Link>
+        <Link to="/account">
+          <img
+            src={userIcon_outlined}
+            alt="profile-button"
+          />
+        </Link>
+      </div>
+    </footer>
     </div>
   )
 }
