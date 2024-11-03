@@ -29,7 +29,7 @@ export default function Header() {
             <li>
               <Link to={"/report"}>
                 <img src={plusIcon} alt="plus_icon" />
-                Denunciar
+                Nova Denúncia
               </Link>
             </li>
           </ul>
