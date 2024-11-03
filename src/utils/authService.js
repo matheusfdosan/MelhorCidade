@@ -2,14 +2,14 @@ import axios from "axios"
 
 export default async function authService(email, password) {
   const url = import.meta.env.VITE_ACESS_API
-  
+
   try {
     const response = await axios.post(
       url,
-      {
+      JSON.stringify({
         email: email,
         senha: password,
-      },
+      }),
       {
         headers: {
           "Content-Type": "application/json",
