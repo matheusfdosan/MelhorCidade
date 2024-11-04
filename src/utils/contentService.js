@@ -4,7 +4,7 @@ export default async function contentService(
   category,
   address,
   what_happened,
-  images,
+  files,
   coords,
   cookie,
   id
@@ -18,7 +18,7 @@ export default async function contentService(
         Categoria: category,
         Referencia: address,
         Ocorrencia: what_happened,
-        Imagens: images,
+        Images: files,
         CoordenadasOcorrencia: coords,
         cookie: cookie,
         _idUser: id,

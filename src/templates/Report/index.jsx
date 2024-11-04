@@ -67,12 +67,12 @@ export default function Report() {
 
   const [positionMap, setPositionMap] = useState(null)
   const [centerMap, setCenterMap] = useState([])
-  
+
   const [complaintImageFirst, setComplaintImageFirst] = useState()
   const [complaintImageSecond, setComplaintImageSecond] = useState()
   const [complaintImageThird, setComplaintImageThird] = useState()
   const [buffers, setBuffers] = useState([])
-  
+
   const [whatHappend, setWhatHappend] = useState()
   const [category, setCategory] = useState("Espaços Públicos e Áreas de Lazer")
 
@@ -124,12 +124,20 @@ export default function Report() {
       return
     }
 
+    const files = Array.from(e.target.files);
+
+    const newBuffers = await Promise.all(
+      files.map(async (file) => {
+        const buffer = await file.arrayBuffer();
+        return buffer;
+      })
+    );
+
+    setBuffers((prevBuffers) => [...prevBuffers, ...newBuffers]);
+
     const file = e.target.files[0]
 
     if (file) {
-      const buffer = await file.arrayBuffer()
-      setBuffers((prevBuffers) => [...prevBuffers, buffer])
-
       const reader = new FileReader()
       reader.onload = () => {
         if (e.target.id == "add_first_img") {
@@ -159,27 +167,28 @@ export default function Report() {
     const userCookie = JSON.parse(cookieAndId).cookie
     const userId = JSON.parse(cookieAndId).id
 
-    console.log(whatHappend,
-      category,
-      address,
-      buffers,
-      { latitude: positionMap.lat, longitude: positionMap.lng },
-      userCookie,
-      userId)
+    const formData = new FormData();
+    buffers.forEach((buffer, index) => {
+      const blob = new Blob([buffer], { type: "image/jpeg" });
+      formData.append(`image_${index + 1}`, blob, `image_${index + 1}.jpg`);
+    });
+
+    // Log para verificar os dados no FormData
+    for (const [key, value] of formData.entries()) {
+      console.log(`FormData key: ${key}, value:`, value);
+    }
 
     const sendPostData = async () => {
       try {
-        await contentService(
+        contentService(
           whatHappend,
           category,
           address,
-          buffers,
+          formData,
           { latitude: positionMap.lat, longitude: positionMap.lng },
           userCookie,
           userId
         )
-
-        console.log(reponseContent)
       } catch (err) {
         console.log("Error to send post data: " + err)
       }
@@ -353,6 +362,7 @@ export default function Report() {
           accept="image/*"
           id="add_first_img"
           className="file_input"
+          multiple
           onChange={handleImageChange}
         />
 
@@ -361,6 +371,7 @@ export default function Report() {
           accept="image/*"
           id="add_second_img"
           className="file_input"
+          multiple
           onChange={handleImageChange}
         />
 
@@ -369,6 +380,7 @@ export default function Report() {
           accept="image/*"
           id="add_third_img"
           className="file_input"
+          multiple
           onChange={handleImageChange}
         />
 
