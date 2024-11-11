@@ -14,7 +14,7 @@ Temos discutido, entre nós, a ideia de melhorar a comunicação entre os cidad�
 
 - *Mapa de denúncias*: nele o usuário poderá ver as denúncias num mapa de sua região. Tendo uma visão mais ampla do que está acontecendo ao seu redor. O que torna a nossa plataforma mais intuitiva e mais informativa.
 - *Nível de Importância*: as denúncias terão um nível de importância. Nessa ferramenta, as pessoas irão definir se a denúncia é importante ou não e sua urgência para ser resolvida. Isso é feito a partir do Like, que e vamos entender como ponto de relevância, quanto mais Likes a postagem tem, mais importante ela se torna.
-- *"O que pode ser feito?"*: é uma ferramenta de suporte que entrega uma resposta automática ao usuário após à sua denúncia. As respostas vão ser desenvolvidas por IA, ela vai entender os detalhes da denúncia e dar uma solução utilizando as leis brasileiras como base.  
+- *"O que pode ser feito?"*: é uma ferramenta de suporte que entrega uma resposta ao usuário após à sua denúncia. As respostas vão ser desenvolvidas pelo moderadores, que irão entender os detalhes da denúncia e dar uma solução utilizando as leis brasileiras como base.  
 - *Cargo de Verificador*: os usuários poderão ter um cargo na plataforma, essas pessoas serão responsáveis por análisar se a denúncia existe realmente. Isso também pode ser feito a partir da própria postagem incluido uma foto do problema.
 - *Relatório semanal*: para mostrar as principais estatísticas e ações feitas dentro da plataforma. Como número de denúncias registradas, principal denúncia da semana, áreas com o maior número de problemas, entre outras informações.
 
