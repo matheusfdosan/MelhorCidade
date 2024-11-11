@@ -1,10 +1,8 @@
-import axios from "axios"
-
 export default async function contentService(
   category,
   address,
   what_happened,
-  files,
+  filesArray,
   coords,
   cookie,
   id
@@ -12,25 +10,33 @@ export default async function contentService(
   try {
     const url = import.meta.env.VITE_NEW_REPORT_API
 
-    const response = await axios.post(
-      url,
-      JSON.stringify({
+    console.log(
+      "TENTANDO MANDAR PARA O BANCO DE DADOS:",
+      category,
+      address,
+      what_happened,
+      filesArray,
+      coords,
+      cookie,
+      id,
+    )
+
+    const response = await fetch(url, {
+      method: "post",
+      body: {
         Categoria: category,
         Referencia: address,
         Ocorrencia: what_happened,
-        Images: files,
+        files: filesArray,
         CoordenadasOcorrencia: coords,
         cookie: cookie,
         _idUser: id,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+      },
+    })
 
-    console.log(response.data)
+    console.log("foi");
+
+    console.log(response)
   } catch (error) {
     console.log("Failed to send complaint:" + error)
     throw error

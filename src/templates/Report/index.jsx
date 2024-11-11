@@ -11,9 +11,9 @@ import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet"
 import markerIcon from "../../assets/red-marker-filled-icon.svg"
 import uploadIcon from "../../assets/rounded-plus-icon.svg"
 
-import contentService from "../../utils/contentService"
 import geocodeService from "../../utils/geocodeService"
 import reverseGeocodeService from "../../utils/reverseGeocodeService"
+import contentService from "../../utils/contentService"
 
 const customIcon = new L.Icon({
   iconUrl: markerIcon,
@@ -71,7 +71,11 @@ export default function Report() {
   const [complaintImageFirst, setComplaintImageFirst] = useState()
   const [complaintImageSecond, setComplaintImageSecond] = useState()
   const [complaintImageThird, setComplaintImageThird] = useState()
-  const [buffers, setBuffers] = useState([])
+  const [files, setFiles] = useState({
+    img1: "",
+    img2: "",
+    img3: "",
+  })
 
   const [whatHappend, setWhatHappend] = useState()
   const [category, setCategory] = useState("Espaços Públicos e Áreas de Lazer")
@@ -124,17 +128,6 @@ export default function Report() {
       return
     }
 
-    const files = Array.from(e.target.files);
-
-    const newBuffers = await Promise.all(
-      files.map(async (file) => {
-        const buffer = await file.arrayBuffer();
-        return buffer;
-      })
-    );
-
-    setBuffers((prevBuffers) => [...prevBuffers, ...newBuffers]);
-
     const file = e.target.files[0]
 
     if (file) {
@@ -142,10 +135,13 @@ export default function Report() {
       reader.onload = () => {
         if (e.target.id == "add_first_img") {
           setComplaintImageFirst(reader.result)
+          setFiles((prevFiles) => ({ ...prevFiles, img1: file }))
         } else if (e.target.id == "add_second_img") {
           setComplaintImageSecond(reader.result)
+          setFiles((prevFiles) => ({ ...prevFiles, img2: file }))
         } else if (e.target.id == "add_third_img") {
           setComplaintImageThird(reader.result)
+          setFiles((prevFiles) => ({ ...prevFiles, img3: file }))
         }
       }
       reader.readAsDataURL(file)
@@ -167,25 +163,20 @@ export default function Report() {
     const userCookie = JSON.parse(cookieAndId).cookie
     const userId = JSON.parse(cookieAndId).id
 
-    const formData = new FormData();
-    buffers.forEach((buffer, index) => {
-      const blob = new Blob([buffer], { type: "image/jpeg" });
-      formData.append(`image_${index + 1}`, blob, `image_${index + 1}.jpg`);
-    });
-
-    // Log para verificar os dados no FormData
-    for (const [key, value] of formData.entries()) {
-      console.log(`FormData key: ${key}, value:`, value);
-    }
-
     const sendPostData = async () => {
       try {
+        const filesArray = Object.values(files).filter((file) => file)
+
+
         contentService(
-          whatHappend,
           category,
           address,
-          formData,
-          { latitude: positionMap.lat, longitude: positionMap.lng },
+          whatHappend,
+          filesArray,
+          {
+            latitude: positionMap.lat,
+            longitude: positionMap.lng,
+          },
           userCookie,
           userId
         )
