@@ -1,21 +1,20 @@
 import axios from "axios"
 
-export default async function authService(email, password) {
+export default async function authService(emailValue, passwordValue) {
   const url = import.meta.env.VITE_ACESS_API
 
   try {
     const response = await axios.post(
       url,
-      JSON.stringify({
-        email: email,
-        senha: password,
-      }),
+      JSON.stringify({ email: emailValue, senha: passwordValue }),
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     )
+
+    console.log(response.data);
 
     if (response.data.acesso) {
       const userCookie = response.data.cookie

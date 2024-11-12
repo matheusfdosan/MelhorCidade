@@ -160,26 +160,44 @@ export default function Report() {
     e.preventDefault()
 
     const cookieAndId = localStorage.getItem("CookieId")
-    const userCookie = JSON.parse(cookieAndId).cookie
-    const userId = JSON.parse(cookieAndId).id
 
     const sendPostData = async () => {
       try {
-        const filesArray = Object.values(files).filter((file) => file)
+        const coords = {
+          latitude: positionMap.lat,
+          longitude: positionMap.lng,
+        }
 
+        const cookie = JSON.parse(cookieAndId).cookie
+        const id = JSON.parse(cookieAndId).id
 
-        contentService(
-          category,
-          address,
-          whatHappend,
-          filesArray,
-          {
-            latitude: positionMap.lat,
-            longitude: positionMap.lng,
-          },
-          userCookie,
-          userId
-        )
+        const formData = new FormData()
+        formData.append("Categoria", category || "")
+        formData.append("Referencia", address || "")
+        formData.append("Ocorrencia", whatHappend || "")
+        formData.append("CoordenadasOcorrencia", JSON.stringify(coords) || "")
+        formData.append("cookie", cookie || "")
+        formData.append("_idUser", id || "")
+
+        if (files && files.length > 0) {
+          for (let i = 0; i < files.length; i++) {
+            formData.append("files", files[i])
+          }
+        }
+
+        const formValues = {
+          categoria: formData.get("Categoria"),
+          referencia: formData.get("Referencia"),
+          ocorrencia: formData.get("Ocorrencia"),
+          files: formData.getAll("files"),
+          CoordenadasOcorrencia: formData.get("CoordenadasOcorrencia"),
+          cookie: formData.get("cookie"),
+          _idUser: formData.get("_idUser"),
+        }
+
+        console.log(formValues)
+
+        contentService(formData)
       } catch (err) {
         console.log("Error to send post data: " + err)
       }
