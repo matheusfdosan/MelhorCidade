@@ -13,8 +13,13 @@ export default function Posts() {
   useEffect(() => {
     const loadPostsData = async () => {
       try {
-        const data = await getPosts()
-        setPostsData(data)
+        const cookieAndId = localStorage.getItem("CookieId")
+        const cookie = JSON.parse(cookieAndId).cookie
+        const id = JSON.parse(cookieAndId).id
+
+        const data = await getPosts(cookie, id)
+        setPostsData(data.denuncias)
+        console.log(data)
       } catch (error) {
         console.log("Failed to fetch posts:" + error)
       }
@@ -28,28 +33,39 @@ export default function Posts() {
     setShowPostDetailsModal(true)
   }
 
+  const fixData = (dataIso) => {
+    const date = new Date(dataIso)
+
+    const day = String(date.getUTCDate()).padStart(2, "0")
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0")
+    const year = date.getUTCFullYear()
+
+    const formatedDate = `${day}/${month}/${year}`
+    return formatedDate
+  }
+
   return (
     <>
       <div id="posts">
         {postsData.map((data) => {
           return (
-            <div className="post" key={data.id}>
+            <div className="post" key={data.CodigoDenuncia}>
               <img
-                src={data.image}
-                alt={"Imagem: " + data.title}
-                title={"Imagem: " + data.title}
+                src={data.Descricao.Imagens[0].Caminho}
+                alt={"Imagem: " + data.Descricao.Imagens[0]._id}
+                title={"Imagem: "}
               />
               <div className="post-content">
                 <div className="post-header">
                   <div className="locale">
                     <img src={redMarker} alt="red-marker" />
-                    <p>{data.location.address}</p>
+                    {/* <p>{data.Descricao.Endereco}</p> */}
                   </div>
-                  <p className="date">{data.date}</p>
+                  <p className="date">{fixData(data.createdAt)}</p>
                 </div>
                 <div className="post-body">
                   <p>
-                    <strong>{data.owner}:</strong> {data.description}
+                    <strong>{data.owner}:</strong> {data.Descricao.Ocorrencia}
                   </p>
                 </div>
                 <div className="post-footer">
@@ -58,7 +74,10 @@ export default function Posts() {
                     <span>Relevante</span>
                   </button>
 
-                  <p id="see-more" onClick={() => handlePostClick(data.id)}>
+                  <p
+                    id="see-more"
+                    onClick={() => handlePostClick(data.CodigoDenuncia)}
+                  >
                     Detalhes
                   </p>
                 </div>
