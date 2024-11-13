@@ -14,15 +14,27 @@ export default async function authService(emailValue, passwordValue) {
       }
     )
 
-    console.log(response.data);
-
     if (response.data.acesso) {
-      const userCookie = response.data.cookie
-      const userId = response.data.id
+      localStorage.setItem(
+        "Login",
+        JSON.stringify({
+          email: emailValue,
+          password: passwordValue,
+        })
+      )
+
+      localStorage.setItem(
+        "CookieId",
+        JSON.stringify({
+          cookie: response.data.cookie,
+          id: response.data.id,
+        })
+      )
+
       return {
         serverResponse: response.data.acesso,
-        cookie: userCookie,
-        id: userId,
+        cookie: response.data.cookie,
+        id: response.data.id,
       }
     }
   } catch (error) {
