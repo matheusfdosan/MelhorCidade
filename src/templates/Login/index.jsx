@@ -27,22 +27,6 @@ export default function Login() {
     const authServiceResponse = await authService(loginEmail, loginPassword)
 
     if (authServiceResponse) {
-      localStorage.setItem(
-        "Login",
-        JSON.stringify({
-          email: loginEmail,
-          password: loginPassword,
-        })
-      )
-
-      localStorage.setItem(
-        "CookieId",
-        JSON.stringify({
-          cookie: authServiceResponse.cookie,
-          id: authServiceResponse.id,
-        })
-      )
-
       document.location.href = "/homepage"
       setErrorMessage(false)
     } else {
