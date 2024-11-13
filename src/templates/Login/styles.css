@@ -46,6 +46,14 @@
   color: var(--red);
 }
 
+#email:focus {
+  outline: .1rem solid var(--gray-one);
+}
+
+#password:focus ~ #password_container {
+  
+}
+
 #error_msg_true {
   display: block;
   color: var(--red);
