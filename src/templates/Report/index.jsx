@@ -14,6 +14,7 @@ import uploadIcon from "../../assets/rounded-plus-icon.svg"
 import geocodeService from "../../utils/geocodeService"
 import reverseGeocodeService from "../../utils/reverseGeocodeService"
 import contentService from "../../utils/contentService"
+import Modal from "../../components/Modal"
 
 const customIcon = new L.Icon({
   iconUrl: markerIcon,
@@ -62,8 +63,8 @@ function DraggableMarker({ position, setPosition }) {
 }
 
 export default function Report() {
-  const [inputAddress, setInputAddress] = useState()
-  const [address, setAddress] = useState()
+  const [inputAddress, setInputAddress] = useState("")
+  const [address, setAddress] = useState("")
 
   const [positionMap, setPositionMap] = useState(null)
   const [centerMap, setCenterMap] = useState([])
@@ -71,11 +72,10 @@ export default function Report() {
   const [complaintImageFirst, setComplaintImageFirst] = useState()
   const [complaintImageSecond, setComplaintImageSecond] = useState()
   const [complaintImageThird, setComplaintImageThird] = useState()
-  const [files, setFiles] = useState({
-    img1: "",
-    img2: "",
-    img3: "",
-  })
+  const [files, setFiles] = useState([])
+
+  const [modalMessage, setModalMessage] = useState("")
+  const [showModal, setShowModal] = useState(false)
 
   const [whatHappend, setWhatHappend] = useState()
   const [category, setCategory] = useState("Espaços Públicos e Áreas de Lazer")
@@ -132,16 +132,24 @@ export default function Report() {
 
     if (file) {
       const reader = new FileReader()
+
       reader.onload = () => {
+        const base64 = reader.result.split(",")[1]
+        const imageData = {
+          originalname: file.name,
+          mimetype: file.type,
+          code: base64,
+        }
+
         if (e.target.id == "add_first_img") {
           setComplaintImageFirst(reader.result)
-          setFiles((prevFiles) => ({ ...prevFiles, img1: file }))
+          setFiles((prevFiles) => [...prevFiles, imageData])
         } else if (e.target.id == "add_second_img") {
           setComplaintImageSecond(reader.result)
-          setFiles((prevFiles) => ({ ...prevFiles, img2: file }))
+          setFiles((prevFiles) => [...prevFiles, imageData])
         } else if (e.target.id == "add_third_img") {
           setComplaintImageThird(reader.result)
-          setFiles((prevFiles) => ({ ...prevFiles, img3: file }))
+          setFiles((prevFiles) => [...prevFiles, imageData])
         }
       }
       reader.readAsDataURL(file)
@@ -163,43 +171,40 @@ export default function Report() {
 
     const sendPostData = async () => {
       try {
-        const coords = {
-          latitude: positionMap.lat,
-          longitude: positionMap.lng,
-        }
+        const coords = [positionMap.lat, positionMap.lng]
 
         const cookie = JSON.parse(cookieAndId).cookie
         const id = JSON.parse(cookieAndId).id
 
-        const formData = new FormData()
-        formData.append("Categoria", category || "")
-        formData.append("Referencia", address || "")
-        formData.append("Ocorrencia", whatHappend || "")
-        formData.append("CoordenadasOcorrencia", JSON.stringify(coords) || "")
-        formData.append("cookie", cookie || "")
-        formData.append("_idUser", id || "")
-
-        if (files && files.length > 0) {
-          for (let i = 0; i < files.length; i++) {
-            formData.append("files", files[i])
-          }
+        const complaintData = {
+          categoria: category,
+          referencia: address,
+          ocorrencia: whatHappend,
+          files: files,
+          CoordenadasOcorrencia: coords,
+          formato: "base64",
+          cookie: cookie,
+          _idUser: id,
         }
 
-        const formValues = {
-          categoria: formData.get("Categoria"),
-          referencia: formData.get("Referencia"),
-          ocorrencia: formData.get("Ocorrencia"),
-          files: formData.getAll("files"),
-          CoordenadasOcorrencia: formData.get("CoordenadasOcorrencia"),
-          cookie: formData.get("cookie"),
-          _idUser: formData.get("_idUser"),
+        const response = await contentService(complaintData)
+        if (response) {
+          setModalMessage("Denúncia enviada com sucesso!")
+          setShowModal(true)
+
+          setTimeout(() => {
+            setShowModal(false)
+            document.location.href = "/homepage"
+          }, 5000)
         }
-
-        console.log(formValues)
-
-        contentService(formData)
       } catch (err) {
         console.log("Error to send post data: " + err)
+        setModalMessage("Erro ao enviar a denúncia!\nTente novamente mais tarde")
+        setShowModal(true)
+
+        setTimeout(() => {
+          setShowModal(false)
+        }, 3500)
       }
     }
 
@@ -225,6 +230,7 @@ export default function Report() {
       <Header />
 
       <form id="main_report" onSubmit={handleSubmitComplaint}>
+        {showModal && <Modal message={modalMessage} />}
         <label htmlFor="what_happened">Conte-nos o que aconteceu:</label>
         <textarea
           placeholder="O que aconteceu?"

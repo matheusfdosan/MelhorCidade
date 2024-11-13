@@ -1,18 +1,18 @@
 import axios from "axios"
-export default async function contentService(formData) {
+
+export default async function contentService(complaintsData) {
   try {
     const url = import.meta.env.VITE_NEW_REPORT_API
 
-    const response = await axios.post(url, formData, {
+    console.log(complaintsData)
+
+    const response = await axios.post(url, complaintsData, {
       headers: {
-        "Content-Type": "multipart/form-data",
-      },
-      withCredentials: true,
+        "Content-Type": "application/json",
+      }
     })
-
-    console.log("foi")
-
-    console.log(response.data)
+    console.log(response.data);
+    return response.data
   } catch (error) {
     console.log("Failed to send complaint:" + error)
     throw error
