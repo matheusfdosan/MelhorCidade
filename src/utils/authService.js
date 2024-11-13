@@ -6,7 +6,7 @@ export default async function authService(emailValue, passwordValue) {
   try {
     const response = await axios.post(
       url,
-      JSON.stringify({ email: emailValue, senha: passwordValue }),
+      JSON.stringify({ email: emailValue, senha:passwordValue }),
       {
         headers: {
           "Content-Type": "application/json",

@@ -11,6 +11,14 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState(false)
 
   useEffect(() => {
+    if (errorMessage) {
+      setTimeout(() => {
+        setErrorMessage(false)
+      }, 12000)
+    }
+  }, [errorMessage])
+
+  useEffect(() => {
     document.title = "Melhor Cidade - Login"
   }, [])
 
@@ -66,7 +74,7 @@ export default function Login() {
             />
 
             <span id={"error_msg_" + errorMessage}>
-              Dados de login incorretos
+              Dados de login incorretos. Tente novamente
             </span>
 
             <p>
