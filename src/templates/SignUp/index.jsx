@@ -3,6 +3,7 @@ import Input from "../../components/Input"
 import registerService from "../../utils/registerService"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import authService from "../../utils/authService"
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -23,18 +24,35 @@ export default function SignUp() {
     setForm({ ...form, [e.target.id]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.password === form.confirmPassword) {
-      registerService(form)
+      const response = await registerService(form)
+
+      
+      if (response.acess) {
+        try {
+          const response = await authService(form.email, form.password)
+          
+          if (response.serverResponse) {
+            document.location.href = "/homepage"
+
+            localStorage.setItem(
+              "Login",
+              JSON.stringify({
+                email: form.email,
+                password: form.password,
+              })
+            )
+          }
+        } catch (err) {
+          console.log(err);
+        }
+
+      }
+
       setConfirmPassword(false)
-      localStorage.setItem(
-        "Login",
-        JSON.stringify({
-          email: form.email,
-          password: form.password,
-        })
-      )
+      
     } else {
       setConfirmPassword(true)
     }
