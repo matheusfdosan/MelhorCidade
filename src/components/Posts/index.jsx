@@ -19,7 +19,6 @@ export default function Posts() {
 
         const data = await getPosts(cookie, id)
         setPostsData(data.denuncias)
-        console.log(data)
       } catch (error) {
         console.log("Failed to fetch posts:" + error)
       }
@@ -28,8 +27,8 @@ export default function Posts() {
     loadPostsData()
   }, [])
 
-  const handlePostClick = (id) => {
-    setSpecificPost(id)
+  const handlePostClick = (data) => {
+    setSpecificPost(data)
     setShowPostDetailsModal(true)
   }
 
@@ -59,13 +58,13 @@ export default function Posts() {
                 <div className="post-header">
                   <div className="locale">
                     <img src={redMarker} alt="red-marker" />
-                    {/* <p>{data.Descricao.Endereco}</p> */}
+                    <p>{data.Descricao.Endereco}</p>
                   </div>
                   <p className="date">{fixData(data.createdAt)}</p>
                 </div>
                 <div className="post-body">
                   <p>
-                    <strong>{data.owner}:</strong> {data.Descricao.Ocorrencia}
+                    <strong>{data.Descricao.Nome}:</strong> {data.Descricao.Ocorrencia}
                   </p>
                 </div>
                 <div className="post-footer">
@@ -76,7 +75,7 @@ export default function Posts() {
 
                   <p
                     id="see-more"
-                    onClick={() => handlePostClick(data.CodigoDenuncia)}
+                    onClick={() => handlePostClick(data)}
                   >
                     Detalhes
                   </p>
@@ -89,7 +88,7 @@ export default function Posts() {
 
       {showPostDetailsModal && (
         <ReadReportModal
-          specificPostData={postsData[specificPost]}
+          specificPostData={specificPost}
           setShowPostDetailsModal={setShowPostDetailsModal}
         />
       )}
