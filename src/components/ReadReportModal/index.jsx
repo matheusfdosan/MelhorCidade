@@ -18,27 +18,38 @@ export default function ReadReportModal({
     }
   }
 
+  const fixData = (dataIso) => {
+    const date = new Date(dataIso)
+
+    const day = String(date.getUTCDate()).padStart(2, "0")
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0")
+    const year = date.getUTCFullYear()
+
+    const formatedDate = `${day}/${month}/${year}`
+    return formatedDate
+  }  
+
   return (
     <>
       <div id="post-modal-overlay" onClick={handleClickOutOfModal}>
         <div id="post-container">
           <div id="post-header">
-            <h1>{data.title}</h1>
+            <h1>{data.Descricao.Ocorrencia}</h1>
             <button id="close-modal" onClick={handleCloseModal}>
               <img src={crossIcon} alt="cross-icon" />
             </button>
           </div>
           <div id="post-main">
-            <img src={data.image} alt={"Imagem: " + data.title} />
+            <img src={data.Descricao.Imagens[0].Caminho} alt={"Imagem: " + data.Descricao.Ocorrencia} />
             <div id="local-date">
               <div id="locale">
                 <img src={redMarker} alt="red-marker" />
-                <p>{data.location.address}</p>
+                <p>{data.Descricao.Endereco}</p>
               </div>
-              <p id="date">{data.date}</p>
+              <p id="date">{fixData(data.createdAt)}</p>
             </div>
 
-            <p id="post-desc">{data.description}</p>
+            <p id="post-desc">{data.Descricao.Ocorrencia}</p>
 
             <div id="relevance">
               <button id="relevance-points-btn">
@@ -47,14 +58,14 @@ export default function ReadReportModal({
               </button>
 
               <p id="relevance-points">
-                {data.relevance_points} Pessoas acharam essa denúncia relevante
+                {data.Validacoes.length} Pessoas acharam essa denúncia relevante
               </p>
             </div>
 
-            <div id="solution">
+            {/* <div id="solution">
               <h2>O que pode ser feito?</h2>
               <p>{data.solution}</p>
-            </div>
+            </div> */}
 
             <div id="comments">
               <h2>Comentários:</h2>
@@ -66,8 +77,8 @@ export default function ReadReportModal({
                   <button>Comentar</button>
                 </div>
 
-              <ul>
-                {data.comments.map((comment) => {
+              {/* <ul>
+                {data.comentarios.map((comment) => {
                   return (
                     <li key={comment.id}>
                       <h3>{comment.username}: </h3>
@@ -75,7 +86,7 @@ export default function ReadReportModal({
                     </li>
                   )
                 })}
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
