@@ -90,7 +90,7 @@
 }
 
 #manage_account > .settings > li:hover {
-  background-color: #c7c7c7;
+  background-color: var(--gray-two);
 }
 
 #manage_account > .settings > li > span {

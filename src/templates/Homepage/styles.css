@@ -23,7 +23,7 @@
   font-size: 1.4rem;
   padding-inline: 2rem;
   background-color: var(--light-blue);
-  color: var(--white);
+  color: #fbfbfb;
   font-family: var(--poppins);
   border: none;
   cursor: pointer;

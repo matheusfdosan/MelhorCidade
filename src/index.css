@@ -15,6 +15,7 @@
 
 :root {
   --gray-one: #424242;
+  --gray-two: #c3c3c3;
   --gray-inputs-border: #a3a3a3;
   --gray-inputs: #e9e9e9;
   --gray-scroll: #a3a3a3;
@@ -24,7 +25,8 @@
 }
 
 /* :root {
-  --gray-one: #323638;
+  --gray-one: #7f7f7f;
+  --gray-two: #c3c3c3;
   --gray-inputs-border: #4c5255;
   --gray-inputs: #242729;
   --gray-scroll: #4c5255;

@@ -5,9 +5,10 @@ import "./styles.css"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import FooterLinks from "../../components/FooterLinks"
+// import ThemeContext from "../../utils/themeContext"
 
 export default function Settings() {
-  const [darkTheme, setDarkTheme] = useState(false)
+  // const { theme, toggleTheme } = useContext(ThemeContext)
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -17,10 +18,6 @@ export default function Settings() {
       document.title = "Melhor Cidade - Configurações"
     }
   }, [])
-
-  const handleClickToggler = () => {
-    setDarkTheme(!darkTheme)
-  }
 
   return (
     <>
@@ -40,8 +37,8 @@ export default function Settings() {
           <div className="settings">
             <p>Tema Escuro</p>
             <div
-              className={`wrapper ${darkTheme}`}
-              onClick={handleClickToggler}
+              className={`wrapper`}
+              // onClick={toggleTheme}
             >
               <div id="toggler"></div>
             </div>
