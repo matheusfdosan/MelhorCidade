@@ -64,6 +64,11 @@
   color: var(--light-blue);
 }
 
+#register_submit_button:focus {
+  outline: .1rem solid var(--gray-one);
+
+}
+
 #already_have_account {
   font-size: 1.4rem;
   margin-bottom: 3rem;
@@ -89,6 +94,12 @@
 #i_agree > a {
   text-decoration: none;
   color: var(--light-blue);
+}
+
+.make-login-link:focus {
+  outline: .1rem solid var(--gray-one);
+  padding: .2rem;
+  border-radius: .5rem;
 }
 
 @media (max-width: 900px) {
