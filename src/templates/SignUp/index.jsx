@@ -1,9 +1,9 @@
-import "./style.css"
-import Input from "../../components/Input"
-import registerService from "../../utils/registerService"
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import authService from "../../utils/authService"
+import "./style.css";
+import Input from "../../components/Input";
+import registerService from "../../utils/registerService";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import authService from "../../utils/authService";
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -12,30 +12,29 @@ export default function SignUp() {
     address: "",
     password: "",
     confirmPassword: "",
-  })
+  });
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Cadastro"
-  }, [])
+    document.title = "Melhor Cidade - Cadastro";
+  }, []);
 
-  const [confirmPassword, setConfirmPassword] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value })
-  }
+    setForm({ ...form, [e.target.id]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (form.password === form.confirmPassword) {
-      const response = await registerService(form)
+      const response = await registerService(form);
 
-      
       if (response.acess) {
         try {
-          const response = await authService(form.email, form.password)
-          
+          const response = await authService(form.email, form.password);
+
           if (response.serverResponse) {
-            document.location.href = "/homepage"
+            document.location.href = "/homepage";
 
             localStorage.setItem(
               "Login",
@@ -43,20 +42,18 @@ export default function SignUp() {
                 email: form.email,
                 password: form.password,
               })
-            )
+            );
           }
         } catch (err) {
           console.log(err);
         }
-
       }
 
-      setConfirmPassword(false)
-      
+      setConfirmPassword(false);
     } else {
-      setConfirmPassword(true)
+      setConfirmPassword(true);
     }
-  }
+  };
 
   return (
     <>
@@ -115,7 +112,10 @@ export default function SignUp() {
           </div>
 
           <p id="already_have_account">
-            Você já tem uma conta? Então faça o <Link to={"/login"}>Login</Link>
+            Você já tem uma conta? Então faça o{" "}
+            <Link to={"/login"} className="make-login-link">
+              Login
+            </Link>
           </p>
 
           <button type="submit" id="register_submit_button">
@@ -124,11 +124,13 @@ export default function SignUp() {
 
           <p id="i_agree">
             Ao se cadastrar, você concorda com os{" "}
-            <Link to={"/terms-of-use"}>Termos e a Política de privacidade</Link>
+            <Link to={"/terms-of-use"} className="make-login-link">
+              Termos e a Política de privacidade
+            </Link>
             .
           </p>
         </form>
       </main>
     </>
-  )
+  );
 }
