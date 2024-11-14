@@ -46,17 +46,25 @@
   color: var(--red);
 }
 
-#email:focus {
-  outline: .1rem solid var(--gray-one);
-}
-
-#password:focus ~ #password_container {
-  
-}
-
 #error_msg_true {
   display: block;
   color: var(--red);
+}
+
+.eye-button:focus > .eye {
+  outline: 0.1rem solid var(--gray-one);
+}
+
+#email:focus,
+#password_container.focused,
+#register-link:focus,
+#login_submit_button:focus {
+  outline: 0.1rem solid var(--gray-one);
+}
+
+#register-link:focus {
+  outline: 0.1rem solid var(--gray-one);
+  border-radius: 0.5rem;
 }
 
 #login_submit_button {
