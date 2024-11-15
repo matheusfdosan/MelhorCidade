@@ -19,6 +19,12 @@ export default function Settings() {
     }
   }, [])
 
+
+
+  useEffect(() => {
+  }, [theme]);
+  
+
   return (
     <>
       <Header configPage={true} />
@@ -36,7 +42,7 @@ export default function Settings() {
           <h2>Visibilidade</h2>
           <div className="settings">
             <p>Tema Escuro</p>
-            <div className={`wrapper`} onClick={toggleTheme}>
+            <div className={`wrapper ${theme}`} onClick={toggleTheme}>
               <div id="toggler"></div>
             </div>
           </div>

@@ -62,14 +62,15 @@
   background-color: var(--dark);
   position: absolute;
   top: 50%;
+  transform: translate(-50%, -50%);
   transition: transform 200ms ease;
 }
 
-.wrapper.false > #toggler {
-  transform: translateY(-50%) translateX(0.5rem);
-}
+.wrapper.light > #toggler {
+  left: 24%;
+  }
 
-.wrapper.true > #toggler {
+.wrapper.dark > #toggler {
   transform: translateY(-50%) translateX(3.1rem);
 }
 
