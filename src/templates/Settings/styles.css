@@ -91,7 +91,7 @@
 }
 
 #manage_account > .settings > li:hover {
-  background-color: var(--gray-two);
+  background-color: var(--gray-inputs-border);
 }
 
 #manage_account > .settings > li > span {

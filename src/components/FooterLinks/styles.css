@@ -45,7 +45,7 @@ footer .container > #links > ul {
 
 footer .container > #links > ul > li > a {
   text-decoration: none;
-  color: var(--gray-one);
+  color: var(--gray);
   display: inline-block;
 }
 

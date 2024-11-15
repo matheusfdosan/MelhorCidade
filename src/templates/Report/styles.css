@@ -55,7 +55,7 @@ textarea {
 
 #set_address > button {
   background-color: var(--light-blue);
-  color: var(--white);
+  color: #fbfbfb;
   border: none;
   height: 4.7rem;
   font-family: var(--poppins-font);
@@ -135,7 +135,7 @@ textarea {
   margin-top: 3rem;
   padding: 2rem 1rem;
   background-color: var(--light-blue);
-  color: var(--white);
+  color: #fbfbfb;
   border: none;
   border-radius: 5px;
   font-size: 2rem;
