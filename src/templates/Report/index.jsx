@@ -37,6 +37,7 @@ function ChangeMapView({ center }) {
 
 function DraggableMarker({ position, setPosition }) {
   const markerRef = useRef(null)
+  const map = useMap()
 
   const eventHandlers = useMemo(
     () => ({
@@ -47,8 +48,44 @@ function DraggableMarker({ position, setPosition }) {
           setPosition(newPosition)
         }
       },
+      drag() {
+        const marker = markerRef.current
+        if (marker != null) {
+          const newPosition = marker.getLatLng()
+          const bounds = map.getBounds()
+
+          // Margem de segurança em pixels
+          const margin = 50
+          const mapSize = map.getSize()
+
+          const pixelPosition = map.latLngToContainerPoint(newPosition)
+
+          // Defina um valor fixo para o movimento máximo
+          const moveDistance = 20 // Quantidade fixa de pixels para mover o mapa
+
+          // Verificar se o marcador está próximo das bordas
+          const moveX =
+            pixelPosition.x < margin
+              ? -moveDistance // O mapa move para a esquerda
+              : pixelPosition.x > mapSize.x - margin
+              ? moveDistance // O mapa move para a direita
+              : 0
+
+          const moveY =
+            pixelPosition.y < margin
+              ? -moveDistance // O mapa move para cima
+              : pixelPosition.y > mapSize.y - margin
+              ? moveDistance // O mapa move para baixo
+              : 0
+
+          // Se precisar mover, utiliza panBy para ajustar a posição do mapa
+          if (moveX !== 0 || moveY !== 0) {
+            map.panBy([moveX, moveY], { animate: true })
+          }
+        }
+      },
     }),
-    [setPosition]
+    [setPosition, map]
   )
 
   return (
@@ -199,7 +236,9 @@ export default function Report() {
         }
       } catch (err) {
         console.log("Error to send post data: " + err)
-        setModalMessage("Erro ao enviar a denúncia!\nTente novamente mais tarde")
+        setModalMessage(
+          "Erro ao enviar a denúncia!\nTente novamente mais tarde"
+        )
         setShowModal(true)
 
         setTimeout(() => {
