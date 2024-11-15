@@ -233,7 +233,7 @@ export default function Report() {
             setShowModal(false)
             const navigate = useNavigate()
             navigate("/homepage")
-          }, 5000)
+          }, 3500)
         }
       } catch (err) {
         console.log("Error to send post data: " + err)
