@@ -1,48 +1,49 @@
-import "./styles.css";
-import Input from "../../components/Input";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import authService from "../../utils/authService";
+import "./styles.css"
+import Input from "../../components/Input"
+import { Link } from "react-router-dom"
+import { useEffect, useState, useNavigate } from "react"
+import authService from "../../utils/authService"
 
 export default function Login() {
-  const [loginEmail, setLoginEmail] = useState();
-  const [loginPassword, setLoginPassword] = useState();
+  const [loginEmail, setLoginEmail] = useState()
+  const [loginPassword, setLoginPassword] = useState()
 
-  const [errorMessage, setErrorMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false)
 
   useEffect(() => {
     if (errorMessage) {
       setTimeout(() => {
-        setErrorMessage(false);
-      }, 12000);
+        setErrorMessage(false)
+      }, 12000)
     }
-  }, [errorMessage]);
+  }, [errorMessage])
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Login";
-  }, []);
+    document.title = "Melhor Cidade - Login"
+  }, [])
 
   const handleSubmitLogin = async (e) => {
-    e.preventDefault();
-    const authServiceResponse = await authService(loginEmail, loginPassword);
+    e.preventDefault()
+    const authServiceResponse = await authService(loginEmail, loginPassword)
 
     if (authServiceResponse) {
-      document.location.href = "/homepage";
-      setErrorMessage(false);
+      const navigate = useNavigate()
+      navigate("/homepage")
+      setErrorMessage(false)
     } else {
-      setErrorMessage(true);
+      setErrorMessage(true)
     }
-  };
+  }
 
   const handleFocusInput = (e) => {
-    const parentNode = e.target.parentElement;
-    parentNode.classList.add("focused");
-  };
+    const parentNode = e.target.parentElement
+    parentNode.classList.add("focused")
+  }
 
   const handleFocusOutInput = (e) => {
-    const parentNode = e.target.parentElement;
-    parentNode.classList.remove("focused");
-  };
+    const parentNode = e.target.parentElement
+    parentNode.classList.remove("focused")
+  }
 
   return (
     <>
@@ -90,5 +91,5 @@ export default function Login() {
         <div id="login_right"></div>
       </main>
     </>
-  );
+  )
 }

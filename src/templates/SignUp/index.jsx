@@ -1,9 +1,9 @@
-import "./style.css";
-import Input from "../../components/Input";
-import registerService from "../../utils/registerService";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import authService from "../../utils/authService";
+import "./style.css"
+import Input from "../../components/Input"
+import registerService from "../../utils/registerService"
+import { useState, useEffect, useNavigate } from "react"
+import { Link } from "react-router-dom"
+import authService from "../../utils/authService"
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -12,29 +12,30 @@ export default function SignUp() {
     address: "",
     password: "",
     confirmPassword: "",
-  });
+  })
 
   useEffect(() => {
-    document.title = "Melhor Cidade - Cadastro";
-  }, []);
+    document.title = "Melhor Cidade - Cadastro"
+  }, [])
 
-  const [confirmPassword, setConfirmPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState(false)
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.id]: e.target.value });
-  };
+    setForm({ ...form, [e.target.id]: e.target.value })
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (form.password === form.confirmPassword) {
-      const response = await registerService(form);
+      const response = await registerService(form)
 
       if (response.acess) {
         try {
-          const response = await authService(form.email, form.password);
+          const response = await authService(form.email, form.password)
 
           if (response.serverResponse) {
-            document.location.href = "/homepage";
+            const navigate = useNavigate()
+            navigate("/homepage")
 
             localStorage.setItem(
               "Login",
@@ -42,18 +43,18 @@ export default function SignUp() {
                 email: form.email,
                 password: form.password,
               })
-            );
+            )
           }
         } catch (err) {
-          console.log(err);
+          console.log(err)
         }
       }
 
-      setConfirmPassword(false);
+      setConfirmPassword(false)
     } else {
-      setConfirmPassword(true);
+      setConfirmPassword(true)
     }
-  };
+  }
 
   return (
     <>
@@ -132,5 +133,5 @@ export default function SignUp() {
         </form>
       </main>
     </>
-  );
+  )
 }
