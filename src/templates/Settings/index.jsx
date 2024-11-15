@@ -2,13 +2,13 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 import "./styles.css"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 import FooterLinks from "../../components/FooterLinks"
-// import ThemeContext from "../../utils/themeContext"
+import ThemeContext from "../../utils/themeContext"
 
 export default function Settings() {
-  // const { theme, toggleTheme } = useContext(ThemeContext)
+  const { theme, toggleTheme } = useContext(ThemeContext)
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -36,10 +36,7 @@ export default function Settings() {
           <h2>Visibilidade</h2>
           <div className="settings">
             <p>Tema Escuro</p>
-            <div
-              className={`wrapper`}
-              // onClick={toggleTheme}
-            >
+            <div className={`wrapper`} onClick={toggleTheme}>
               <div id="toggler"></div>
             </div>
           </div>
@@ -68,7 +65,7 @@ export default function Settings() {
           <button>Deletar</button>
         </section>
       </main>
-      
+
       <div id="settings_footer">
         <FooterLinks />
       </div>
