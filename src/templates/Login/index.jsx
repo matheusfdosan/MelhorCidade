@@ -27,7 +27,6 @@ export default function Login() {
     const authServiceResponse = await authService(loginEmail, loginPassword)
 
     if (authServiceResponse) {
-      const navigate = useNavigate()
       document.location.href = "/homepage"
       setErrorMessage(false)
     } else {
