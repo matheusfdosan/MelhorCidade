@@ -231,7 +231,6 @@ export default function Report() {
 
           setTimeout(() => {
             setShowModal(false)
-            const navigate = useNavigate()
             document.location.href = "/homepage"
           }, 3500)
         }
