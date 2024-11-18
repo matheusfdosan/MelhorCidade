@@ -1,7 +1,7 @@
 import "./styles.css"
 import Input from "../../components/Input"
 import { Link } from "react-router-dom"
-import { useEffect, useState, useNavigate } from "react"
+import { useEffect, useState } from "react"
 import authService from "../../utils/authService"
 
 export default function Login() {
@@ -28,7 +28,7 @@ export default function Login() {
 
     if (authServiceResponse) {
       const navigate = useNavigate()
-      navigate("/homepage")
+      document.location.href = "/homepage"
       setErrorMessage(false)
     } else {
       setErrorMessage(true)
