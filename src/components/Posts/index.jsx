@@ -48,7 +48,7 @@ export default function Posts() {
       <div id="posts">
         {postsData.map((data) => {
           return (
-            <div className="post" key={data.CodigoDenuncia}>
+            <div className="post" key={data.CodigoDenuncia} id={data.CodigoDenuncia}>
               <img
                 src={data.Descricao.Imagens[0].Caminho}
                 alt={"Imagem: " + data.Descricao.Imagens[0]._id}
