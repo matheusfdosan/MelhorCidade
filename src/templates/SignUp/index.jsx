@@ -1,7 +1,7 @@
 import "./style.css"
 import Input from "../../components/Input"
 import registerService from "../../utils/registerService"
-import { useState, useEffect, useNavigate } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import authService from "../../utils/authService"
 
@@ -35,7 +35,7 @@ export default function SignUp() {
 
           if (response.serverResponse) {
             const navigate = useNavigate()
-            navigate("/homepage")
+            document.location.href = "/homepage"
 
             localStorage.setItem(
               "Login",
