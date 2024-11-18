@@ -5,7 +5,7 @@ import FooterLinks from "../../components/FooterLinks"
 import Header from "../../components/Header"
 
 import "leaflet/dist/leaflet.css"
-import React, { useEffect, useMemo, useRef, useState, useNavigate } from "react"
+import React, { useEffect, useMemo, useRef, useState } from "react"
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet"
 
 import markerIcon from "../../assets/red-marker-filled-icon.svg"
@@ -232,7 +232,7 @@ export default function Report() {
           setTimeout(() => {
             setShowModal(false)
             const navigate = useNavigate()
-            navigate("/homepage")
+            document.location.href = "/homepage"
           }, 3500)
         }
       } catch (err) {
