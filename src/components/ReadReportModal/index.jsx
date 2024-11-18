@@ -3,11 +3,15 @@ import crossIcon from "../../assets/cross-icon.svg"
 import redMarker from "../../assets/red-marker.svg"
 import thumbUpIcon from "../../assets/thumb-up-icon.svg"
 import Input from "../../components/Input"
+import { useState } from "react"
+import commentService from "../../utils/makeCommentService"
 
 export default function ReadReportModal({
   specificPostData: data,
   setShowPostDetailsModal,
 }) {
+  const [commentData, setCommentData] = useState("")
+
   const handleCloseModal = () => {
     setShowPostDetailsModal(false)
   }
@@ -27,7 +31,24 @@ export default function ReadReportModal({
 
     const formatedDate = `${day}/${month}/${year}`
     return formatedDate
-  }  
+  }
+
+  const handleChangeComment = (e) => {
+    setCommentData(e.target.value)
+  }
+
+  const handleSubmitComment = (commentary) => {
+    const cookie = JSON.parse(cookieAndId).cookie
+    const id = JSON.parse(cookieAndId).id
+
+    const comment = {
+      conteudo: commentary,
+      CodigoDenuncia: cookie,
+      _idUser: id
+    }
+
+    commentService(comment)
+  }
 
   return (
     <>
@@ -73,8 +94,8 @@ export default function ReadReportModal({
 
                 <label htmlFor="add_a_comment">Adicione um comentário</label>
                 <div id="add_your_comment">
-                  <Input idName={"add_a_comment"} placeholder={"Seu comentário..."} />
-                  <button>Comentar</button>
+                  <Input idName={"add_a_comment"} placeholder={"Seu comentário..."} onChangeInput={handleChangeComment} />
+                  <button onClick={() => handleSubmitComment(commentData)}>Comentar</button>
                 </div>
 
               {/* <ul>
