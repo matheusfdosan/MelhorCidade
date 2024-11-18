@@ -34,7 +34,6 @@ export default function SignUp() {
           const response = await authService(form.email, form.password)
 
           if (response.serverResponse) {
-            const navigate = useNavigate()
             document.location.href = "/homepage"
 
             localStorage.setItem(
