@@ -215,7 +215,7 @@ export default function Report() {
 
         const complaintData = {
           categoria: category,
-          referencia: address,
+          endereco: address,
           ocorrencia: whatHappend,
           files: files,
           CoordenadasOcorrencia: coords,
