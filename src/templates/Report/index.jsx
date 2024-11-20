@@ -3,6 +3,7 @@ import "./styles.css"
 import Footer from "../../components/Footer"
 import FooterLinks from "../../components/FooterLinks"
 import Header from "../../components/Header"
+import Loading from "../../components/Loading"
 
 import "leaflet/dist/leaflet.css"
 import React, { useEffect, useMemo, useRef, useState, useNavigate } from "react"
@@ -54,31 +55,27 @@ function DraggableMarker({ position, setPosition }) {
           const newPosition = marker.getLatLng()
           const bounds = map.getBounds()
 
-          // Margem de segurança em pixels
           const margin = 50
           const mapSize = map.getSize()
 
           const pixelPosition = map.latLngToContainerPoint(newPosition)
 
-          // Defina um valor fixo para o movimento máximo
-          const moveDistance = 20 // Quantidade fixa de pixels para mover o mapa
+          const moveDistance = 20
 
-          // Verificar se o marcador está próximo das bordas
           const moveX =
             pixelPosition.x < margin
-              ? -moveDistance // O mapa move para a esquerda
+              ? -moveDistance
               : pixelPosition.x > mapSize.x - margin
-              ? moveDistance // O mapa move para a direita
+              ? moveDistance
               : 0
 
           const moveY =
             pixelPosition.y < margin
-              ? -moveDistance // O mapa move para cima
+              ? -moveDistance
               : pixelPosition.y > mapSize.y - margin
-              ? moveDistance // O mapa move para baixo
+              ? moveDistance
               : 0
 
-          // Se precisar mover, utiliza panBy para ajustar a posição do mapa
           if (moveX !== 0 || moveY !== 0) {
             map.panBy([moveX, moveY], { animate: true })
           }
@@ -101,7 +98,7 @@ function DraggableMarker({ position, setPosition }) {
 
 export default function Report() {
   const [inputAddress, setInputAddress] = useState("")
-  const [address, setAddress] = useState("")
+  const [address, setAddress] = useState("São Paulo, Brasil")
 
   const [positionMap, setPositionMap] = useState(null)
   const [centerMap, setCenterMap] = useState([])
@@ -116,6 +113,9 @@ export default function Report() {
 
   const [whatHappend, setWhatHappend] = useState()
   const [category, setCategory] = useState("Espaços Públicos e Áreas de Lazer")
+
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState("")
 
   useEffect(() => {
     const getUserLocation = async () => {
@@ -203,52 +203,58 @@ export default function Report() {
 
   const handleSubmitComplaint = (e) => {
     e.preventDefault()
+    setLoading(true)
 
-    const cookieAndId = localStorage.getItem("CookieId")
+    if (files.length == 0) {
+      setMessage("Adicione pelo menos uma imagem!!")
+      setLoading(false)
+    } else {
+      const cookieAndId = localStorage.getItem("CookieId")
+      const sendPostData = async () => {
+        try {
+          const coords = [positionMap.lat, positionMap.lng]
 
-    const sendPostData = async () => {
-      try {
-        const coords = [positionMap.lat, positionMap.lng]
+          const cookie = JSON.parse(cookieAndId).cookie
+          const id = JSON.parse(cookieAndId).id
 
-        const cookie = JSON.parse(cookieAndId).cookie
-        const id = JSON.parse(cookieAndId).id
+          const complaintData = {
+            categoria: category,
+            endereco: address,
+            ocorrencia: whatHappend,
+            files: files,
+            CoordenadasOcorrencia: coords,
+            formato: "base64",
+            cookie: cookie,
+            _idUser: id,
+          }
 
-        const complaintData = {
-          categoria: category,
-          referencia: address,
-          ocorrencia: whatHappend,
-          files: files,
-          CoordenadasOcorrencia: coords,
-          formato: "base64",
-          cookie: cookie,
-          _idUser: id,
-        }
+          const response = await contentService(complaintData)
+          if (response) {
+            setLoading(false)
+            setModalMessage("Denúncia enviada com sucesso!")
+            setShowModal(true)
 
-        const response = await contentService(complaintData)
-        if (response) {
-          setModalMessage("Denúncia enviada com sucesso!")
+            setTimeout(() => {
+              setShowModal(false)
+              document.location.href = "/homepage"
+            }, 3500)
+          }
+        } catch (err) {
+          console.log("Error to send post data: " + err)
+          setLoading(false)
+          setModalMessage(
+            "Erro ao enviar a denúncia!\nTente novamente mais tarde"
+          )
           setShowModal(true)
 
           setTimeout(() => {
             setShowModal(false)
-            const navigate = useNavigate()
-            navigate("/homepage")
           }, 3500)
         }
-      } catch (err) {
-        console.log("Error to send post data: " + err)
-        setModalMessage(
-          "Erro ao enviar a denúncia!\nTente novamente mais tarde"
-        )
-        setShowModal(true)
-
-        setTimeout(() => {
-          setShowModal(false)
-        }, 3500)
       }
-    }
 
-    sendPostData()
+      sendPostData()
+    }
   }
 
   const handleAnalyzeClick = () => {
@@ -367,6 +373,8 @@ export default function Report() {
         </div>
 
         <label>Adicione algumas imagens do problema:</label>
+
+
         <div id="add_img_grid">
           <label
             className="add_img"
@@ -438,6 +446,8 @@ export default function Report() {
           onChange={handleImageChange}
         />
 
+        {message && <span id="msg">{message}</span>}
+
         <button className="post-btn" type="submit">
           Publicar
         </button>
@@ -446,7 +456,7 @@ export default function Report() {
       <div id="report_footer">
         <FooterLinks />
       </div>
-
+      {loading && <Loading />}
       <Footer target={1} />
     </>
   )

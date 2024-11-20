@@ -53,6 +53,13 @@ textarea {
   font-size: 1.6rem;
 }
 
+#msg {
+  margin: 2rem 0;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--red);
+}
+
 #set_address > button {
   background-color: var(--light-blue);
   color: #fbfbfb;
