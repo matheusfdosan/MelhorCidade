@@ -22,6 +22,6 @@ export default async function registerService(form) {
 
     return response.data
   } catch (error) {
-    throw new Error("Failed to fetch" + error)
+    return error
   }
 }

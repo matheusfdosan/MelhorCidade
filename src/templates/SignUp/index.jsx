@@ -4,6 +4,8 @@ import registerService from "../../utils/registerService"
 import { useState, useEffect, useNavigate } from "react"
 import { Link } from "react-router-dom"
 import authService from "../../utils/authService"
+import Loading from "../../components/Loading"
+import errorGif from "../../assets/error.gif"
 
 export default function SignUp() {
   const [form, setForm] = useState({
@@ -13,12 +15,14 @@ export default function SignUp() {
     password: "",
     confirmPassword: "",
   })
+  const [loading, setLoading] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState(false)
+  const [axiosError, setAxiosError] = useState(false)
 
   useEffect(() => {
     document.title = "Melhor Cidade - Cadastro"
   }, [])
 
-  const [confirmPassword, setConfirmPassword] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value })
@@ -26,6 +30,7 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     if (form.password === form.confirmPassword) {
       const response = await registerService(form)
 
@@ -34,8 +39,8 @@ export default function SignUp() {
           const response = await authService(form.email, form.password)
 
           if (response.serverResponse) {
-            const navigate = useNavigate()
-            navigate("/homepage")
+            setLoading(false)
+            document.location.href = "/homepage"
 
             localStorage.setItem(
               "Login",
@@ -48,6 +53,13 @@ export default function SignUp() {
         } catch (err) {
           console.log(err)
         }
+      } else if (response.name == "AxiosError"){
+        setLoading(false)
+        setAxiosError(true)
+  
+        setTimeout(() => {
+          setAxiosError(false)
+        }, 4000)
       }
 
       setConfirmPassword(false)
@@ -111,6 +123,19 @@ export default function SignUp() {
               <span style={{ color: "red" }}>As senhas não coincidem.</span>
             )}
           </div>
+
+          {
+            loading && <Loading/>
+          }
+
+{axiosError && (
+              <div id="serverOff">
+                <h1>MelhorCidade</h1>
+                <h2>Puts!! Erro ao se conectar ao serviço. Tente mais tarde!</h2>
+                <p>Erro 503 - Serviço Indisponível</p>
+                <img src={errorGif} alt="error-gif" />
+              </div>
+            )}
 
           <p id="already_have_account">
             Você já tem uma conta? Então faça o{" "}

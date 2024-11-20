@@ -90,7 +90,9 @@ export default function Login() {
 
             {axiosError && (
               <div id="serverOff">
-                <h2>Erro ao se conectar ao serviço. Tente mais tarde!</h2>
+                <h1>MelhorCidade</h1>
+                <h2>Puts!! Erro ao se conectar ao serviço. Tente mais tarde!</h2>
+                <p>Erro 503 - Serviço Indisponível</p>
                 <img src={errorGif} alt="error-gif" />
               </div>
             )}
