@@ -1,11 +1,14 @@
+import "./styles.css"
+
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
-import rightArrow from "../../assets/right-arrow-icon.svg"
-import "./styles.css"
-import { useState, useEffect, useContext } from "react"
-import { Link } from "react-router-dom"
 import FooterLinks from "../../components/FooterLinks"
 import ThemeContext from "../../utils/themeContext"
+
+import rightArrow from "../../assets/right-arrow-icon.svg"
+
+import { Link } from "react-router-dom"
+import { useEffect, useContext } from "react"
 
 export default function Settings() {
   const { theme, toggleTheme } = useContext(ThemeContext)
@@ -19,11 +22,10 @@ export default function Settings() {
     }
   }, [])
 
-
-
-  useEffect(() => {
-  }, [theme]);
-  
+  const handleLogOut = () => {
+    localStorage.removeItem("CookieId")
+    document.location.href = "/login"
+  }
 
   return (
     <>
@@ -36,6 +38,11 @@ export default function Settings() {
               <Link to="/account">Gregory Singleton</Link>
             </h3>
             <p>gregory.singleton@email.com</p>
+
+            <div id="sign_out">
+              <h3>Sair da conta</h3>
+              <span onClick={handleLogOut}>Deslogar</span>
+            </div>
           </div>
         </section>
         <section id="visibility">

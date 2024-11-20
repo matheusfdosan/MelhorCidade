@@ -30,6 +30,29 @@
   font-size: 1.6rem;
 }
 
+#sign_out {
+  display: flex; 
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: .1rem solid var(--gray-inputs-border) ;
+  justify-content: space-between;
+}
+
+#sign_out > span {
+  cursor: pointer;
+  padding: 1rem;
+  border: .1rem solid var(--gray-inputs-border);
+  border-radius: 1rem;
+  transition: background-color 200ms ease, color 300ms ease;
+}
+
+#sign_out > span:hover {
+  background-color: var(--gray-inputs-border);
+  color: var(--white);
+}
+
+
 #settings_container #your_account > .settings > h3 > a {
   color: var(--dark);
   text-decoration: none;
