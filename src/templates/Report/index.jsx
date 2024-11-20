@@ -117,6 +117,53 @@ export default function Report() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
 
+  const resizeImage = (file, maxWidth, maxHeight) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+
+      reader.onload = (event) => {
+        const img = new Image()
+        img.onload = () => {
+          const canvas = document.createElement("canvas")
+          const ctx = canvas.getContext("2d")
+
+          let width = img.width
+          let height = img.height
+
+          if (width > height) {
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width)
+              width = maxWidth
+            }
+          } else {
+            if (height > maxHeight) {
+              width = Math.round((width * maxHeight) / height)
+              height = maxHeight
+            }
+          }
+
+          canvas.width = width
+          canvas.height = height
+          ctx.drawImage(img, 0, 0, width, height)
+
+          canvas.toBlob(
+            (blob) => {
+              resolve(blob)
+            },
+            "image/jpeg",
+            0.7
+          )
+        }
+
+        img.onerror = (error) => reject(error)
+        img.src = event.target.result
+      }
+
+      reader.onerror = (error) => reject(error)
+      reader.readAsDataURL(file)
+    })
+  }
+
   useEffect(() => {
     const getUserLocation = async () => {
       try {
@@ -167,7 +214,8 @@ export default function Report() {
 
     const file = e.target.files[0]
 
-    if (file) {
+    try {
+      const resizedBlob = await resizeImage(file, 800, 800)
       const reader = new FileReader()
 
       reader.onload = () => {
@@ -178,18 +226,21 @@ export default function Report() {
           code: base64,
         }
 
-        if (e.target.id == "add_first_img") {
+        if (e.target.id === "add_first_img") {
           setComplaintImageFirst(reader.result)
           setFiles((prevFiles) => [...prevFiles, imageData])
-        } else if (e.target.id == "add_second_img") {
+        } else if (e.target.id === "add_second_img") {
           setComplaintImageSecond(reader.result)
           setFiles((prevFiles) => [...prevFiles, imageData])
-        } else if (e.target.id == "add_third_img") {
+        } else if (e.target.id === "add_third_img") {
           setComplaintImageThird(reader.result)
           setFiles((prevFiles) => [...prevFiles, imageData])
         }
       }
-      reader.readAsDataURL(file)
+
+      reader.readAsDataURL(resizedBlob)
+    } catch (error) {
+      console.error("Erro ao redimensionar imagem:", error)
     }
   }
 
@@ -373,7 +424,6 @@ export default function Report() {
         </div>
 
         <label>Adicione algumas imagens do problema:</label>
-
 
         <div id="add_img_grid">
           <label
