@@ -88,7 +88,7 @@
 }
 
 .post-footer .relevant-doubts-btn:hover {
-  transform: translateX(.3rem);
+  transform: translateX(0.3rem);
 }
 
 .post-footer #see-more {

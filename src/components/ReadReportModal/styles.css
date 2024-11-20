@@ -45,6 +45,20 @@
   margin: auto;
 }
 
+#post-main > h2 {
+  margin-bottom: 1rem;
+}
+
+#locale > p {
+  height: 5rem;
+  width: 60%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 #post-main > img {
   display: block;
   margin: 1rem auto;
@@ -57,7 +71,7 @@
 #local-date {
   display: flex;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 2rem 0;
 }
 
@@ -145,6 +159,17 @@ label[for="add_a_comment"] {
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+#add_a_comment {
+  width: 100%;
+  height: 3.5rem;
+  border: 0.1rem solid var(--gray-inputs-border);
+  background-color: var(--gray-inputs);
+  border-radius: 0.5rem;
+  font-family: var(--poppinst-font);
+  font-size: 1.4rem;
+  padding-inline: 1rem;
 }
 
 #add_your_comment > button {

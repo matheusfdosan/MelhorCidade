@@ -2,7 +2,8 @@ import "./styles.css"
 import crossIcon from "../../assets/cross-icon.svg"
 import redMarker from "../../assets/red-marker.svg"
 import thumbUpIcon from "../../assets/thumb-up-icon.svg"
-import Input from "../../components/Input"
+import reloadPost from "../../utils/reloadPost"
+import Loading from "../../components/Loading"
 import { useState } from "react"
 import commentService from "../../utils/makeCommentService"
 
@@ -10,7 +11,9 @@ export default function ReadReportModal({
   specificPostData: data,
   setShowPostDetailsModal,
 }) {
+  const [allComments, setAllComments] = useState(data.comentarios)
   const [commentData, setCommentData] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleCloseModal = () => {
     setShowPostDetailsModal(false)
@@ -37,31 +40,54 @@ export default function ReadReportModal({
     setCommentData(e.target.value)
   }
 
-  const handleSubmitComment = (commentary) => {
-    const cookie = JSON.parse(cookieAndId).cookie
-    const id = JSON.parse(cookieAndId).id
+  const handleSubmitComment = async (commentary, idComplaint) => {
+    try {
+      const cookieAndId = localStorage.getItem("CookieId")
+      const cookie = JSON.parse(cookieAndId).cookie
+      const id = JSON.parse(cookieAndId).id
+      setLoading(true)
 
-    const comment = {
-      conteudo: commentary,
-      CodigoDenuncia: cookie,
-      _idUser: id
+      const comment = {
+        conteudo: commentary,
+        CodigoDenuncia: idComplaint,
+        cookie: cookie,
+        _idUser: id,
+      }
+
+      await commentService(comment)
+
+      const reloadData = {
+        CodigoDenuncia: data.CodigoDenuncia,
+        cookie: cookie,
+        _idUser: id,
+      }
+
+      const response = await reloadPost(reloadData)
+      setAllComments(response.data.mensagem.comentarios)
+
+      setCommentData("")
+      setLoading(false)
+    } catch (err) {
+      setLoading(false)
+      console.error("Erro ao enviar comentário ou recarregar:", err)
     }
-
-    commentService(comment)
   }
 
   return (
     <>
-      <div id="post-modal-overlay" onClick={handleClickOutOfModal}>
+      <div id={"post-modal-overlay"} onClick={handleClickOutOfModal}>
         <div id="post-container">
           <div id="post-header">
-            <h1>{data.Descricao.Ocorrencia}</h1>
+            <h1>{data.Descricao.Nome}</h1>
             <button id="close-modal" onClick={handleCloseModal}>
               <img src={crossIcon} alt="cross-icon" />
             </button>
           </div>
           <div id="post-main">
-            <img src={data.Descricao.Imagens[0].Caminho} alt={"Imagem: " + data.Descricao.Ocorrencia} />
+            <img
+              src={data.Descricao.Imagens[0].Caminho}
+              alt={"Imagem: " + data.Descricao.Ocorrencia}
+            />
             <div id="local-date">
               <div id="locale">
                 <img src={redMarker} alt="red-marker" />
@@ -70,6 +96,7 @@ export default function ReadReportModal({
               <p id="date">{fixData(data.createdAt)}</p>
             </div>
 
+            <h2>Descrição da denúncia:</h2>
             <p id="post-desc">{data.Descricao.Ocorrencia}</p>
 
             <div id="relevance">
@@ -91,23 +118,40 @@ export default function ReadReportModal({
             <div id="comments">
               <h2>Comentários:</h2>
 
+              <label htmlFor="add_a_comment">Adicione um comentário</label>
+              <div id="add_your_comment">
+                <input
+                  id="add_a_comment"
+                  name="add_a_comment"
+                  placeholder="Seu comentário..."
+                  onChange={handleChangeComment}
+                  value={commentData}
+                />
+                <button
+                  onClick={() =>
+                    handleSubmitComment(commentData, data.CodigoDenuncia)
+                  }
+                >
+                  Comentar
+                </button>
+              </div>
 
-                <label htmlFor="add_a_comment">Adicione um comentário</label>
-                <div id="add_your_comment">
-                  <Input idName={"add_a_comment"} placeholder={"Seu comentário..."} onChangeInput={handleChangeComment} />
-                  <button onClick={() => handleSubmitComment(commentData)}>Comentar</button>
-                </div>
+              {loading && <Loading />}
 
-              {/* <ul>
-                {data.comentarios.map((comment) => {
-                  return (
-                    <li key={comment.id}>
-                      <h3>{comment.username}: </h3>
-                      <p>{comment.body}</p>
-                    </li>
-                  )
-                })}
-              </ul> */}
+              <ul>
+                {allComments.lenght == 0 ? (
+                  <li>Nenhum comentário aqui!</li>
+                ) : (
+                  allComments.map((comment) => {
+                    return (
+                      <li key={comment._idComentario}>
+                        <h3>{comment.Nome}: </h3>
+                        <p>{comment.conteudo}</p>
+                      </li>
+                    )
+                  })
+                )}
+              </ul>
             </div>
           </div>
         </div>
