@@ -1,13 +1,38 @@
 import "./styles.css"
 import { Link } from "react-router-dom"
-import Posts from "../../components/Posts"
-import { useEffect } from "react"
 import FooterLinks from "../../components/FooterLinks"
+import { useState, useEffect } from "react"
+import redMarker from "../../assets/red-marker.svg"
+import relevantButton from "../../assets/like-icon.svg"
+
 
 export default function Landing() {
+  const [postsData, setPostsData] = useState([])
+
   useEffect(() => {
-    document.title = "Melhor Cidade"
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch("/posts.json")
+        const result = await response.json()
+        return result
+      } catch (error) {
+        console.log("Failed to fetch posts:" + error)
+        throw error
+      }
+    }
+
+    fetchPosts()
+      .then((response) => {
+        setPostsData(response)
+      })
+      .catch((err) => {
+        console.log("Error to get posts data: " + err)
+      })
   }, [])
+
+  const handlePostClick = () => {
+    document.location.href = "/login"
+  }
 
   return (
     <>
@@ -51,7 +76,48 @@ export default function Landing() {
           </div>
 
           <div id="posts_container">
-            <Posts />
+            <div id="posts">
+              {postsData.map((data) => {
+                return (
+                  <div
+                    className="post"
+                    key={data.id}
+                    id={data.id}
+                  >
+                    <img
+                      src={data.image[0]}
+                      alt={"Imagem: " + data.title}
+                      title={"Imagem: "}
+                    />
+                    <div className="post-content">
+                      <div className="post-header">
+                        <div className="locale">
+                          <img src={redMarker} alt="red-marker" />
+                          <p>{data.location.address}</p>
+                        </div>
+                        <p className="date">{data.date}</p>
+                      </div>
+                      <div className="post-body">
+                        <p>
+                          <strong>{data.owner}:</strong>{" "}
+                          {data.description}
+                        </p>
+                      </div>
+                      <div className="post-footer">
+                        <button className="relevant-doubts-btn">
+                          <img src={relevantButton} alt="like" />{" "}
+                          <span>Relevante</span>
+                        </button>
+
+                        <p id="see-more" onClick={() => handlePostClick(data)}>
+                          Detalhes
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </section>
 
@@ -79,7 +145,7 @@ export default function Landing() {
                 src="https://player.vimeo.com/video/33982065?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 width="640"
                 height="230"
-                frameborder="0"
+                frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
                 title="Brasil."
               ></iframe>

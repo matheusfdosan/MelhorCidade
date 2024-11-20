@@ -143,7 +143,6 @@ section#landing_hero > .container > a:hover {
 #landing_video > .container > #info_video {
   display: flex;
   gap: 4rem;
-  color: var(--white);
   align-items: flex-start;
 }
 
@@ -157,6 +156,8 @@ section#landing_hero > .container > a:hover {
 
 #landing_video > .container > #info_video > #video_description > p {
   margin-top: 3rem;
+  color: var(--white);
+
 }
 
 #landing_footer {
