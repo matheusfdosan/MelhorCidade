@@ -191,37 +191,5 @@
         "body": "A ciclovia deveria ser um espaço seguro, mas está cheia de problemas. Precisamos de manutenção urgente."
       }
     ]
-  },
-  {
-    "id": 6,
-    "title": "Vazamento de água potável em calçada",
-    "owner": "Gabriel Freitas",
-    "image": [
-      "https://decorandocasas.com.br/wp-content/uploads/2021/06/Vazamento-na-cal%C3%A7ada-de-quem-%C3%A9-a-responsabilidade-1.jpg"
-    ],
-    "description": "Há um vazamento de água potável na calçada da Rua das Acácias, próximo ao número 210, que já dura mais de uma semana. A água está escorrendo continuamente pela rua, desperdiçando um recurso tão precioso. Além do desperdício, a água tem se acumulado, criando poças que dificultam a passagem dos pedestres e podem causar quedas. Vários moradores já notificaram a empresa de saneamento, mas até agora nada foi feito.",
-    "location": {
-      "position": {
-        "lat": -22.908333,
-        "long": -43.196388,
-        "city": "Rio de Janeiro"
-      },
-      "address": "Rua das Acácias, 210 - Tijuca"
-    },
-    "date": "05/10/2024",
-    "relevance_points": 38,
-    "solution": "A plataforma pode gerar uma notificação para a empresa de saneamento responsável, destacando o desperdício de água potável e o risco de acidentes para pedestres. A IA também pode sugerir soluções temporárias, como a sinalização da área para evitar quedas enquanto o vazamento não é consertado.",
-    "comments": [
-      {
-        "id": 0,
-        "username": "Mariana Costa",
-        "body": "Esse vazamento está se espalhando pela rua toda. Além do desperdício de água, é perigoso para os pedestres."
-      },
-      {
-        "id": 1,
-        "username": "Roberto Lima",
-        "body": "Inacreditável a demora para resolver algo tão simples. E a quantidade de água sendo desperdiçada é enorme."
-      }
-    ]
   }
 ]
