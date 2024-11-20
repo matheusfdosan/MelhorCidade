@@ -30,7 +30,7 @@ export default async function authService(emailValue, passwordValue) {
           id: response.data.id,
         })
       )
-      return response.data.acesso
+      return {serverAcess: response.data.acesso}
     }
   } catch (error) {
     console.log("Failed to make login: " + error)

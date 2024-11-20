@@ -30,7 +30,7 @@ export default function Login() {
     setLoading(true)
     const authServiceResponse = await authService(loginEmail, loginPassword)
 
-    if (authServiceResponse) {
+    if (authServiceResponse.serverAcess) {
       setLoading(false)
       document.location.href = "/homepage"
       setErrorMessage(false)
