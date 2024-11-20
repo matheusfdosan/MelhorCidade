@@ -192,7 +192,7 @@ label[for="add_a_comment"] {
   margin-top: 3rem;
   margin-bottom: 3rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 2rem;
 }
 

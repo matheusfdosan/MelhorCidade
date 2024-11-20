@@ -7,6 +7,7 @@ export default async function commentService(comment) {
     const response = await axios.post(url, comment)
 
     console.log(response)
+    return response
   } catch (error) {
     console.log("Failed to comment: " + error)
     throw error

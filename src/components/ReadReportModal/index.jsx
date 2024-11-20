@@ -145,7 +145,7 @@ export default function ReadReportModal({
                   allComments.map((comment) => {
                     return (
                       <li key={comment._idComentario}>
-                        <h3>{comment.Nome}: </h3>
+                        <h3>{comment.nome}: </h3>
                         <p>{comment.conteudo}</p>
                       </li>
                     )
