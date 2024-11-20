@@ -3,7 +3,9 @@
     "id": 0,
     "title": "Buraco perigoso na via principal",
     "owner": "Maria Antunes",
-    "image": ["https://cdn.codiehost.com.br/eusoucidadania/878c4dd8-cc37-4042-ac6c-2dd56dfd04c9.jpg"],
+    "image": [
+      "https://cdn.codiehost.com.br/eusoucidadania/878c4dd8-cc37-4042-ac6c-2dd56dfd04c9.jpg"
+    ],
     "description": "Um grande buraco se formou na Avenida Paulista, próximo ao número 1000, há cerca de três semanas. O buraco está causando muitos transtornos, com vários motoristas tendo seus veículos danificados. Já ocorreram dois acidentes leves, além de muitos motoristas tendo que desviar bruscamente para evitar o buraco, o que representa um risco iminente de acidentes mais graves. É urgente que a prefeitura realize o reparo, pois se trata de uma via de grande movimento, especialmente durante o horário de pico.",
     "location": {
       "position": {
@@ -15,8 +17,8 @@
     },
     "date": "02/10/2024",
     "relevance_points": 35,
-    
-    "solution": "A plataforma poderia gerar um relatório de urgência destacando o risco à segurança pública e notificar diretamente o setor de infraestrutura viária. Além disso, poderia sugerir uma interdição temporária da via até que o reparo seja realizado.", 
+
+    "solution": "A plataforma poderia gerar um relatório de urgência destacando o risco à segurança pública e notificar diretamente o setor de infraestrutura viária. Além disso, poderia sugerir uma interdição temporária da via até que o reparo seja realizado.",
     "comments": [
       {
         "id": 0,
@@ -34,7 +36,9 @@
     "id": 1,
     "title": "Lixo acumulado em praça pública",
     "owner": "Lucas Oliveira",
-    "image": "https://saopauloantiga.com.br/wp-content/uploads/2009/12/lixonocentrodesp.jpg",
+    "image": [
+      "https://saopauloantiga.com.br/wp-content/uploads/2009/12/lixonocentrodesp.jpg"
+    ],
     "description": "A Praça dos Trabalhadores, localizada no bairro Centro, está cheia de lixo espalhado. Os caminhões de coleta não passam há mais de uma semana, e o lixo acumulado está começando a atrair insetos e roedores. A situação está insuportável, especialmente com o cheiro forte nos dias mais quentes. Além disso, o acúmulo de lixo pode causar problemas de saúde pública, principalmente para as crianças que costumam brincar na praça.",
     "location": {
       "position": {
@@ -64,7 +68,9 @@
     "id": 2,
     "title": "Poste sem iluminação em área residencial",
     "owner": "Ana Costa",
-    "image": "https://img.cmswebsg.com.br/araraquaraagora.com/image?src=https://araraquaraagora.com/images/noticias/11247/10035730_Img0_600x4.jpg&w=1200&h=630&output=webp",
+    "image": [
+      "https://img.cmswebsg.com.br/araraquaraagora.com/image?src=https://araraquaraagora.com/images/noticias/11247/10035730_Img0_600x4.jpg&w=1200&h=630&output=webp"
+    ],
     "description": "No bairro Jardim América, o poste de iluminação na Rua das Flores está apagado há mais de dois meses. A rua fica completamente escura à noite, e a insegurança entre os moradores só cresce. Houve relatos de assaltos e de atividades suspeitas nas últimas semanas. Os moradores já tentaram acionar a prefeitura diversas vezes, mas o problema persiste. Precisamos de uma solução para evitar mais problemas e garantir a segurança da comunidade.",
     "location": {
       "position": {
@@ -94,7 +100,9 @@
     "id": 3,
     "title": "Árvore caindo em via pública",
     "owner": "Pedro Lima",
-    "image": "https://abcreporter.com.br/wp-content/uploads/2019/02/ARVORE.jpeg",
+    "image": [
+      "https://abcreporter.com.br/wp-content/uploads/2019/02/ARVORE.jpeg"
+    ],
     "description": "Uma grande árvore na Rua das Palmeiras está inclinada e prestes a cair. Após uma forte tempestade, a árvore ficou visivelmente danificada e balançando a cada vento forte. Muitos pedestres e motoristas passam por essa rua diariamente, e há um risco iminente de acidentes. Já fizemos contato com a prefeitura, mas até agora ninguém veio verificar a situação.",
     "location": {
       "position": {
@@ -124,7 +132,9 @@
     "id": 4,
     "title": "Vazamento de esgoto em rua residencial",
     "owner": "Fernanda Ribeiro",
-    "image": "https://www.cacavazamento.srv.br/wp-content/uploads/2015/01/blog_bueiro.jpg",
+    "image": [
+      "https://www.cacavazamento.srv.br/wp-content/uploads/2015/01/blog_bueiro.jpg"
+    ],
     "description": "Na Rua do Sol, no bairro Nova Esperança, há um vazamento de esgoto que corre pela calçada e invade as casas. O problema já dura quase um mês, e a situação está insustentável. O cheiro é insuportável e os moradores estão preocupados com o risco de doenças. Entramos em contato com a empresa de saneamento básico, mas até agora nada foi feito.",
     "location": {
       "position": {
@@ -154,7 +164,9 @@
     "id": 5,
     "title": "Ciclovia sem manutenção",
     "owner": "Renato Braga",
-    "image": "https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/UAKM5UQFKJKMZHFXRJCHHJI7YA.jpg?auth=7b4d2f9dfeb6b421dc4ca3e2e6176bda990e49db4bb5167447bb61e5e0efedf5&width=1224&height=816",
+    "image": [
+      "https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/UAKM5UQFKJKMZHFXRJCHHJI7YA.jpg?auth=7b4d2f9dfeb6b421dc4ca3e2e6176bda990e49db4bb5167447bb61e5e0efedf5&width=1224&height=816"
+    ],
     "description": "A ciclovia que liga o bairro Jardim Novo à região central está sem manutenção há meses. O asfalto está cheio de buracos e rachaduras, o que torna perigoso para os ciclistas, especialmente durante a noite. Alguns trechos estão tão danificados que os ciclistas precisam desviar para a via de carros, o que aumenta o risco de acidentes. Já entramos em contato com a prefeitura, mas não houve resposta.",
     "location": {
       "position": {
@@ -184,7 +196,9 @@
     "id": 6,
     "title": "Vazamento de água potável em calçada",
     "owner": "Gabriel Freitas",
-    "image": "https://decorandocasas.com.br/wp-content/uploads/2021/06/Vazamento-na-cal%C3%A7ada-de-quem-%C3%A9-a-responsabilidade-1.jpg",
+    "image": [
+      "https://decorandocasas.com.br/wp-content/uploads/2021/06/Vazamento-na-cal%C3%A7ada-de-quem-%C3%A9-a-responsabilidade-1.jpg"
+    ],
     "description": "Há um vazamento de água potável na calçada da Rua das Acácias, próximo ao número 210, que já dura mais de uma semana. A água está escorrendo continuamente pela rua, desperdiçando um recurso tão precioso. Além do desperdício, a água tem se acumulado, criando poças que dificultam a passagem dos pedestres e podem causar quedas. Vários moradores já notificaram a empresa de saneamento, mas até agora nada foi feito.",
     "location": {
       "position": {

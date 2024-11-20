@@ -12,17 +12,16 @@ import Settings from "./templates/Settings";
 import Profile from "./templates/Profile";
 import TermsOfUse from "./templates/TermsOfUse";
 import Map from "./templates/Map";
+import Dashboard from "./templates/Dashboard";
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Rotas sem tema */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Rotas com tema */}
         <Route
           path="/homepage"
           element={
@@ -60,6 +59,14 @@ function App() {
           element={
             <ThemeProvider>
               <TermsOfUse />
+            </ThemeProvider>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <ThemeProvider>
+              <Dashboard />
             </ThemeProvider>
           }
         />
