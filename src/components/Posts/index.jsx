@@ -48,7 +48,11 @@ export default function Posts() {
       <div id="posts">
         {postsData.map((data) => {
           return (
-            <div className="post" key={data.CodigoDenuncia}>
+            <div
+              className="post"
+              key={data.CodigoDenuncia}
+              id={data.CodigoDenuncia}
+            >
               <img
                 src={data.Descricao.Imagens[0].Caminho}
                 alt={"Imagem: " + data.Descricao.Imagens[0]._id}
@@ -64,7 +68,8 @@ export default function Posts() {
                 </div>
                 <div className="post-body">
                   <p>
-                    <strong>{data.Descricao.Nome}:</strong> {data.Descricao.Ocorrencia}
+                    <strong>{data.Descricao.Nome}:</strong>{" "}
+                    {data.Descricao.Ocorrencia}
                   </p>
                 </div>
                 <div className="post-footer">
@@ -73,10 +78,7 @@ export default function Posts() {
                     <span>Relevante</span>
                   </button>
 
-                  <p
-                    id="see-more"
-                    onClick={() => handlePostClick(data)}
-                  >
+                  <p id="see-more" onClick={() => handlePostClick(data)}>
                     Detalhes
                   </p>
                 </div>
