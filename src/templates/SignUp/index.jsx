@@ -1,7 +1,7 @@
 import "./style.css"
 import Input from "../../components/Input"
 import registerService from "../../utils/registerService"
-import { useState, useEffect, useNavigate } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import authService from "../../utils/authService"
 import Loading from "../../components/Loading"
@@ -22,7 +22,6 @@ export default function SignUp() {
   useEffect(() => {
     document.title = "Melhor Cidade - Cadastro"
   }, [])
-
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.id]: e.target.value })
@@ -53,10 +52,10 @@ export default function SignUp() {
         } catch (err) {
           console.log(err)
         }
-      } else if (response.name == "AxiosError"){
+      } else if (response.name == "AxiosError") {
         setLoading(false)
         setAxiosError(true)
-  
+
         setTimeout(() => {
           setAxiosError(false)
         }, 4000)
@@ -124,18 +123,16 @@ export default function SignUp() {
             )}
           </div>
 
-          {
-            loading && <Loading/>
-          }
+          {loading && <Loading />}
 
-{axiosError && (
-              <div id="serverOff">
-                <h1>MelhorCidade</h1>
-                <h2>Puts!! Erro ao se conectar ao serviço. Tente mais tarde!</h2>
-                <p>Erro 503 - Serviço Indisponível</p>
-                <img src={errorGif} alt="error-gif" />
-              </div>
-            )}
+          {axiosError && (
+            <div id="serverOff">
+              <h1>MelhorCidade</h1>
+              <h2>Puts!! Erro ao se conectar ao serviço. Tente mais tarde!</h2>
+              <p>Erro 503 - Serviço Indisponível</p>
+              <img src={errorGif} alt="error-gif" />
+            </div>
+          )}
 
           <p id="already_have_account">
             Você já tem uma conta? Então faça o{" "}
