@@ -58,17 +58,8 @@ export default function Settings() {
           <h2>Gerenciar Conta</h2>
           <ul className="settings">
             <li>
-              <p>Mudar senha</p>
-              <img src={rightArrow} alt="right-arrow" />
-            </li>
-            <li>
-              <p>Endereço</p>
-              <span>Ghana, Willie Morgan, 62</span>
-              <img src={rightArrow} alt="right-arrow" />
-            </li>
-            <li>
-              <p>Telefone</p>
-              <span>+55 91234-5678</span>
+              <p>Seu Endereço</p>
+              <span></span>
               <img src={rightArrow} alt="right-arrow" />
             </li>
           </ul>
