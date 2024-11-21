@@ -18,47 +18,18 @@
   padding: 2rem 0;
 }
 
-#profile_picture_container > img {
-  width: 14rem;
-  height: 14rem;
-  border-radius: 100%;
-  object-fit: cover;
-  border: 0.5rem solid transparent;
-  transition: border-color 300ms ease-in-out;
-  cursor: pointer;
-}
-
-#profile_picture_container > img:hover {
-  border-color: var(--light-blue);
-}
-
 #user_datas {
   display: flex;
-  flex-direction: column;
-  align-items: left;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }
 
 #user_datas > h3 {
   font-size: 2.5rem;
   font-weight: normal;
   font-family: var(--sora-font);
-  margin-bottom: 2.5rem;
-}
-
-#user_datas > ul {
-  display: flex;
-  gap: 2rem;
-}
-
-#user_datas > ul > li {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.8rem;
-  align-items: center;
-}
-
-#user_datas > ul > li > .amout {
-  font-weight: bold;
 }
 
 #posts_container {
@@ -91,5 +62,4 @@
   #user_datas > ul > li {
     font-size: 1.4rem;
   }
-
 }
