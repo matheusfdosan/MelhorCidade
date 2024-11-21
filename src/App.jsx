@@ -1,18 +1,18 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
-import { ThemeProvider } from "./utils/themeContext";
+import { ThemeProvider } from "./utils/themeContext"
 
-import Landing from "./templates/Landing";
-import Login from "./templates/Login";
-import SignUp from "./templates/SignUp";
-import Homepage from "./templates/Homepage";
-import Report from "./templates/Report";
-import Settings from "./templates/Settings";
-import Profile from "./templates/Profile";
-import TermsOfUse from "./templates/TermsOfUse";
-import Map from "./templates/Map";
-import Dashboard from "./templates/Dashboard";
+import Landing from "./templates/Landing"
+import Login from "./templates/Login"
+import SignUp from "./templates/SignUp"
+import Homepage from "./templates/Homepage"
+import Report from "./templates/Report"
+import Settings from "./templates/Settings"
+import Profile from "./templates/Profile"
+import TermsOfUse from "./templates/TermsOfUse"
+import Map from "./templates/Map"
+import Dashboard from "./templates/Dashboard"
 
 function App() {
   return (
@@ -80,7 +80,7 @@ function App() {
         />
       </Routes>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
