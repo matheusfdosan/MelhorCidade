@@ -6,6 +6,11 @@ import reloadPost from "../../utils/reloadPost"
 import Loading from "../../components/Loading"
 import { useState } from "react"
 import commentService from "../../utils/makeCommentService"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/navigation"
+import "./styles.css"
+import { Navigation } from "swiper/modules"
 
 export default function ReadReportModal({
   specificPostData: data,
@@ -84,10 +89,39 @@ export default function ReadReportModal({
             </button>
           </div>
           <div id="post-main">
-            <img
-              src={data.Descricao.Imagens[0].Caminho}
-              alt={"Imagem: " + data.Descricao.Ocorrencia}
-            />
+            <Swiper
+              navigation={true}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <img
+                  src={data.Descricao.Imagens[0].Caminho}
+                  alt={"Imagem: " + data.Descricao.Imagens[0]._id}
+                  title={"Imagem: "}
+                />
+              </SwiperSlide>
+
+              {data.Descricao.Imagens[1] && (
+                <SwiperSlide>
+                  <img
+                    src={data.Descricao.Imagens[1].Caminho}
+                    alt={"Imagem: " + data.Descricao.Imagens[1]._id}
+                    title={"Imagem: "}
+                  />
+                </SwiperSlide>
+              )}
+
+              {data.Descricao.Imagens[2] && (
+                <SwiperSlide>
+                  <img
+                    src={data.Descricao.Imagens[2].Caminho}
+                    alt={"Imagem: " + data.Descricao.Imagens[2]._id}
+                    title={"Imagem: "}
+                  />
+                </SwiperSlide>
+              )}
+            </Swiper>
             <div id="local-date">
               <div id="locale">
                 <img src={redMarker} alt="red-marker" />

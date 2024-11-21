@@ -51,7 +51,7 @@
 
 #locale > p {
   height: 5rem;
-  width: 60%;
+  width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -59,19 +59,31 @@
   overflow: hidden;
 }
 
-#post-main > img {
+.swiper-slide {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.swiper-slide > img {
   display: block;
   margin: 1rem auto;
-  width: 65%;
+  pointer-events: none;
+  width: 100%;
+  height: 60vh;
   border-radius: 0.5rem;
-  object-fit: cover;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
 }
 
 #local-date {
   display: flex;
   justify-content: space-between;
   font-size: 1.6rem;
-  margin: 2rem 0;
+  margin-bottom: 2rem;
+  flex-direction: column-reverse;
 }
 
 #locale {
@@ -79,6 +91,7 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  margin-top: 3rem;
 }
 
 #post-desc {
@@ -204,6 +217,18 @@ label[for="add_a_comment"] {
 
 #comments > ul > li > p {
   display: inline;
+}
+
+@media (min-width: 500px) {
+  #map_container {
+      height: 100% !important;
+  }
+}
+
+@media (min-width: 830px) {
+  #the_map_container {
+    height: 90% !important;
+  }
 }
 
 @media (max-width: 800px) {

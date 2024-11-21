@@ -1,13 +1,9 @@
 import "./styles.css"
-
 import redMarker from "../../assets/red-marker.svg"
 import relevantButton from "../../assets/like-icon.svg"
-
 import getPosts from "../../utils/getPosts"
 import validateService from "../../utils/validateService"
-
 import ReadReportModal from "../ReadReportModal"
-
 import { useEffect, useState } from "react"
 
 export default function Posts({ turn }) {
@@ -49,7 +45,9 @@ export default function Posts({ turn }) {
       }
 
       const response = validateService(validate)
-      console.log(response)
+      if (response.acess) {
+        console.log(e.target +"oi")
+      }
     } else {
       setSpecificPost(data)
       setShowPostDetailsModal(true)
