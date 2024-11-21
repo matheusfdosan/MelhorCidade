@@ -1,11 +1,16 @@
 import "./styles.css"
+
 import redMarker from "../../assets/red-marker.svg"
 import relevantButton from "../../assets/like-icon.svg"
+
 import getPosts from "../../utils/getPosts"
+import validateService from "../../utils/validateService"
+
 import ReadReportModal from "../ReadReportModal"
+
 import { useEffect, useState } from "react"
 
-export default function Posts() {
+export default function Posts({ turn }) {
   const [postsData, setPostsData] = useState([])
   const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
   const [specificPost, setSpecificPost] = useState()
@@ -17,7 +22,7 @@ export default function Posts() {
         const cookie = JSON.parse(cookieAndId).cookie
         const id = JSON.parse(cookieAndId).id
 
-        const data = await getPosts(cookie, id)
+        const data = await getPosts(cookie, id, turn)
         setPostsData(data.denuncias)
       } catch (error) {
         console.log("Failed to fetch posts:" + error)
@@ -27,9 +32,28 @@ export default function Posts() {
     loadPostsData()
   }, [])
 
-  const handlePostClick = (data) => {
-    setSpecificPost(data)
-    setShowPostDetailsModal(true)
+  const handlePostClick = (e, data) => {
+    if (
+      e.target.className == "relevant-span" ||
+      e.target.className == "relevant-icon" ||
+      e.target.className == "relevant-doubts-btn"
+    ) {
+      const cookieAndId = localStorage.getItem("CookieId")
+      const cookie = JSON.parse(cookieAndId).cookie
+      const id = JSON.parse(cookieAndId).id
+
+      const validate = {
+        CodigoDenuncia: data.CodigoDenuncia,
+        cookie: cookie,
+        _idUser: id,
+      }
+
+      const response = validateService(validate)
+      console.log(response)
+    } else {
+      setSpecificPost(data)
+      setShowPostDetailsModal(true)
+    }
   }
 
   const fixData = (dataIso) => {
@@ -52,6 +76,7 @@ export default function Posts() {
               className="post"
               key={data.CodigoDenuncia}
               id={data.CodigoDenuncia}
+              onClick={(e) => handlePostClick(e, data)}
             >
               <img
                 src={data.Descricao.Imagens[0].Caminho}
@@ -74,13 +99,13 @@ export default function Posts() {
                 </div>
                 <div className="post-footer">
                   <button className="relevant-doubts-btn">
-                    <img src={relevantButton} alt="like" />{" "}
-                    <span>Relevante</span>
+                    <img
+                      src={relevantButton}
+                      alt="like"
+                      className="relevant-icon"
+                    />{" "}
+                    <span className="relevant-span">Relevante</span>
                   </button>
-
-                  <p id="see-more" onClick={() => handlePostClick(data)}>
-                    Detalhes
-                  </p>
                 </div>
               </div>
             </div>

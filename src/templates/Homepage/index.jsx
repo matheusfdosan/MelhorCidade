@@ -3,10 +3,12 @@ import Footer from "../../components/Footer"
 import "./styles.css"
 import Posts from "../../components/Posts"
 import Input from "../../components/Input"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import FooterLinks from "../../components/FooterLinks"
 
 export default function Homepage() {
+  const [turnState, setTurnState] = useState(0)
+
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
     if (!cookie) {
@@ -15,6 +17,10 @@ export default function Homepage() {
       document.title = "Melhor Cidade - Página Inicial"
     }
   }, [])
+
+  const handleLoadMoreBtn = () => {
+    setTurnState(turnState + 1)
+  }
 
   return (
     <>
@@ -31,17 +37,10 @@ export default function Homepage() {
           <button>Pesquisar</button>
         </div>
 
-        <div id="classify">
-          <p>Classificar por: </p>
-
-          <select id="choose_classify">
-            <option>Relevantes</option>
-            <option>Mais recentes</option>
-            <option>Mais antigos</option>
-          </select>
-        </div>
-
-        <Posts />
+        <Posts turn={turnState} />
+        <button id="load-more" onClick={handleLoadMoreBtn}>
+          Carregar mais
+        </button>
       </main>
 
       <div id="homepage_footer">

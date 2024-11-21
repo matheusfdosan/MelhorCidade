@@ -45,6 +45,21 @@
   border-radius: 0.5rem;
 }
 
+#load-more {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-family: var(--poppins-font);
+  border: 0.1rem solid var(--gray-inputs-border);
+  border-radius: 0.3rem;
+  background-color: none;
+  cursor: pointer;
+}
+
+#load-more:hover {
+  border: 0.1rem solid var(--dark);
+}
+
 #homepage_footer {
   width: 100%;
   padding: 0 10%;
