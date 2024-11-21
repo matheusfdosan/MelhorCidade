@@ -2,8 +2,15 @@ import "./styles.css"
 
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
+import { useEffect, useState } from "react"
 
 export default function Dashboard() {
+  const [dash, setDash] = useState("user")
+
+  useEffect(() => {
+    document.title = "Melhor Cidade - Dashboard"
+  }, [])
+
   return (
     <>
       <Header />
@@ -11,17 +18,35 @@ export default function Dashboard() {
         <aside>
           <div className="container">
             <ul>
-              <li>Usuários</li>
-              <li>Denúncias</li>
-              <li>Tendências de Denúncias</li>
+              <li
+                onClick={() => {
+                  setDash("users")
+                }}
+              >
+                Usuários
+              </li>
+              <li
+                onClick={() => {
+                  setDash("complaints")
+                }}
+              >
+                Denúncias
+              </li>
+              <li
+                onClick={() => {
+                  setDash("trend")
+                }}
+              >
+                Tendências de Denúncias
+              </li>
             </ul>
           </div>
         </aside>
 
         <main>
-          <Users_Dashboard />
-          <Complaints_Dashboard />
-          <Trends_Dashboard />
+          {dash == "users" && <Users_Dashboard />}
+          {dash == "complaints" && <Complaints_Dashboard />}
+          {dash == "trends" && <Trends_Dashboard />}
         </main>
       </div>
 
@@ -29,16 +54,3 @@ export default function Dashboard() {
     </>
   )
 }
-
-/**
- * 1. Usuários
-    - Número de Usuários: Quantidade total de usuários cadastrados na plataforma, com indicação de crescimento semanal ou mensal.
-    - Usuários Ativos: Percentual de usuários que interagiram recentemente (últimos 30 dias).
-  * 2. Denúncias
-    - Denúncias Semanais: Contagem de novas denúncias registradas na semana, acompanhada de um gráfico de tendência (comparação com semanas anteriores).
-    - Denúncias Resolvidas: Número e percentual de denúncias que foram atendidas e solucionadas. Um gráfico de barras ou de progresso seria ideal aqui para mostrar a eficiência na resolução.
-  * 3. Tendências de Denúncias
-    - Principal Denúncia da Semana: Tipo de problema mais relatado na semana (ex.: buracos na rua, falta de iluminação, transporte público) com um indicador visual destacando o aumento ou queda nas ocorrências.
- */
-
-
