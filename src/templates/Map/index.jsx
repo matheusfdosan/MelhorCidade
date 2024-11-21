@@ -15,6 +15,7 @@ import mapIcon_filled from "../../assets/map-icon-filled.svg"
 import userIcon_outlined from "../../assets/user-icon-outlined.svg"
 
 import Header from "../../components/Header"
+import Footer from "../../components/Footer"
 
 import TheMap from "../../components/TheMap"
 import getPosts from "../../utils/getPosts.js"
@@ -79,7 +80,7 @@ export default function Map() {
           <div className="container">
             <div id="header_complaints_bar">
               <h2>Problemas</h2>
-              <button id="minimize_btn" onClick={handleClickMinimize}>
+              {/* <button id="minimize_btn" onClick={handleClickMinimize}>
                 <img
                   src={barVisibility ? bottomArrowIcon : topArrowIcon}
                   alt="minimize-icon"
@@ -90,7 +91,7 @@ export default function Map() {
                   src={barVisibility ? leftArrowIcon : seeReportsIcon}
                   alt="minimize-icon"
                 />
-              </button>
+              </button> */}
             </div>
 
             <div id="complaints_container_bar">
@@ -116,35 +117,8 @@ export default function Map() {
           </div>
         </div>
       </main>
+      <Footer />
 
-      <footer id="footer_homepage_handmade">
-      <div id="footer_container">
-        <Link to="/homepage">
-          <img
-            src={homeIcon_outlined}
-            alt="home-button"
-          />
-        </Link>
-        <Link to="/report">
-          <img
-            src={darkPlusIcon_Outilined}
-            alt="report-button"
-          />
-        </Link>
-        <Link to="/map">
-          <img
-            src={mapIcon_filled}
-            alt="profile-button"
-          />
-        </Link>
-        <Link to="/account">
-          <img
-            src={userIcon_outlined}
-            alt="profile-button"
-          />
-        </Link>
-      </div>
-    </footer>
     </div>
   )
 }
