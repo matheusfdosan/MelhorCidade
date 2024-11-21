@@ -88,8 +88,10 @@ export default function Landing() {
                       src={data.image[0]}
                       alt={"Imagem: " + data.title}
                       title={"Imagem: "}
+                      onClick={() => handlePostClick(data)}
+
                     />
-                    <div className="post-content">
+                    <div className="post-content" onClick={() => handlePostClick(data)} >
                       <div className="post-header">
                         <div className="locale">
                           <img src={redMarker} alt="red-marker" />
@@ -104,14 +106,10 @@ export default function Landing() {
                         </p>
                       </div>
                       <div className="post-footer">
-                        <button className="relevant-doubts-btn">
+                        <button className="relevant-doubts-btn" onClick={() => console.log("hello")}>
                           <img src={relevantButton} alt="like" />{" "}
                           <span>Relevante</span>
                         </button>
-
-                        <p id="see-more" onClick={() => handlePostClick(data)}>
-                          Detalhes
-                        </p>
                       </div>
                     </div>
                   </div>

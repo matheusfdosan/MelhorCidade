@@ -125,6 +125,10 @@ section#landing_hero > .container > a:hover {
   padding-bottom: 10rem;
 }
 
+.post {
+  cursor: pointer;
+}
+
 #landing_video {
   background-color: var(--dark);
   padding: 12rem 0;
@@ -157,7 +161,6 @@ section#landing_hero > .container > a:hover {
 #landing_video > .container > #info_video > #video_description > p {
   margin-top: 3rem;
   color: var(--white);
-
 }
 
 #landing_footer {
