@@ -6,10 +6,10 @@ import validateService from "../../utils/validateService"
 import ReadReportModal from "../ReadReportModal"
 import { useEffect, useState } from "react"
 
-export default function Posts({ turn }) {
-  const [postsData, setPostsData] = useState([])
-  const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
-  const [specificPost, setSpecificPost] = useState()
+export default function Posts({ turn ,setHasMore }) {
+  const [postsData, setPostsData] = useState([]);
+  const [showPostDetailsModal, setShowPostDetailsModal] = useState(false);
+  const [specificPost, setSpecificPost] = useState();
 
   useEffect(() => {
     const loadPostsData = async () => {
@@ -19,14 +19,24 @@ export default function Posts({ turn }) {
         const id = JSON.parse(cookieAndId).id
 
         const data = await getPosts(cookie, id, turn)
-        setPostsData(data.denuncias)
+
+        setPostsData((prevPosts) => {
+          const existingIds = prevPosts.map((post) => post.CodigoDenuncia)
+          const newPosts = data.denuncias.filter(
+            (post) => !existingIds.includes(post.CodigoDenuncia)
+          )
+          return [...prevPosts, ...newPosts]
+        })
+
+        setHasMore(data.denuncias.length >= 15)
       } catch (error) {
-        console.log("Failed to fetch posts:" + error)
+        console.log("Failed to fetch posts: " + error)
+        setHasMore(false)
       }
     }
 
     loadPostsData()
-  }, [])
+  }, [turn, setHasMore])
 
   const handlePostClick = (e, data) => {
     if (
@@ -46,7 +56,7 @@ export default function Posts({ turn }) {
 
       const response = validateService(validate)
       if (response.acess) {
-        console.log(e.target +"oi")
+        console.log(e.target + "oi")
       }
     } else {
       setSpecificPost(data)

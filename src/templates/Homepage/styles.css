@@ -52,12 +52,24 @@
   font-family: var(--poppins-font);
   border: 0.1rem solid var(--gray-inputs-border);
   border-radius: 0.3rem;
+}
+
+.button-is-false {
   background-color: none;
   cursor: pointer;
 }
 
-#load-more:hover {
+.button-is-false:hover {
   border: 0.1rem solid var(--dark);
+}
+
+.button-is-true {
+  background-color: var(--gray-inputs);
+  cursor: not-allowed;
+}
+
+.button-is-true:hover {
+  border: 0.1rem solid var(--gray-inputs-border);
 }
 
 #homepage_footer {

@@ -8,6 +8,7 @@ import FooterLinks from "../../components/FooterLinks"
 
 export default function Homepage() {
   const [turnState, setTurnState] = useState(0)
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -19,7 +20,9 @@ export default function Homepage() {
   }, [])
 
   const handleLoadMoreBtn = () => {
-    setTurnState(turnState + 1)
+    if (hasMore) {
+      setTurnState(turnState + 1)
+    }
   }
 
   return (
@@ -37,9 +40,13 @@ export default function Homepage() {
           <button>Pesquisar</button>
         </div>
 
-        <Posts turn={turnState} />
-        <button id="load-more" onClick={handleLoadMoreBtn}>
-          Carregar mais
+        <Posts turn={turnState} setHasMore={setHasMore} />
+        <button
+          id="load-more"
+          onClick={handleLoadMoreBtn}
+          className={"button-is-" + !hasMore}
+        >
+          {hasMore ? "Carregar mais" : "Fim das denúncias"}
         </button>
       </main>
 
