@@ -37,9 +37,8 @@ export default function SignUp() {
         try {
           const response = await authService(form.email, form.password)
 
-          if (response.serverResponse) {
+          if (response.serverAcess) {
             setLoading(false)
-            document.location.href = "/homepage"
 
             localStorage.setItem(
               "Login",
@@ -48,6 +47,8 @@ export default function SignUp() {
                 password: form.password,
               })
             )
+
+            document.location.href = "/homepage"
           }
         } catch (err) {
           console.log(err)
