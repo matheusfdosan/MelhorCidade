@@ -37,6 +37,7 @@
   padding-top: 1rem;
   border-top: .1rem solid var(--gray-inputs-border) ;
   justify-content: space-between;
+  align-items: center;
 }
 
 #sign_out > span {

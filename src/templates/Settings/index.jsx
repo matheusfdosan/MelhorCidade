@@ -73,10 +73,6 @@ export default function Settings() {
             </li>
           </ul>
         </section>
-        <section id="delete_account">
-          <p>Deletar Conta</p>
-          <button>Deletar</button>
-        </section>
       </main>
 
       <div id="settings_footer">
