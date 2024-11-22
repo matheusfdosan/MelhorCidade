@@ -30,8 +30,11 @@ export default function TheMap({ centerProp }) {
   useEffect(() => {
     const loadLocationData = async () => {
       try {
-        const data = await getPosts()
-        setLocationData(data)
+        const cookieAndId = localStorage.getItem("CookieId")
+        const { cookie, id } = JSON.parse(cookieAndId)
+
+        const data = await getPosts(cookie, id, 0)
+        setLocationData(data.denuncias)
       } catch (error) {
         console.log("Failed to fetch locals:" + error)
       }
@@ -51,7 +54,7 @@ export default function TheMap({ centerProp }) {
     <>
       <MapContainer
         className="mapPane"
-        zoom={15}
+        zoom={16}
         center={centerProp.length === 2 ? centerProp : [-23.68524, -46.620502]}
         minZoom={8}
         scrollWheelZoom={true}
@@ -71,13 +74,15 @@ export default function TheMap({ centerProp }) {
         </LayerGroup>
         {locationData.map((data) => (
           <Marker
-            key={data.id}
+            key={data.CodigoDenuncia}
             icon={customIcon}
-            onClick={() => handleClickMarker(data.id)}
-            position={[data.location.position.lat, data.location.position.long]}
+            position={[
+              data.CoordenadasOcorrencia.coordinates[0],
+              data.CoordenadasOcorrencia.coordinates[1],
+            ]}
           >
             <Tooltip>
-              <h2>{data.title}</h2>
+              <h2>{data.Descricao.Ocorrencia}</h2>
             </Tooltip>
           </Marker>
         ))}

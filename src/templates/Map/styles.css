@@ -94,7 +94,7 @@
 }
 
 .complaints_bar > .container > #complaints_container_bar > ul {
-  margin-top: 2rem;
+  margin: 2rem 0 14rem;
 }
 
 .complaints_bar > .container > #complaints_container_bar > ul > li > a {
@@ -194,13 +194,10 @@
 }
 
 @media (max-width: 500px) {
-
-
   #map_container {
     height: 100%;
   }
 }
-
 
 @media (max-width: 370px) {
   html {

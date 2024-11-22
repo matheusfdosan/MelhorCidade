@@ -3,17 +3,6 @@ import { Link } from "react-router-dom"
 import markerIcon from "../../assets/red-marker.svg"
 import "./styles.css"
 
-import bottomArrowIcon from "../../assets/bottom-arrow-icon.svg"
-import topArrowIcon from "../../assets/top-arrow-icon.svg"
-
-import leftArrowIcon from "../../assets/left-arrow-icon.svg"
-import seeReportsIcon from "../../assets/report-icon.svg"
-
-import homeIcon_outlined from "../../assets/home-icon-outlined.svg"
-import darkPlusIcon_Outilined from "../../assets/dark-plus-icon-outlined.svg"
-import mapIcon_filled from "../../assets/map-icon-filled.svg"
-import userIcon_outlined from "../../assets/user-icon-outlined.svg"
-
 import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 
@@ -21,9 +10,9 @@ import TheMap from "../../components/TheMap"
 import getPosts from "../../utils/getPosts.js"
 
 export default function Map() {
-  const [barVisibility, setBarVisibility] = useState(true)
   const [locationData, setLocationData] = useState([])
   const [centerMap, setCenterMap] = useState([-23.68524, -46.620502])
+  const [zoom, setZoom] = useState(8)
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -47,8 +36,11 @@ export default function Map() {
 
       const loadLocationData = async () => {
         try {
-          const data = await getPosts()
-          setLocationData(data)
+          const cookieAndId = localStorage.getItem("CookieId")
+          const { cookie, id } = JSON.parse(cookieAndId)
+
+          const data = await getPosts(cookie, id, 0)
+          setLocationData(data.denuncias)
         } catch (error) {
           console.log("Failed to fetch locals:" + error)
         }
@@ -60,10 +52,7 @@ export default function Map() {
 
   const handleClickLocalItem = (local) => {
     setCenterMap(local)
-  }
-
-  const handleClickMinimize = () => {
-    setBarVisibility(!barVisibility)
+    setZoom(9)
   }
 
   return (
@@ -74,41 +63,27 @@ export default function Map() {
           <TheMap centerProp={centerMap} />
         </div>
 
-        <div
-          className={`complaints_bar ${barVisibility ? "active" : "minimized"}`}
-        >
+        <div className="complaints_bar">
           <div className="container">
             <div id="header_complaints_bar">
               <h2>Problemas</h2>
-              {/* <button id="minimize_btn" onClick={handleClickMinimize}>
-                <img
-                  src={barVisibility ? bottomArrowIcon : topArrowIcon}
-                  alt="minimize-icon"
-                />
-              </button>
-              <button id="minimize_btn_right" onClick={handleClickMinimize}>
-                <img
-                  src={barVisibility ? leftArrowIcon : seeReportsIcon}
-                  alt="minimize-icon"
-                />
-              </button> */}
             </div>
 
             <div id="complaints_container_bar">
               <ul>
                 {locationData.map((data) => (
                   <li
-                    key={data.id}
-                    onClick={() =>
+                    key={data.CodigoDenuncia}
+                    onClick={() => {
                       handleClickLocalItem([
-                        data.location.position.lat,
-                        data.location.position.long,
+                        data.CoordenadasOcorrencia.coordinates[0],
+                        data.CoordenadasOcorrencia.coordinates[1],
                       ])
-                    }
+                    }}
                   >
                     <Link>
                       <img src={markerIcon} alt="marker-icon" />
-                      <p>{data.title}</p>
+                      <p>{data.Descricao.Ocorrencia}</p>
                     </Link>
                   </li>
                 ))}
@@ -118,7 +93,6 @@ export default function Map() {
         </div>
       </main>
       <Footer />
-
     </div>
   )
 }
