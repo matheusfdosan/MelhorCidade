@@ -50,6 +50,7 @@
   padding: 1rem;
   font-size: 1.6rem;
   font-family: var(--poppins-font);
+  background-color: transparent;
   border: 0.1rem solid var(--gray-inputs-border);
   border-radius: 0.3rem;
 }
