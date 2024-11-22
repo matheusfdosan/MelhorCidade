@@ -30,18 +30,21 @@ export default function Login() {
     setLoading(true)
     const authServiceResponse = await authService(loginEmail, loginPassword)
 
-    if (authServiceResponse.serverAcess) {
+    if (authServiceResponse && authServiceResponse.serverAcess) {
       setLoading(false)
       document.location.href = "/homepage"
       setErrorMessage(false)
-    } else if (authServiceResponse && authServiceResponse.name  == "AxiosError") {
+    } else if (
+      authServiceResponse &&
+      authServiceResponse.name == "AxiosError"
+    ) {
       setLoading(false)
       setAxiosError(true)
 
       setTimeout(() => {
         setAxiosError(false)
       }, 4000)
-    } else {
+    } else if (authServiceResponse == undefined) {
       setLoading(false)
       setErrorMessage(true)
     }
@@ -91,7 +94,9 @@ export default function Login() {
             {axiosError && (
               <div id="serverOff">
                 <h1>MelhorCidade</h1>
-                <h2>Puts!! Erro ao se conectar ao serviço. Tente mais tarde!</h2>
+                <h2>
+                  Puts!! Erro ao se conectar ao serviço. Tente mais tarde!
+                </h2>
                 <p>Erro 503 - Serviço Indisponível</p>
                 <img src={errorGif} alt="error-gif" />
               </div>
