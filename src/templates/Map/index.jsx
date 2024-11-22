@@ -7,12 +7,12 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 
 import TheMap from "../../components/TheMap"
-import getPosts from "../../utils/getPosts.js"
+import loadPostsNearby from "../../utils/loadPostsNearby.js"
 
 export default function Map() {
   const [locationData, setLocationData] = useState([])
   const [centerMap, setCenterMap] = useState([-23.68524, -46.620502])
-  const [zoom, setZoom] = useState(8)
+  const [zoom, setZoom] = useState(12)
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -39,7 +39,17 @@ export default function Map() {
           const cookieAndId = localStorage.getItem("CookieId")
           const { cookie, id } = JSON.parse(cookieAndId)
 
-          const data = await getPosts(cookie, id, 0)
+          const request = {
+            cookie,
+            _idUser: id,
+            coordenadas: centerMap,
+            zoom: 12,
+          }
+
+          console.log(request);
+
+          const data = await loadPostsNearby(request)
+          console.log(data.denuncias);
           setLocationData(data.denuncias)
         } catch (error) {
           console.log("Failed to fetch locals:" + error)
@@ -52,7 +62,7 @@ export default function Map() {
 
   const handleClickLocalItem = (local) => {
     setCenterMap(local)
-    setZoom(9)
+    setZoom(18)
   }
 
   return (
@@ -60,7 +70,7 @@ export default function Map() {
       <Header />
       <main id="map_container">
         <div id="the_map_container">
-          <TheMap centerProp={centerMap} />
+          <TheMap centerProp={centerMap} zoomMap={zoom} />
         </div>
 
         <div className="complaints_bar">
