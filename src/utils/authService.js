@@ -6,7 +6,7 @@ export default async function authService(emailValue, passwordValue) {
   try {
     const response = await axios.post(
       url,
-      JSON.stringify({ email: emailValue, senha:passwordValue }),
+      JSON.stringify({ email: emailValue, senha: passwordValue }),
       {
         headers: {
           "Content-Type": "application/json",
@@ -28,9 +28,14 @@ export default async function authService(emailValue, passwordValue) {
         JSON.stringify({
           cookie: response.data.cookie,
           id: response.data.id,
+          userType: response.data.tipoUsuario,
         })
       )
-      return {serverAcess: response.data.acesso}
+
+      return {
+        serverAcess: response.data.acesso,
+        userType: response.data.tipoUsuario,
+      }
     }
   } catch (error) {
     console.log("Failed to make login: " + error)

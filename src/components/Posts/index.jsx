@@ -1,15 +1,22 @@
 import "./styles.css"
+
 import redMarker from "../../assets/red-marker.svg"
 import relevantButton from "../../assets/like-icon.svg"
-import getPosts from "../../utils/getPosts"
-import validateService from "../../utils/validateService"
-import ReadReportModal from "../ReadReportModal"
+import deleteIcon from "../../assets/trash-icon.svg"
+
 import { useEffect, useState } from "react"
 
-export default function Posts({ turn ,setHasMore }) {
-  const [postsData, setPostsData] = useState([]);
-  const [showPostDetailsModal, setShowPostDetailsModal] = useState(false);
-  const [specificPost, setSpecificPost] = useState();
+import ReadReportModal from "../ReadReportModal"
+
+import getPosts from "../../utils/getPosts"
+import deletePost from "../../utils/deletePost"
+import validateService from "../../utils/validateService"
+
+export default function Posts({ turn, setHasMore }) {
+  const [postsData, setPostsData] = useState([])
+  const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
+  const [specificPost, setSpecificPost] = useState()
+  const [adminMode, setAdminMode] = useState(false)
 
   useEffect(() => {
     const loadPostsData = async () => {
@@ -35,6 +42,10 @@ export default function Posts({ turn ,setHasMore }) {
       }
     }
 
+    if (document.location.href.includes("/dashboard")) {
+      setAdminMode(true)
+    }
+
     loadPostsData()
   }, [turn, setHasMore])
 
@@ -58,10 +69,24 @@ export default function Posts({ turn ,setHasMore }) {
       if (response.acess) {
         console.log(e.target + "oi")
       }
+    } else if (
+      e.target.className == "delete-btn" ||
+      e.target.className == "delete-img"
+    ) {
     } else {
       setSpecificPost(data)
       setShowPostDetailsModal(true)
     }
+  }
+
+  const handleDeletePostClick = async (id) => {
+    const cookieAndId = localStorage.getItem("CookieId")
+    const userCookie = JSON.parse(cookieAndId).cookie
+    const userId = JSON.parse(cookieAndId).id
+
+    const deleteThePost = { CodigoDenuncia: id, cookie: userCookie, _idUser: userId }
+    const response = await deletePost(deleteThePost)
+    console.log(response)
   }
 
   const fixData = (dataIso) => {
@@ -114,6 +139,19 @@ export default function Posts({ turn ,setHasMore }) {
                     />{" "}
                     <span className="relevant-span">Relevante</span>
                   </button>
+
+                  {adminMode && (
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDeletePostClick(data.CodigoDenuncia)}
+                    >
+                      <img
+                        src={deleteIcon}
+                        alt="delete-icon"
+                        className="delete-img"
+                      />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,25 +1,24 @@
-#dashboard > aside {
-  background-color: var(--white);
-  width: 30%;
-  min-width: 27.3rem;
-  height: 45rem;
-  margin: 2rem;
-  border-radius: .7rem;
+#dashboard {
+  display: flex;
+  width: 90%;
+  max-width: 120rem;
+  border-radius: 0.8rem;
+  margin: 2rem auto;
 }
 
-#dashboard > aside > .container > ul {
-  list-style: none;
-  padding: 2rem;
+#dashboard > main > h2 {
+  margin-bottom: 2rem;
 }
 
-#dashboard > aside > .container > ul > li {
-  margin-bottom: 1rem;
-  padding: 1rem;
-}
-
-#dashboard > aside > .container > ul > li:hover {
-  background-color: var(--gray-two);
+.delete-btn {
+  background-color: var(--red);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
   cursor: pointer;
-  border-radius: .4rem;
+  transition: background-color 200ms ease;
 }
 
+.delete-btn:hover {
+  background-color: #a71a1d;
+}

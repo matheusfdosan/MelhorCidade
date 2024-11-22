@@ -1,5 +1,5 @@
 import "./styles.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import plusIcon from "../../assets/plus-icon.svg"
 import rightArrow from "../../assets/right-arrow-icon.svg"
@@ -8,6 +8,7 @@ import settingsIconOutlined from "../../assets/settings-icon-outlined.svg"
 
 export default function Header() {
   const [modalVisibility, setModalVisibility] = useState("deactivate")
+  const [adminMode, setAdminMode] = useState(false)
 
   const handleClickBurguer = () => {
     if (modalVisibility === "active") {
@@ -16,6 +17,13 @@ export default function Header() {
       setModalVisibility("active")
     }
   }
+
+  useEffect(() => {
+    const acess = localStorage.getItem("CookieId")
+    if (JSON.parse(acess).userType !== "comum") {
+      setAdminMode(true)
+    }
+  }, [])
 
   return (
     <header id="header_homepage">
@@ -68,6 +76,16 @@ export default function Header() {
             <img src={rightArrow} alt="right-arrow" />
           </Link>
           <hr />
+
+          {adminMode && (
+            <>
+              <Link to={"/dashboard"}>
+                Painel de Administração
+                <img src={rightArrow} alt="right-arrow" />
+              </Link>
+              <hr />
+            </>
+          )}
           <Link to={"/settings"}>
             Configurações
             <img src={rightArrow} alt="right-arrow" />
