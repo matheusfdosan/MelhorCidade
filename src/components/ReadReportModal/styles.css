@@ -187,7 +187,6 @@ label[for="add_a_comment"] {
 #add_your_comment > button {
   padding-inline: 2rem;
   height: 3.5rem;
-  background-color: var(--light-blue);
   border: none;
   border-radius: 0.5rem;
   font-family: var(--poppins-font-font);
@@ -197,6 +196,14 @@ label[for="add_a_comment"] {
 
 #add_your_comment > button:hover {
   background-color: #4d6199;
+}
+
+.validated {
+  background-color: var(--red) !important;
+}
+
+.no-validated {
+  background-color: var(--light-blue);
 }
 
 #comments > ul {
@@ -221,7 +228,7 @@ label[for="add_a_comment"] {
 
 @media (min-width: 500px) {
   #map_container {
-      height: 100% !important;
+    height: 100% !important;
   }
 }
 

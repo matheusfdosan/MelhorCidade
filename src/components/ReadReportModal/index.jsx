@@ -1,24 +1,44 @@
 import "./styles.css"
+import "swiper/css"
+import "swiper/css/navigation"
+
+import { useEffect, useState } from "react"
+import { Navigation } from "swiper/modules"
+import { Swiper, SwiperSlide } from "swiper/react"
+
 import crossIcon from "../../assets/cross-icon.svg"
 import redMarker from "../../assets/red-marker.svg"
 import thumbUpIcon from "../../assets/thumb-up-icon.svg"
-import reloadPost from "../../utils/reloadPost"
-import Loading from "../../components/Loading"
-import { useState } from "react"
+
 import commentService from "../../utils/makeCommentService"
-import { Swiper, SwiperSlide } from "swiper/react"
-import "swiper/css"
-import "swiper/css/navigation"
-import "./styles.css"
-import { Navigation } from "swiper/modules"
+import validateService from "../../utils/validateService"
+import reloadPost from "../../utils/reloadPost"
+
+import Loading from "../../components/Loading"
 
 export default function ReadReportModal({
   specificPostData: data,
   setShowPostDetailsModal,
 }) {
   const [allComments, setAllComments] = useState(data.comentarios)
+  const [allValidation, setAllValidation] = useState(data.Validacoes)
   const [commentData, setCommentData] = useState("")
   const [loading, setLoading] = useState(false)
+  const [validate, setValidate] = useState("no-validated")
+
+  useEffect(() => {
+    const cookieAndId = localStorage.getItem("CookieId")
+    
+    if (cookieAndId) {
+      const userId = JSON.parse(cookieAndId).id
+
+      const userValidated = allValidation.some(
+        (validation) => validation._Id_Usuario === userId
+      )
+
+      setValidate(userValidated ? "validated" : "no-validated")
+    }
+  }, [allValidation])
 
   const handleCloseModal = () => {
     setShowPostDetailsModal(false)
@@ -78,6 +98,36 @@ export default function ReadReportModal({
     }
   }
 
+  const handleRelevantPoint = async () => {
+    const cookieAndId = localStorage.getItem("CookieId")
+    const userCookie = JSON.parse(cookieAndId).cookie
+    const userId = JSON.parse(cookieAndId).id
+    setLoading(true)
+
+    const validate = {
+      CodigoDenuncia: data.CodigoDenuncia,
+      cookie: userCookie,
+      _idUser: userId,
+    }
+
+    const response = await validateService(validate)
+    if (response.acess) {
+      const reloadData = {
+        CodigoDenuncia: data.CodigoDenuncia,
+        cookie: userCookie,
+        _idUser: userId,
+      }
+
+      const responseReload = await reloadPost(reloadData)
+      setAllValidation(responseReload.data.mensagem.Validacoes)
+
+      setLoading(false)
+    } else {
+      console.log("Algo deu errado na validação: " + data.CodigoDenuncia)
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <div id={"post-modal-overlay"} onClick={handleClickOutOfModal}>
@@ -134,13 +184,17 @@ export default function ReadReportModal({
             <p id="post-desc">{data.Descricao.Ocorrencia}</p>
 
             <div id="relevance">
-              <button id="relevance-points-btn">
+              <button
+                id="relevance-points-btn"
+                onClick={handleRelevantPoint}
+                className={validate}
+              >
                 <img src={thumbUpIcon} alt="thumb-up" />
                 <span>Essa denúncia é relevante?</span>
               </button>
 
               <p id="relevance-points">
-                {data.Validacoes.length} Pessoas acharam essa denúncia relevante
+                {allValidation.length} Pessoas acharam essa denúncia relevante
               </p>
             </div>
 
