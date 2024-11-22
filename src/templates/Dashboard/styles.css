@@ -6,6 +6,10 @@
   margin: 2rem auto;
 }
 
+#dashboard > main {
+  width: 100%;
+}
+
 #dashboard > main > h2 {
   margin-bottom: 2rem;
 }

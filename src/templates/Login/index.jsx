@@ -32,8 +32,8 @@ export default function Login() {
 
     if (authServiceResponse && authServiceResponse.serverAcess) {
       setLoading(false)
-      document.location.href = "/homepage"
       setErrorMessage(false)
+      document.location.href = "/homepage"
     } else if (
       authServiceResponse &&
       authServiceResponse.name == "AxiosError"
