@@ -1,10 +1,13 @@
 import "./styles.css"
+
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+
 import plusIcon from "../../assets/plus-icon.svg"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 import settingsIconFilled from "../../assets/settings-icon-filled.svg"
 import settingsIconOutlined from "../../assets/settings-icon-outlined.svg"
+import dashboardIcon from "../../assets/dashboard-icon.svg"
 
 export default function Header() {
   const [modalVisibility, setModalVisibility] = useState("deactivate")
@@ -41,6 +44,12 @@ export default function Header() {
               </Link>
             </li>
           </ul>
+
+          {adminMode && (
+            <Link to={"/dashboard"} id="dashboard_btn">
+              <img src={dashboardIcon} alt="dashboard-icon" />
+            </Link>
+          )}
 
           <Link to={"/settings"} id="settings_btn">
             {document.URL.includes("settings") ? (

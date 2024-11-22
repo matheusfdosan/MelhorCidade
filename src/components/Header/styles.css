@@ -1,7 +1,7 @@
 #header_homepage {
   display: flex;
   flex-direction: column;
-  border-bottom: .1rem solid var(--gray-inputs-border);
+  border-bottom: 0.1rem solid var(--gray-inputs-border);
   background-color: var(--white);
   height: 10%;
   min-height: 7rem;
@@ -19,6 +19,11 @@
   align-items: center;
   position: relative;
   z-index: 2;
+}
+
+#dashboard_btn {
+  display: none;
+  height: 2.4rem;
 }
 
 #header_container > a {
@@ -166,6 +171,7 @@
     display: none;
   }
 
+  #dashboard_btn,
   #settings_btn {
     display: flex;
   }
