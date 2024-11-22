@@ -29,6 +29,7 @@ export default async function authService(emailValue, passwordValue) {
           cookie: response.data.cookie,
           id: response.data.id,
           userType: response.data.tipoUsuario,
+          username: response.data.nome,
         })
       )
 
