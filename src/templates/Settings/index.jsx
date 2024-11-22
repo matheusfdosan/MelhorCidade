@@ -8,10 +8,12 @@ import ThemeContext from "../../utils/themeContext"
 import rightArrow from "../../assets/right-arrow-icon.svg"
 
 import { Link } from "react-router-dom"
-import { useEffect, useContext } from "react"
+import { useEffect, useContext, useState } from "react"
 
 export default function Settings() {
   const { theme, toggleTheme } = useContext(ThemeContext)
+  const [userName, setUserName] = useState("John Doe")
+  const [userEmail, setUserEmail] = useState("John Doe")
 
   useEffect(() => {
     const cookie = localStorage.getItem("CookieId")
@@ -19,6 +21,10 @@ export default function Settings() {
       document.location.href = "/login"
     } else {
       document.title = "Melhor Cidade - Configurações"
+      setUserName(JSON.parse(cookie).username) 
+      const login = localStorage.getItem("Login")
+      const email = JSON.parse(login).email
+      setUserEmail(email)
     }
   }, [])
 
@@ -35,9 +41,9 @@ export default function Settings() {
           <h2>Sua Conta</h2>
           <div className="settings">
             <h3>
-              <Link to="/account">Gregory Singleton</Link>
+              <Link to="/account">{userName}</Link>
             </h3>
-            <p>gregory.singleton@email.com</p>
+            <p>{userEmail}</p>
 
             <div id="sign_out">
               <h3>Sair da conta</h3>
