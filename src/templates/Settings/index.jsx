@@ -21,7 +21,7 @@ export default function Settings() {
       document.location.href = "/login"
     } else {
       document.title = "Melhor Cidade - Configurações"
-      setUserName(JSON.parse(cookie).username) 
+      setUserName(JSON.parse(cookie).username)
       const login = localStorage.getItem("Login")
       const email = JSON.parse(login).email
       setUserEmail(email)
