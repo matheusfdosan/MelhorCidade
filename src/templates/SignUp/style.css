@@ -65,8 +65,12 @@
 }
 
 #register_submit_button:focus {
-  outline: .1rem solid var(--gray-one);
+  outline: 0.1rem solid var(--gray-one);
+}
 
+#errorMsg {
+  text-align: center;
+  color: var(--red);
 }
 
 #already_have_account {
@@ -97,9 +101,9 @@
 }
 
 .make-login-link:focus {
-  outline: .1rem solid var(--gray-one);
-  padding: .2rem;
-  border-radius: .5rem;
+  outline: 0.1rem solid var(--gray-one);
+  padding: 0.2rem;
+  border-radius: 0.5rem;
 }
 
 @media (max-width: 900px) {

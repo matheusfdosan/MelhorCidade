@@ -11,13 +11,11 @@ export default function SignUp() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    address: "",
     password: "",
-    confirmPassword: "",
   })
   const [loading, setLoading] = useState(false)
-  const [confirmPassword, setConfirmPassword] = useState(false)
   const [axiosError, setAxiosError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState(false)
 
   useEffect(() => {
     document.title = "Melhor Cidade - Cadastro"
@@ -30,41 +28,40 @@ export default function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    if (form.password === form.confirmPassword) {
-      const response = await registerService(form)
 
-      if (response.acess) {
-        try {
-          const response = await authService(form.email, form.password)
+    const response = await registerService(form)
 
-          if (response.serverAcess) {
-            setLoading(false)
+    if (response.acess) {
+      try {
+        const response = await authService(form.email, form.password)
+        console.log(response)
 
-            localStorage.setItem(
-              "Login",
-              JSON.stringify({
-                email: form.email,
-                password: form.password,
-              })
-            )
+        if (response.serverAcess) {
+          setLoading(false)
 
-            document.location.href = "/homepage"
-          }
-        } catch (err) {
-          console.log(err)
+          localStorage.setItem(
+            "Login",
+            JSON.stringify({
+              email: form.email,
+              password: form.password,
+            })
+          )
+
+          document.location.href = "/homepage"
         }
-      } else if (response.name == "AxiosError") {
-        setLoading(false)
-        setAxiosError(true)
-
-        setTimeout(() => {
-          setAxiosError(false)
-        }, 4000)
+      } catch (err) {
+        console.log(err)
       }
+    } else if (response.name === "AxiosError") {
+      setLoading(false)
+      setAxiosError(true)
 
-      setConfirmPassword(false)
+      setTimeout(() => {
+        setAxiosError(false)
+      }, 4000)
     } else {
-      setConfirmPassword(true)
+      setLoading(false)
+      setErrorMsg(true)
     }
   }
 
@@ -97,31 +94,12 @@ export default function SignUp() {
             />
 
             <Input
-              label="Endereço"
-              type="text"
-              idName="address"
-              placeholder="Digite o seu endereço"
-              onChangeInput={handleChange}
-            />
-
-            <Input
               label="Senha"
               type="password"
               idName="password"
               placeholder="Crie uma senha"
               onChangeInput={handleChange}
             />
-            <Input
-              label="Confirmar Senha"
-              type="password"
-              idName="confirmPassword"
-              placeholder="Digite a sua senha novamente"
-              onChangeInput={handleChange}
-            />
-
-            {confirmPassword && (
-              <span style={{ color: "red" }}>As senhas não coincidem.</span>
-            )}
           </div>
 
           {loading && <Loading />}
@@ -134,6 +112,8 @@ export default function SignUp() {
               <img src={errorGif} alt="error-gif" />
             </div>
           )}
+
+          {errorMsg && <span id="errorMsg">Esse email já está em uso! Faça login para continuar!</span>}
 
           <p id="already_have_account">
             Você já tem uma conta? Então faça o{" "}
