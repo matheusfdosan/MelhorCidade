@@ -174,8 +174,12 @@ export default function Report() {
         setPositionMap({ lat: latitude, lng: longitude })
         setCenterMap([latitude, longitude])
       } catch (err) {
-        setError("Não foi possível obter a localização.")
-        console.error(err)
+        console.error(
+          "Não foi possível obter a localização, usando valor padrão.",
+          err
+        )
+        setPositionMap({ lat: -23.55052, lng: -46.633308 })
+        setCenterMap([-23.55052, -46.633308])
       }
     }
 
