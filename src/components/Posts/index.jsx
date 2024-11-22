@@ -156,6 +156,15 @@ export default function Posts({ turn, setHasMore }) {
                 </p>
               </div>
               <div className="post-footer">
+                <span
+                  id="status"
+                  className={
+                    data.StatusDenuncia == "Em aberto" ? "open" : "close"
+                  }
+                >
+                  {data.StatusDenuncia}
+                </span>
+
                 {adminMode && (
                   <button
                     className="delete-btn"

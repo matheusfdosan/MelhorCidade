@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import crossIcon from "../../assets/cross-icon.svg"
 import redMarker from "../../assets/red-marker.svg"
 import thumbUpIcon from "../../assets/thumb-up-icon.svg"
+import thumbDownIcon from "../../assets/thumb-down-icon.svg"
 
 import commentService from "../../utils/makeCommentService"
 import validateService from "../../utils/validateService"
@@ -28,7 +29,7 @@ export default function ReadReportModal({
 
   useEffect(() => {
     const cookieAndId = localStorage.getItem("CookieId")
-    
+
     if (cookieAndId) {
       const userId = JSON.parse(cookieAndId).id
 
@@ -180,8 +181,10 @@ export default function ReadReportModal({
               <p id="date">{fixData(data.createdAt)}</p>
             </div>
 
-            <h2>Descrição da denúncia:</h2>
-            <p id="post-desc">{data.Descricao.Ocorrencia}</p>
+            <div id="description">
+              <h2>Descrição da denúncia:</h2>
+              <p id="post-desc">{data.Descricao.Ocorrencia}</p>
+            </div>
 
             <div id="relevance">
               <button
@@ -189,8 +192,17 @@ export default function ReadReportModal({
                 onClick={handleRelevantPoint}
                 className={validate}
               >
-                <img src={thumbUpIcon} alt="thumb-up" />
-                <span>Essa denúncia é relevante?</span>
+                {validate === "validated" ? (
+                  <>
+                    <img src={thumbDownIcon} alt="thumb-down" />
+                    <span>Retirar ponto de relevância</span>
+                  </>
+                ) : (
+                  <>
+                    <img src={thumbUpIcon} alt="thumb-up" />
+                    <span>Essa denúncia é relevante?</span>
+                  </>
+                )}
               </button>
 
               <p id="relevance-points">
