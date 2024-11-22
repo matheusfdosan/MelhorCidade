@@ -111,7 +111,6 @@
   position: absolute;
   top: 6.9rem;
   z-index: 2;
-  margin-top: 1rem;
   display: block;
   background-color: var(--white);
   transition: display 300ms ease;
