@@ -69,6 +69,7 @@ export default function Profile() {
         </div>
 
         <div id="posts">
+          {postsData.length === 0 && <p>Você não fez nenhuma denúncia!</p>}
           {postsData.map((data) => (
             <div
               className="post"
