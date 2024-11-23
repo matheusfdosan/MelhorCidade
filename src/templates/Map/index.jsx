@@ -7,7 +7,7 @@ import Header from "../../components/Header"
 import Footer from "../../components/Footer"
 
 import TheMap from "../../components/TheMap"
-import loadPostsNearby from "../../utils/loadPostsNearby.js"
+import getPosts from "../../utils/getPosts.js"
 
 export default function Map() {
   const [locationData, setLocationData] = useState([])
@@ -39,14 +39,7 @@ export default function Map() {
           const cookieAndId = localStorage.getItem("CookieId")
           const { cookie, id } = JSON.parse(cookieAndId)
 
-          const request = {
-            cookie,
-            _idUser: id,
-            coordenadas: centerMap,
-            zoom: 12,
-          }
-
-          const data = await loadPostsNearby(request)
+          const data = await getPosts(cookie, id, 0)
           setLocationData(data.denuncias)
         } catch (error) {
           console.log("Failed to fetch locals:" + error)

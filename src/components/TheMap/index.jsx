@@ -11,7 +11,7 @@ import {
 import L from "leaflet"
 import "leaflet/dist/leaflet.css"
 import markerIconSrc from "../../assets/red-marker-filled-icon.svg"
-import loadPostsNearby from "../../utils/loadPostsNearby"
+import getPosts from "../../utils/getPosts"
 
 function ChangeMapView({ center, zoom }) {
   const map = useMap()
@@ -60,14 +60,7 @@ export default function TheMap({ centerProp, zoomProp }) {
         const cookieAndId = localStorage.getItem("CookieId")
         const { cookie, id } = JSON.parse(cookieAndId)
 
-        const request = {
-          cookie,
-          _idUser: id,
-          coordenadas: centerProp,
-          zoom: 12,
-        }
-
-        const data = await loadPostsNearby(request)
+        const data = await getPosts(cookie, id, 0)
         setLocationData(data.denuncias)
       } catch (error) {
         console.log("Failed to fetch locals:", error)
