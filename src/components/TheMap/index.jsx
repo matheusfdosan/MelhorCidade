@@ -8,11 +8,10 @@ import {
   LayerGroup,
   Circle,
 } from "react-leaflet"
-import markerIcon from "../../assets/red-marker.svg"
-import getPosts from "../../utils/getPosts.js"
+import L from "leaflet"
 import "leaflet/dist/leaflet.css"
-import "./styles.css"
-import ReadReportModal from "../ReadReportModal/index.jsx"
+import markerIconSrc from "../../assets/red-marker-filled-icon.svg"
+import loadPostsNearby from "../../utils/loadPostsNearby"
 
 function ChangeMapView({ center, zoom }) {
   const map = useMap()
@@ -52,7 +51,7 @@ export default function TheMap({ centerProp, zoomProp }) {
   const [specificPost, setSpecificPost] = useState()
 
   useEffect(() => {
-    setZoom(zoomProp) // Atualiza o zoom quando zoomProp muda
+    setZoom(zoomProp)
   }, [zoomProp])
 
   useEffect(() => {
@@ -64,25 +63,28 @@ export default function TheMap({ centerProp, zoomProp }) {
         const request = {
           cookie,
           _idUser: id,
-          coordenadas: centerMap,
+          coordenadas: centerProp,
           zoom: 12,
         }
 
         const data = await loadPostsNearby(request)
         setLocationData(data.denuncias)
       } catch (error) {
-        console.log("Failed to fetch locals: " + error)
+        console.log("Failed to fetch locals:", error)
       }
     }
 
     loadLocationData()
-  }, [])
+  }, [centerProp])
 
-  const customIcon = new L.Icon({
-    iconUrl: markerIcon,
+  const customIcon = L.icon({
+    iconUrl: markerIconSrc,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
+    shadowUrl: null,
+    shadowSize: null,
+    shadowAnchor: null,
   })
 
   const handleClickMarker = (data) => {
@@ -111,7 +113,11 @@ export default function TheMap({ centerProp, zoomProp }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <LayerGroup>
-          <Circle center={centerProp} pathOptions={fillRedOptions} radius={15} />
+          <Circle
+            center={centerProp}
+            pathOptions={fillRedOptions}
+            radius={15}
+          />
         </LayerGroup>
         {locationData.map((data) => (
           <Marker

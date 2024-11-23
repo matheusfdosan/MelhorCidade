@@ -46,10 +46,7 @@ export default function Map() {
             zoom: 12,
           }
 
-          console.log(request);
-
           const data = await loadPostsNearby(request)
-          console.log(data.denuncias);
           setLocationData(data.denuncias)
         } catch (error) {
           console.log("Failed to fetch locals:" + error)
