@@ -42,14 +42,14 @@ export default function Homepage() {
       <main id="users_posts">
         <h2>Todas as Postagens</h2>
 
-        <div id="search_complaints_container">
+        {/* <div id="search_complaints_container">
           <Input
             type="search"
             idName="search_complaints"
             placeholder="Pesquise a denúncia"
           />
           <button>Pesquisar</button>
-        </div>
+        </div> */}
 
         <div id="classify">
           <p>Classificar por: </p>
