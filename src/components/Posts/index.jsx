@@ -7,11 +7,11 @@ import { useEffect, useState } from "react"
 
 import ReadReportModal from "../ReadReportModal"
 
-import getPosts from "../../utils/getPosts"
 import deletePost from "../../utils/deletePost"
 import Loading from "../Loading"
+import loadPostFiltered from "../../utils/loadPostFiltered"
 
-export default function Posts({ turn, setHasMore }) {
+export default function Posts({ turn, setHasMore, filterPosts }) {
   const [postsData, setPostsData] = useState([])
   const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
   const [specificPost, setSpecificPost] = useState()
@@ -54,39 +54,39 @@ export default function Posts({ turn, setHasMore }) {
   useEffect(() => {
     const loadPostsData = async () => {
       try {
+        setLoading(true)
         const cookieAndId = localStorage.getItem("CookieId")
         const { cookie, id } = JSON.parse(cookieAndId)
 
-        const data = await getPosts(cookie, id, turn)
-        
-        setPostsData((prevPosts) => {
-          const existingIds = prevPosts.map((post) => post.CodigoDenuncia)
-          const newPosts = data.denuncias.filter(
-            (post) => !existingIds.includes(post.CodigoDenuncia)
-          )
-          return [...prevPosts, ...newPosts]
-        })
+        const request = {
+          cookie,
+          _idUser: id,
+          turn,
+          filtro: filterPosts,
+        }
+
+        const data = await loadPostFiltered(request)
+
+        setPostsData(data.denuncias)
 
         setHasMore(data.denuncias.length >= 15)
       } catch (error) {
         console.log("Failed to fetch posts: " + error)
         setHasMore(false)
+      } finally {
+        setLoading(false)
       }
     }
 
-    if (document.location.href.includes("/dashboard")) {
-      setAdminMode(true)
-    }
-
+    setPostsData([])
     loadPostsData()
-  }, [turn, setHasMore])
+  }, [turn, filterPosts, setHasMore])
 
   const handlePostClick = async (e, data) => {
     if (
       e.target.className === "delete-btn" ||
       e.target.className === "delete-img"
     ) {
-      // Ignora clique direto no botão deletar
     } else {
       setSpecificPost(data)
       setShowPostDetailsModal(true)

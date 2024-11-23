@@ -57,7 +57,7 @@ export default function Dashboard() {
         <main>
           <h2>Todas as Postagens:</h2>
           <div id="posts">
-            <Posts turn={turnState} setHasMore={setHasMore} />
+            <Posts turn={turnState} setHasMore={setHasMore} filterPosts={"validacao"} />
           </div>
           <button
             id="load-more"
