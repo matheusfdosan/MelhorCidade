@@ -210,6 +210,10 @@
   font-size: 1.6rem;
 }
 
+#comments {
+  margin-bottom: 10rem;
+}
+
 #comments > h2 {
   margin-bottom: 2rem;
 }
