@@ -125,6 +125,15 @@ section#landing_hero > .container > a:hover {
   padding-bottom: 10rem;
 }
 
+.post-footer .relevant-doubts-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .post {
   cursor: pointer;
 }
