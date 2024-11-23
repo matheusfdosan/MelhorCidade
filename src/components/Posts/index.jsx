@@ -58,7 +58,7 @@ export default function Posts({ turn, setHasMore }) {
         const { cookie, id } = JSON.parse(cookieAndId)
 
         const data = await getPosts(cookie, id, turn)
-
+        
         setPostsData((prevPosts) => {
           const existingIds = prevPosts.map((post) => post.CodigoDenuncia)
           const newPosts = data.denuncias.filter(

@@ -16,6 +16,7 @@ import validateService from "../../utils/validateService"
 import reloadPost from "../../utils/reloadPost"
 
 import Loading from "../../components/Loading"
+import updateStatus from "../../utils/updateStatus"
 
 export default function ReadReportModal({
   specificPostData: data,
@@ -26,6 +27,8 @@ export default function ReadReportModal({
   const [commentData, setCommentData] = useState("")
   const [loading, setLoading] = useState(false)
   const [validate, setValidate] = useState("no-validated")
+  const [changeState, setChangeState] = useState(false)
+  const [statusInput, setStatusInput] = useState(data.StatusDenuncia)
 
   useEffect(() => {
     const cookieAndId = localStorage.getItem("CookieId")
@@ -41,8 +44,20 @@ export default function ReadReportModal({
     }
   }, [allValidation])
 
+  useEffect(() => {
+    if (document.location.href.includes("/dashboard")) {
+      setChangeState(true)
+    } else {
+      setChangeState(false)
+    }
+  }, [])
+
   const handleCloseModal = () => {
     setShowPostDetailsModal(false)
+
+    if (document.location.href.includes("/dashboard")) {
+      window.location.reload()
+    }
   }
 
   const handleClickOutOfModal = (e) => {
@@ -64,6 +79,10 @@ export default function ReadReportModal({
 
   const handleChangeComment = (e) => {
     setCommentData(e.target.value)
+  }
+
+  const handleChangeStatus = (e) => {
+    setStatusInput(e.target.value)
   }
 
   const handleSubmitComment = async (commentary, idComplaint) => {
@@ -126,6 +145,42 @@ export default function ReadReportModal({
     } else {
       console.log("Algo deu errado na validação: " + data.CodigoDenuncia)
       setLoading(false)
+    }
+  }
+
+  const handleClickStatusButton = async () => {
+    try {
+      setLoading(true)
+      const cookieAndId = localStorage.getItem("CookieId")
+      const userCookie = JSON.parse(cookieAndId).cookie
+      const userId = JSON.parse(cookieAndId).id
+
+      const request = {
+        cookie: userCookie,
+        _idUser: userId,
+        mudancas: statusInput,
+        CodigoDenuncia: data.CodigoDenuncia,
+      }
+
+      const response = await updateStatus(request)
+      console.log("Resposta ao atualizar status:", response)
+      if (response.acess) {
+        const reloadData = {
+          CodigoDenuncia: data.CodigoDenuncia,
+          cookie: userCookie,
+          _idUser: userId,
+        }
+
+        const responseReload = await reloadPost(reloadData)
+        setAllValidation(responseReload.data.mensagem.Validacoes)
+
+        setLoading(false)
+      } else {
+        console.log("Algo deu errado nos status: " + data.CodigoDenuncia)
+        setLoading(false)
+      }
+    } catch (err) {
+      console.error("Erro ao atualizar status:", err)
     }
   }
 
@@ -209,6 +264,26 @@ export default function ReadReportModal({
                 {allValidation.length} Pessoas acharam essa denúncia relevante
               </p>
             </div>
+
+            {changeState && (
+              <div id="status_container">
+                <h2>Mudar status da denúncia: </h2>
+                <span id="select">
+                  <select
+                    name="changeStatus"
+                    id="status-select"
+                    value={statusInput}
+                    onChange={handleChangeStatus}
+                  >
+                    <option value="Em aberto">Em aberto</option>
+                    <option value="Resolvido">Resolvido</option>
+                  </select>
+                  <button onClick={handleClickStatusButton} id="update">
+                    Atualizar
+                  </button>
+                </span>
+              </div>
+            )}
 
             {/* <div id="solution">
               <h2>O que pode ser feito?</h2>

@@ -246,6 +246,39 @@ label[for="add_a_comment"] {
   display: inline;
 }
 
+#status_container > h2 {
+  margin-bottom: 2rem;
+}
+
+#select {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#select > button {
+  padding: 0.8rem 2rem;
+  border: none;
+  background-color: var(--light-blue);
+  color: #fbfbfb;
+  font-size: 1.6rem;
+  font-family: var(--poppinst-font);
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+#status-select {
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+#update:hover {
+  background-color: #4d6199;
+}
+
 @media (min-width: 500px) {
   #map_container {
     height: 100% !important;
