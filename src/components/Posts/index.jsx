@@ -10,6 +10,7 @@ import ReadReportModal from "../ReadReportModal"
 import deletePost from "../../utils/deletePost"
 import Loading from "../Loading"
 import loadPostFiltered from "../../utils/loadPostFiltered"
+import reloadPost from "../../utils/reloadPost"
 
 export default function Posts({ turn, setHasMore, filterPosts }) {
   const [postsData, setPostsData] = useState([])
@@ -88,8 +89,27 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
       e.target.className === "delete-img"
     ) {
     } else {
-      setSpecificPost(data)
-      setShowPostDetailsModal(true)
+      try {
+        setLoading(true)
+        const cookieAndId = localStorage.getItem("CookieId")
+        const { cookie, id } = JSON.parse(cookieAndId)
+
+        const reloadData = {
+          CodigoDenuncia: data.CodigoDenuncia,
+          cookie: cookie,
+          _idUser: id,
+        }
+
+        const response = await reloadPost(reloadData)
+
+        console.log(response.data.mensagem)
+        setSpecificPost(response.data.mensagem)
+        setShowPostDetailsModal(true)
+        setLoading(false)
+      } catch (err) {
+        setLoading(false)
+        console.log("Erro ao pegar dados da postagem: " + err)
+      }
     }
   }
 
