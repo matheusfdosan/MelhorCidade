@@ -17,6 +17,7 @@ import reloadPost from "../../utils/reloadPost"
 
 import Loading from "../../components/Loading"
 import updateStatus from "../../utils/updateStatus"
+import Input from "../../components/Input"
 
 export default function ReadReportModal({
   specificPostData: data,
@@ -285,10 +286,21 @@ export default function ReadReportModal({
               </div>
             )}
 
-            {/* <div id="solution">
+            {data.CodigoDenuncia == "bd8ab3c6-2fdd-4a93-abab-b71095b2463f" && <div id="solution">
               <h2>O que pode ser feito?</h2>
-              <p>{data.solution}</p>
-            </div> */}
+              <p>Agradecemos pela sua denúncia. Informamos que a obra na estrada do Alvarenga foi concluída e o trânsito normalizado. Seguimos as diretrizes do <strong>Art. 31 da Constituição Federal</strong>, que garante o direito à gestão participativa, e comunicamos diretamente com a <strong>Secretaria Municipal de Infraestrutura Urbana</strong>, responsável pela execução. Utilizamos os canais oficiais da Prefeitura e acompanhamos o cronograma via <strong>Portal de Obras Públicas</strong>. Seguimos à disposição para novas solicitações.</p>
+            </div>}
+
+            {data.CodigoDenuncia == "0af3e0a2-c6ca-4da6-a461-805231eef2c3" && <div id="solution">
+              <h2>O que pode ser feito?</h2>
+              <p>Agradecemos pela sua denúncia. Nesse caso, recomendamos que você entre em contato imediatamente com a <strong>Prefeitura</strong>, por meio da <strong>Secretaria Municipal de Fiscalização</strong>, para relatar a obstrução. Além disso, é possível acionar o Corpo de <strong>Bombeiros pelo número 193</strong>, pois a obstrução de uma saída de emergência coloca vidas em risco, o que é uma infração grave conforme o <strong>Código de Defesa Civil</strong> e pode gerar penalidades ao responsável. Se necessário, registre um boletim de ocorrência na delegacia local para formalizar o problema. A colaboração de cidadãos é essencial para a segurança de todos.</p>
+            </div>}
+
+            {changeState && <div id="canMake">
+              <h2>O que pode ser feito?</h2>
+              <Input placeholder={"O que pode ser feito?"} />
+              <button>Enviar</button>
+            </div>}
 
             <div id="comments">
               <h2>Comentários:</h2>

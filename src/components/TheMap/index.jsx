@@ -10,8 +10,9 @@ import {
 } from "react-leaflet"
 import L from "leaflet"
 import "leaflet/dist/leaflet.css"
-import markerIconSrc from "../../assets/red-marker-filled-icon.svg"
+import markerIconSrc from "../../assets/red-marker.svg"
 import getPosts from "../../utils/getPosts"
+import ReadReportModal from "../ReadReportModal"
 
 function ChangeMapView({ center, zoom }) {
   const map = useMap()

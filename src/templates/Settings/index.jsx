@@ -60,16 +60,6 @@ export default function Settings() {
             </div>
           </div>
         </section>
-        <section id="manage_account">
-          <h2>Gerenciar Conta</h2>
-          <ul className="settings">
-            <li>
-              <p>Seu Endereço</p>
-              <span></span>
-              <img src={rightArrow} alt="right-arrow" />
-            </li>
-          </ul>
-        </section>
       </main>
 
       <div id="settings_footer">

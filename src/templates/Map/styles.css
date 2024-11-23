@@ -144,7 +144,7 @@
   .complaints_bar {
     width: 50%;
     height: 100% !important;
-    z-index: 1;
+    z-index: 0;
   }
 
   #map_container {

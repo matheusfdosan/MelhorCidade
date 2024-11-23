@@ -6,7 +6,7 @@
   left: 0;
   padding: 3rem 5rem;
   background-color: #6969697d;
-  z-index: 9999;
+  z-index: 9999 !important;
 }
 
 #post-container {
@@ -67,6 +67,31 @@
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+#canMake h2 {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+#canMake button {
+  padding-inline: 2rem;
+  height: 3.5rem;
+  background-color: var(--light-blue);
+  border: none;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  font-family: var(--poppins-font-font);
+  color: #fbfbfb;
+  cursor: pointer;
+}
+
+#canMake button:hover {
+  background-color: #4d6199;
+}
+
+#canMake {
+  margin-bottom: 3rem;
 }
 
 .swiper-slide {

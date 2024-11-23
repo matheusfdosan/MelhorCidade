@@ -6,7 +6,7 @@
   height: 10%;
   min-height: 7rem;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 #header_container {
@@ -18,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 #dashboard_btn {
@@ -110,7 +110,7 @@
 .burguer_menu.active {
   position: absolute;
   top: 6.9rem;
-  z-index: 2;
+  z-index: 1 !important;
   display: block;
   background-color: var(--white);
   transition: display 300ms ease;
