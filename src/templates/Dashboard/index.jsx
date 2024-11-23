@@ -34,7 +34,6 @@ export default function Dashboard() {
     if (!cookie) {
       document.location.href = "/login"
     } else {
-      document.title = "Melhor Cidade - Página Inicial"
 
       const response = verifyAcess()
 

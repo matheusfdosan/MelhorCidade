@@ -16,7 +16,6 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
   const [postsData, setPostsData] = useState([])
   const [showPostDetailsModal, setShowPostDetailsModal] = useState(false)
   const [specificPost, setSpecificPost] = useState()
-  const [adminMode, setAdminMode] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
   const [postToDelete, setPostToDelete] = useState(null)
@@ -185,7 +184,7 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
                   {data.StatusDenuncia}
                 </span>
 
-                {adminMode && (
+                {document.location.href.includes("/dashboard") && (
                   <button
                     className="delete-btn"
                     onClick={() => openDeleteConfirmation(data.CodigoDenuncia)}
