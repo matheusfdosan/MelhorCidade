@@ -67,8 +67,9 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
 
         const data = await loadPostFiltered(request)
 
-        setPostsData(data.denuncias)
-
+        setPostsData((prevPosts) =>
+          turn === 0 ? data.denuncias : [...prevPosts, ...data.denuncias]
+        )
         setHasMore(data.denuncias.length >= 15)
       } catch (error) {
         console.log("Failed to fetch posts: " + error)
@@ -78,7 +79,6 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
       }
     }
 
-    setPostsData([])
     loadPostsData()
   }, [turn, filterPosts, setHasMore])
 
@@ -148,10 +148,10 @@ export default function Posts({ turn, setHasMore, filterPosts }) {
   return (
     <>
       <div id="posts">
-        {postsData.map((data) => (
+        {postsData.map((data, index) => (
           <div
             className="post"
-            key={data.CodigoDenuncia}
+            key={`${data.CodigoDenuncia}-${index}`}
             id={data.CodigoDenuncia}
             onClick={(e) => handlePostClick(e, data)}
           >

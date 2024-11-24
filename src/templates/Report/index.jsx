@@ -315,7 +315,7 @@ export default function Report() {
   const handleAnalyzeClick = () => {
     const getCoordinates = async () => {
       try {
-        const data = await geocodeService(inputAddress)
+        const data = await geocodeService(inputAddress + ", Brasil")
         setPositionMap({ lat: data[0].lat, lng: data[0].lon })
         setCenterMap([data[0].lat, data[0].lon])
       } catch (error) {

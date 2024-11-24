@@ -14,10 +14,14 @@ export default function Header() {
   const [adminMode, setAdminMode] = useState(false)
 
   const handleClickBurguer = () => {
-    if (modalVisibility === "active") {
-      setModalVisibility("deactivate")
+    if (document.location.href.includes("/map")) {
+      document.location.href = "/homepage"
     } else {
-      setModalVisibility("active")
+      if (modalVisibility === "active") {
+        setModalVisibility("deactivate")
+      } else {
+        setModalVisibility("active")
+      }
     }
   }
 
