@@ -8,7 +8,7 @@
 :root {
   --sora-font: "Sora", sans-serif;
   --urbanist-font: "Urbanist", sans-serif;
-  --poppinst-font: "Poppins", sans-serif;
+  --poppins-font: "Poppins", sans-serif;
   --red: #ff353a;
   --light-blue: #597de1;
 }
@@ -45,7 +45,7 @@ html,
 body {
   height: 100vh;
   overflow-x: hidden;
-  font-family: var(--poppinst-font);
+  font-family: var(--poppins-font);
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   color: var(--dark);
